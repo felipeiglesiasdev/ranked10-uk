@@ -60,13 +60,10 @@
 
     <article class="max-w-4xl mx-auto px-4 py-12">{{-- ARTIGO SEMANTICO CENTRALIZADO --}}
 
-        <nav class="text-sm text-slate-500" aria-label="Breadcrumb">{{-- TRILHA DE NAVEGACAO --}}
-            <a href="{{ route('home') }}" class="hover:text-slate-900">Home</a>
-            <span aria-hidden="true"> / </span>
-            <a href="{{ route('category', $category) }}" class="hover:text-slate-900">{{ $category->name }}</a>
-            <span aria-hidden="true"> / </span>
-            <span class="text-slate-900 font-medium">{{ $article->title }}</span>{{-- ARTIGO ATUAL NA TRILHA --}}
-        </nav>
+        <x-utils.breadcrumbs :items="[
+            ['label' => $category->name, 'url' => route('category', $category)],
+            ['label' => $article->title],
+        ]" />{{-- TRILHA: HOME (ICONE) > CATEGORIA > TITULO DO ARTIGO --}}
 
         <h1 class="mt-4 text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900">{{ $article->title }}</h1>{{-- H1 COM O TITULO DO ARTIGO --}}
 

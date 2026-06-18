@@ -14,11 +14,7 @@
 @section('content'){{-- INICIO DO CONTEUDO DA CATEGORIA --}}
 
     <section class="max-w-6xl mx-auto px-4 py-12">{{-- SECAO PRINCIPAL DA CATEGORIA --}}
-        <nav class="text-sm text-slate-500" aria-label="Breadcrumb">{{-- TRILHA DE NAVEGACAO --}}
-            <a href="{{ route('home') }}" class="hover:text-slate-900">Home</a>
-            <span aria-hidden="true"> / </span>
-            <span class="text-slate-900 font-medium">{{ $category->name }}</span>{{-- CATEGORIA ATUAL NA TRILHA --}}
-        </nav>
+        <x-utils.breadcrumbs :items="[['label' => $category->name]]" />{{-- TRILHA: HOME (ICONE) > CATEGORIA ATUAL --}}
 
         <h1 class="mt-4 text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900">{{ $category->name }}</h1>{{-- TITULO DA CATEGORIA --}}
         @if ($category->description){{-- SO MOSTRA A DESCRICAO SE EXISTIR --}}
