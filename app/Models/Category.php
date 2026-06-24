@@ -18,4 +18,5 @@ class Category extends Model
     {
         return $this->hasMany(Article::class); // RETORNA OS ARTIGOS VINCULADOS A ESTA CATEGORIA
     }
+    
 }

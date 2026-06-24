@@ -23,10 +23,10 @@
 
         <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">{{-- GRID RESPONSIVO DE ARTIGOS --}}
             @forelse ($articles as $article){{-- PERCORRE OS ARTIGOS PUBLICADOS DA CATEGORIA --}}
-                <a href="{{ route('article', [$category, $article]) }}" class="group flex flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:shadow-md hover:border-amber-300">{{-- CARD CLICAVEL DO ARTIGO --}}
-                    <h2 class="text-lg font-bold text-slate-900 group-hover:text-amber-600">{{ $article->title }}</h2>{{-- TITULO DO ARTIGO --}}
+                <a href="{{ route('article', [$category, $article]) }}" class="group flex flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:shadow-md hover:border-brand/40">{{-- CARD CLICAVEL DO ARTIGO --}}
+                    <h2 class="text-lg font-bold text-slate-900 group-hover:text-brand">{{ $article->title }}</h2>{{-- TITULO DO ARTIGO --}}
                     <p class="mt-2 text-sm text-slate-500 line-clamp-3">{{ $article->intro }}</p>{{-- INTRO TRUNCADA EM 3 LINHAS --}}
-                    <span class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-amber-600">
+                    <span class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand">
                         Read the ranking
                         {{-- ICONE DE SETA (BOOTSTRAP ICONS: ARROW-RIGHT) EM SVG INLINE --}}
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/></svg>

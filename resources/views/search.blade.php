@@ -16,8 +16,8 @@
             <div class="relative">
                 {{-- ICONE DE LUPA (BOOTSTRAP ICONS: SEARCH) EM SVG INLINE --}}
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" aria-hidden="true"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/></svg>
-                <input id="search-q" type="search" name="q" value="{{ $query }}" placeholder="Try &quot;air fryer&quot; or &quot;dog bed&quot;..." class="w-full rounded-full border border-slate-200 bg-white py-3 pl-11 pr-28 shadow-sm focus:border-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-200" autofocus>{{-- CAMPO DO TERMO DE BUSCA --}}
-                <button type="submit" class="absolute right-1.5 top-1/2 -translate-y-1/2 rounded-full bg-slate-900 px-5 py-2 text-sm font-semibold text-white hover:bg-slate-700">Search</button>{{-- BOTAO DE ENVIO --}}
+                <input id="search-q" type="search" name="q" value="{{ $query }}" placeholder="Try &quot;air fryer&quot; or &quot;dog bed&quot;..." class="w-full rounded-full border border-slate-200 bg-white py-3 pl-11 pr-28 shadow-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30" autofocus>{{-- CAMPO DO TERMO DE BUSCA --}}
+                <button type="submit" class="absolute right-1.5 top-1/2 -translate-y-1/2 rounded-full bg-brand px-5 py-2 text-sm font-semibold text-white hover:bg-brand-light">Search</button>{{-- BOTAO DE ENVIO --}}
             </div>
         </form>
 
@@ -26,9 +26,9 @@
 
             <div class="mt-4 space-y-4">{{-- LISTA VERTICAL DE RESULTADOS --}}
                 @forelse ($articles as $article){{-- PERCORRE OS RESULTADOS DA BUSCA --}}
-                    <a href="{{ route('article', [$article->category, $article]) }}" class="group block rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:shadow-md hover:border-amber-300">{{-- CARD DO RESULTADO --}}
-                        <span class="inline-flex items-center rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-700">{{ $article->category->name }}</span>{{-- BADGE DA CATEGORIA --}}
-                        <h2 class="mt-2 text-lg font-bold text-slate-900 group-hover:text-amber-600">{{ $article->title }}</h2>{{-- TITULO DO ARTIGO --}}
+                    <a href="{{ route('article', [$article->category, $article]) }}" class="group block rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:shadow-md hover:border-brand/40">{{-- CARD DO RESULTADO --}}
+                        <span class="inline-flex items-center rounded-full bg-brand/10 px-3 py-1 text-xs font-semibold text-brand">{{ $article->category->name }}</span>{{-- BADGE DA CATEGORIA --}}
+                        <h2 class="mt-2 text-lg font-bold text-slate-900 group-hover:text-brand">{{ $article->title }}</h2>{{-- TITULO DO ARTIGO --}}
                         <p class="mt-1 text-sm text-slate-500 line-clamp-2">{{ $article->intro }}</p>{{-- INTRO TRUNCADA EM 2 LINHAS --}}
                     </a>
                 @empty{{-- CASO NENHUM ARTIGO CORRESPONDA AO TERMO --}}

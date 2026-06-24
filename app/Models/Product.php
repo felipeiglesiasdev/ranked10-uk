@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo; // IMPORTA O TIPO DE RETOR
 
 class Product extends Model
 {
-    protected $fillable = ['article_id', 'position', 'name', 'price', 'rating', 'reviews_count', 'pros', 'contras', 'affiliate_link', 'image', 'summary']; // CAMPOS PERMITIDOS NO PREENCHIMENTO EM MASSA
+    protected $fillable = ['article_id', 'position', 'name', 'price', 'rating', 'reviews_count', 'pros', 'contras', 'affiliate_link', 'image', 'summary', 'body']; // CAMPOS PERMITIDOS NO PREENCHIMENTO EM MASSA (BODY = TEXTO SEO LONGO)
 
     protected $casts = ['pros' => 'array', 'contras' => 'array']; // CONVERTE AS COLUNAS JSON PARA ARRAYS PHP AUTOMATICAMENTE
 

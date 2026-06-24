@@ -1,0 +1,86 @@
+<?php
+
+// ═══════════════════════════════════════════════════════════════════════
+// COMO CRIAR UMA LISTA NOVA:
+// 1. COPIE ESTE ARQUIVO PARA database/seeders/lists/NomeDaListaSeeder.php
+// 2. RENOMEIE A CLASSE PARA NomeDaListaSeeder
+// 3. PREENCHA OS ARRAYS $category, $article E $products
+// 4. ADICIONE A CLASSE NO DatabaseSeeder PRINCIPAL
+// 5. RODE SOMENTE ESTA LISTA: php artisan db:seed --class="Database\Seeders\Lists\NomeDaListaSeeder"
+// ═══════════════════════════════════════════════════════════════════════
+//
+// OBSERVACAO: ESTE ARQUIVO TEM EXTENSAO .example PARA O LARAVEL NAO EXECUTA-LO.
+// AO COPIAR, REMOVA O ".example" DO NOME (DEVE TERMINAR EM .php).
+
+namespace Database\Seeders\Lists; // NAMESPACE DOS SEEDERS DE LISTA (NAO ALTERAR)
+
+use App\Models\Article; // IMPORTA O MODEL DE ARTIGOS
+use App\Models\Category; // IMPORTA O MODEL DE CATEGORIAS
+use App\Models\Product; // IMPORTA O MODEL DE PRODUTOS (USADO VIA RELACIONAMENTO DO ARTIGO)
+use Illuminate\Database\Seeder; // IMPORTA A CLASSE BASE DOS SEEDERS
+
+class _TemplateSeeder extends Seeder // RENOMEIE PARA NomeDaListaSeeder (PASSO 2)
+{
+    public function run(): void // POPULA A LISTA DE FORMA IDEMPOTENTE (NAO DUPLICA)
+    {
+        // ═══════════════════════════════════════════════════════════════
+        // ═══ EDITE AQUI: DADOS DA LISTA MANUAL ═══
+        // ═══════════════════════════════════════════════════════════════
+
+        $category = [
+            'slug' => '',           // PREENCHA AQUI: SLUG DA CATEGORIA NA URL (EX: 'kitchen')
+            'name' => '',           // PREENCHA AQUI: NOME EXIBIDO DA CATEGORIA (EX: 'Kitchen')
+            'description' => '',     // PREENCHA AQUI: DESCRICAO CURTA DA CATEGORIA
+        ];
+
+        $article = [
+            'slug' => '',                       // PREENCHA AQUI: SLUG DO ARTIGO NA URL (EX: 'best-air-fryers-uk')
+            'title' => '',                      // PREENCHA AQUI: TITULO / H1 DO ARTIGO
+            'intro' => '',                      // PREENCHA AQUI: PARAGRAFO DE INTRODUCAO
+            'conclusion' => '',                 // PREENCHA AQUI: PARAGRAFO DE CONCLUSAO
+            'author' => 'Felipe Iglesias',      // AUTOR DO ARTIGO (DEVE BATER COM UM 'name' EM config/authors.php)
+            'published_at' => now(),            // DATA DE PUBLICACAO (now() = PUBLICA IMEDIATAMENTE)
+        ];
+
+        $products = [
+            [
+                'position' => 1,                // PREENCHA AQUI: POSICAO NO RANKING (1, 2, 3...)
+                'name' => '',                   // PREENCHA AQUI: NOME DO PRODUTO (VIRIA DA API)
+                'price' => '',                  // PREENCHA AQUI: PRECO COM SIMBOLO (EX: '£49.99')
+                'rating' => null,               // PREENCHA AQUI: NOTA DE 0 A 5 (EX: 4.7) OU null
+                'reviews_count' => 0,           // PREENCHA AQUI: Nº DE AVALIACOES (EX: 1234)
+                'image' => null,                // PREENCHA AQUI: URL DA IMAGEM OU null (null MOSTRA PLACEHOLDER)
+                'affiliate_link' => '',         // PREENCHA AQUI: LINK DE AFILIADO DA AMAZON
+                'summary' => '',                // PREENCHA AQUI: TEXTO CURTO DENTRO DO CARD (1 PARAGRAFO)
+                'body' => '',                   // PREENCHA AQUI: TEXTO SEO LONGO ABAIXO DO CARD (2-3 PARAGRAFOS, SEPARADOS POR LINHA EM BRANCO)
+                'pros' => [],                   // PREENCHA AQUI: LISTA DE PONTOS POSITIVOS (EX: ['Rapido', 'Silencioso'])
+                'contras' => [],                // PREENCHA AQUI: LISTA DE PONTOS NEGATIVOS (EX: ['Caro'])
+            ],
+            // COPIE O BLOCO ACIMA E REPITA PARA CADA PRODUTO DA LISTA (POSITION 2, 3, ...)
+        ];
+
+        // ═══════════════════════════════════════════════════════════════
+        // ═══ FIM DA AREA EDITAVEL — NAO PRECISA MEXER ABAIXO ═══
+        // ═══════════════════════════════════════════════════════════════
+
+        $categoryModel = Category::updateOrCreate( // CRIA OU ATUALIZA A CATEGORIA PELO SLUG (NAO DUPLICA)
+            ['slug' => $category['slug']], // CHAVE DE BUSCA: SLUG DA CATEGORIA
+            $category, // DADOS A SEREM GRAVADOS/ATUALIZADOS
+        );
+
+        $articleModel = Article::updateOrCreate( // CRIA OU ATUALIZA O ARTIGO PELO SLUG (NAO DUPLICA)
+            ['slug' => $article['slug']], // CHAVE DE BUSCA: SLUG DO ARTIGO
+            array_merge($article, ['category_id' => $categoryModel->id]), // VINCULA O ARTIGO A CATEGORIA
+        );
+
+        $articleModel->products()->delete(); // REMOVE OS PRODUTOS ANTIGOS DESTE ARTIGO PARA REFLETIR EDICOES SEM DUPLICAR
+
+        foreach ($products as $produto) { // PERCORRE A LISTA MANUAL DE PRODUTOS
+            $articleModel->products()->create($produto); // RECRIA CADA PRODUTO VINCULADO AO ARTIGO
+        }
+
+        // INFORMA O RESULTADO NO TERMINAL (SO QUANDO RODADO COM SAIDA DE CONSOLE)
+        $this->command?->info(static::class.": 1 categoria, 1 artigo e ".count($products)." produtos."); // RESUMO DO QUE FOI POPULADO
+        $this->command?->info("URL do artigo: /{$category['slug']}/{$article['slug']}"); // URL ONDE O ARTIGO FICA ACESSIVEL
+    }
+}

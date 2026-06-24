@@ -58,7 +58,7 @@
 
 @section('content'){{-- INICIO DO CONTEUDO DO ARTIGO --}}
 
-    <article class="max-w-4xl mx-auto px-4 py-12">{{-- ARTIGO SEMANTICO CENTRALIZADO --}}
+    <article class="max-w-4xl px-4 py-12">{{-- ARTIGO SEMANTICO ALINHADO A ESQUERDA --}}
 
         <x-utils.breadcrumbs :items="[
             ['label' => $category->name, 'url' => route('category', $category)],
@@ -80,9 +80,19 @@
             </div>
         </div>
 
-        <div class="mt-12 space-y-8">{{-- LISTA DE CARDS DE PRODUTO --}}
+        <div class="mt-12 space-y-12">{{-- LISTA DE PRODUTOS: CADA ITEM = CARD + TEXTO SEO ABAIXO --}}
             @foreach ($article->products as $product){{-- PERCORRE OS PRODUTOS JA ORDENADOS POR POSICAO --}}
-                <x-product-card :product="$product" />{{-- COMPONENTE DO CARD COMPLETO DO PRODUTO --}}
+                <div class="space-y-5 {{ ! $loop->last ? 'border-b border-slate-200 pb-12' : '' }}">{{-- AGRUPA CARD + BODY COM SEPARADOR ENTRE PRODUTOS --}}
+                    <x-product-card :product="$product" />{{-- 1. CARD COMPLETO (POSICAO, IMAGEM, NOME, PRECO, RATING, SUMMARY, PROS, CONTRAS, CTA) --}}
+
+                    @if (filled($product->body)){{-- 2. SO RENDERIZA O TEXTO SEO SE O BODY NAO ESTIVER VAZIO --}}
+                        <div class="prose prose-slate max-w-none px-1 text-slate-600 leading-relaxed [&>p]:mt-4">{{-- BLOCO DE TEXTO SEO LONGO FORA DO CARD --}}
+                            @foreach (preg_split('/\n{2,}/', trim($product->body)) as $paragrafo){{-- QUEBRA O BODY EM PARAGRAFOS POR LINHAS EM BRANCO --}}
+                                <p>{{ $paragrafo }}</p>{{-- PARAGRAFO DO TEXTO SEO --}}
+                            @endforeach
+                        </div>
+                    @endif
+                </div>
             @endforeach
         </div>
 
@@ -90,6 +100,12 @@
             <h2 class="text-xl font-bold text-slate-900">Our verdict</h2>{{-- TITULO DA CONCLUSAO --}}
             <p class="mt-3 leading-relaxed text-slate-600">{{ $article->conclusion }}</p>{{-- TEXTO DA CONCLUSAO --}}
         </section>
+
+        <x-utils.share-buttons :url="route('article', [$category, $article])" :title="$article->title" />{{-- BOTOES DE COMPARTILHAR (WHATSAPP, X, FACEBOOK, EMAIL, COPIAR) --}}
+
+        <x-utils.author-bio :author="$author" />{{-- FOTO E BIO DO AUTOR DO ARTIGO --}}
+
+        <x-utils.related-articles :articles="$related" />{{-- ARTIGOS RELACIONADOS PARA ANCORAGEM DE LINKS --}}
 
     </article>
 

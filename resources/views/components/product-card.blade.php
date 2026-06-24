@@ -3,7 +3,7 @@
 <section id="product-{{ $product->position }}" class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">{{-- CARD DO PRODUTO COM ANCORA PELA POSICAO --}}
 
     <div class="flex items-center gap-3 border-b border-slate-100 bg-slate-50 px-5 py-3">{{-- FAIXA SUPERIOR COM POSICAO E NOME --}}
-        <span class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full {{ $product->position === 1 ? 'bg-amber-400 text-slate-900' : 'bg-slate-900 text-white' }} text-sm font-extrabold">{{ $product->position }}</span>{{-- BADGE DA POSICAO (DOURADO PARA O 1º LUGAR) --}}
+        <span class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full {{ $product->position === 1 ? 'bg-brand text-white' : 'bg-ink text-white' }} text-sm font-extrabold">{{ $product->position }}</span>{{-- BADGE DA POSICAO (VERMELHO PARA O 1º LUGAR, PRETO PARA OS DEMAIS) --}}
         <h3 class="text-lg font-bold text-slate-900">{{ $product->name }}</h3>{{-- NOME DO PRODUTO --}}
     </div>
 
@@ -66,7 +66,7 @@
                 </div>
             </div>
 
-            <a href="{{ $product->affiliate_link }}" rel="sponsored nofollow" target="_blank" class="mt-6 inline-flex items-center gap-2 rounded-full bg-amber-400 px-6 py-3 text-sm font-bold text-slate-900 shadow-sm transition hover:bg-amber-300">{{-- BOTAO CTA COM REL OBRIGATORIO DE AFILIADO --}}
+            <a href="{{ $product->affiliate_link }}" rel="sponsored nofollow" target="_blank" class="mt-6 inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-brand-light">{{-- BOTAO CTA COM REL OBRIGATORIO DE AFILIADO --}}
                 Check Price on Amazon
                 {{-- ICONE DE LINK EXTERNO (BOOTSTRAP ICONS: BOX-ARROW-UP-RIGHT) EM SVG INLINE --}}
                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5"/><path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z"/></svg>

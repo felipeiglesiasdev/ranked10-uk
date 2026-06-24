@@ -13,9 +13,9 @@
         </thead>
         <tbody class="divide-y divide-slate-100">{{-- CORPO DA TABELA COM LINHAS DIVIDIDAS --}}
             @foreach ($products as $product){{-- PERCORRE OS PRODUTOS ORDENADOS POR POSICAO --}}
-                <tr class="hover:bg-amber-50/50">{{-- LINHA COM DESTAQUE SUAVE NO HOVER --}}
+                <tr class="hover:bg-brand/5">{{-- LINHA COM DESTAQUE SUAVE NO HOVER --}}
                     <td class="px-4 py-3">
-                        <span class="inline-flex h-7 w-7 items-center justify-center rounded-full {{ $product->position === 1 ? 'bg-amber-400 text-slate-900' : 'bg-slate-100 text-slate-600' }} text-xs font-bold">{{ $product->position }}</span>{{-- BADGE DA POSICAO (DOURADO PARA O 1º LUGAR) --}}
+                        <span class="inline-flex h-7 w-7 items-center justify-center rounded-full {{ $product->position === 1 ? 'bg-brand text-white' : 'bg-slate-100 text-slate-600' }} text-xs font-bold">{{ $product->position }}</span>{{-- BADGE DA POSICAO (VERMELHO PARA O 1º LUGAR) --}}
                     </td>
                     <td class="px-4 py-3 font-semibold text-slate-900">{{ $product->name }}</td>{{-- NOME DO PRODUTO --}}
                     <td class="px-4 py-3 text-slate-600">{{ $product->price }}</td>{{-- PRECO DO PRODUTO --}}
@@ -31,7 +31,7 @@
                         @endif
                     </td>
                     <td class="px-4 py-3 text-right">
-                        <a href="{{ $product->affiliate_link }}" rel="sponsored nofollow" target="_blank" class="inline-flex items-center gap-1.5 rounded-full bg-slate-900 px-4 py-1.5 text-xs font-semibold text-white hover:bg-slate-700">{{-- LINK DE AFILIADO COM REL OBRIGATORIO --}}
+                        <a href="{{ $product->affiliate_link }}" rel="sponsored nofollow" target="_blank" class="inline-flex items-center gap-1.5 rounded-full bg-ink px-4 py-1.5 text-xs font-semibold text-white hover:bg-brand">{{-- LINK DE AFILIADO COM REL OBRIGATORIO --}}
                             View
                             {{-- ICONE DE LINK EXTERNO (BOOTSTRAP ICONS: BOX-ARROW-UP-RIGHT) EM SVG INLINE --}}
                             <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5"/><path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z"/></svg>

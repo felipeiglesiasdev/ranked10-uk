@@ -15,8 +15,8 @@
 
         <a href="{{ route('home') }}" class="flex items-center gap-2" aria-label="ranked10 home">{{-- LOGO CENTRAL COM LINK PARA A HOME --}}
             {{-- ICONE DE TROFEU (BOOTSTRAP ICONS: TROPHY-FILL) EM SVG INLINE --}}
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16" class="text-amber-500" aria-hidden="true"><path d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5q0 .807-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33 33 0 0 1 2.5.5m.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935m10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935"/></svg>
-            <span class="text-lg font-extrabold tracking-tight text-slate-900">ranked<span class="text-amber-500">10</span></span>{{-- NOME DO SITE --}}
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16" class="text-brand" aria-hidden="true"><path d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5q0 .807-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33 33 0 0 1 2.5.5m.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935m10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935"/></svg>
+            <span class="text-lg font-extrabold tracking-tight text-slate-900">ranked<span class="text-brand">10</span></span>{{-- NOME DO SITE --}}
         </a>
 
         <a href="{{ route('search') }}" class="p-2 -mr-2 text-slate-500 hover:text-slate-900" aria-label="Search">{{-- ATALHO DA BUSCA NO MOBILE --}}
@@ -27,9 +27,9 @@
 
     {{-- NAVEGACAO COLAPSAVEL: FECHADA POR PADRAO, ABRE QUANDO O CHECKBOX ESTA MARCADO (peer-checked) --}}
     <nav class="hidden peer-checked:block border-t border-slate-100 bg-white px-4 py-3" aria-label="Mobile navigation">
-        <a href="{{ route('home') }}" class="block rounded-lg px-3 py-2.5 text-sm font-medium {{ request()->routeIs('home') ? 'bg-slate-900 text-white' : 'text-slate-700 hover:bg-slate-100' }}">Home</a>{{-- LINK DA HOME COM ESTADO ATIVO --}}
+        <a href="{{ route('home') }}" class="block rounded-lg px-3 py-2.5 text-sm font-medium {{ request()->routeIs('home') ? 'bg-brand text-white' : 'text-slate-700 hover:bg-slate-100' }}">Home</a>{{-- LINK DA HOME COM ESTADO ATIVO --}}
         @foreach ($navCategories as $navCategory){{-- PERCORRE AS CATEGORIAS COMPARTILHADAS PELO VIEW COMPOSER --}}
-            <a href="{{ route('category', $navCategory) }}" class="block rounded-lg px-3 py-2.5 text-sm font-medium {{ request()->is($navCategory->slug.'*') ? 'bg-slate-900 text-white' : 'text-slate-700 hover:bg-slate-100' }}">{{ $navCategory->name }}</a>{{-- LINK DA CATEGORIA COM ESTADO ATIVO --}}
+            <a href="{{ route('category', $navCategory) }}" class="block rounded-lg px-3 py-2.5 text-sm font-medium {{ request()->is($navCategory->slug.'*') ? 'bg-brand text-white' : 'text-slate-700 hover:bg-slate-100' }}">{{ $navCategory->name }}</a>{{-- LINK DA CATEGORIA COM ESTADO ATIVO --}}
         @endforeach
     </nav>
 </header>
