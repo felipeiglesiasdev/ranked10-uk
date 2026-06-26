@@ -7,7 +7,12 @@
     <meta name="robots" content="index, follow, max-image-preview:large">{{-- PADRAO: INDEXAR E SEGUIR (PAGINAS PODEM SOBRESCREVER) --}}
     <meta name="author" content="ranked10">{{-- AUTOR/PUBLISHER DO SITE --}}
     <meta name="format-detection" content="telephone=no">{{-- EVITA O IOS TRANSFORMAR NUMEROS EM LINKS DE TELEFONE --}}
-
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Ranked10" />
+    <link rel="manifest" href="/site.webmanifest" />
     <meta property="og:locale" content="en_GB">{{-- LOCALE OPEN GRAPH --}}
     <meta name="twitter:card" content="summary_large_image">{{-- CARTAO DO TWITTER/X --}}
 
