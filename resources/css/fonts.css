@@ -1,0 +1,41 @@
+/* ===========================================================
+   FONTE POPPINS SERVIDA PELO CDN (CLOUDFLARE R2): cdn.ranked10.co.uk
+   FORMATO woff2 PARA MAXIMA PERFORMANCE + font-display: swap PARA
+   RENDERIZAR O TEXTO IMEDIATAMENTE COM A FONTE FALLBACK ENQUANTO CARREGA.
+   =========================================================== */
+
+/* POPPINS LIGHT (300) */
+@font-face {
+    font-family: 'Poppins'; /* NOME DA FAMILIA USADO NO --font-sans */
+    font-style: normal; /* ESTILO NORMAL (NAO ITALICO) */
+    font-weight: 300; /* PESO LIGHT */
+    font-display: swap; /* MOSTRA O FALLBACK ATE A FONTE CARREGAR */
+    src: url('https://cdn.ranked10.co.uk/fonts/Poppins-Light.woff2') format('woff2'); /* ARQUIVO NO CDN */
+}
+
+/* POPPINS REGULAR (400) */
+@font-face {
+    font-family: 'Poppins'; /* NOME DA FAMILIA USADO NO --font-sans */
+    font-style: normal; /* ESTILO NORMAL (NAO ITALICO) */
+    font-weight: 400; /* PESO REGULAR (CORPO DE TEXTO) */
+    font-display: swap; /* MOSTRA O FALLBACK ATE A FONTE CARREGAR */
+    src: url('https://cdn.ranked10.co.uk/fonts/Poppins-Regular.woff2') format('woff2'); /* ARQUIVO NO CDN */
+}
+
+/* POPPINS MEDIUM (500) */
+@font-face {
+    font-family: 'Poppins'; /* NOME DA FAMILIA USADO NO --font-sans */
+    font-style: normal; /* ESTILO NORMAL (NAO ITALICO) */
+    font-weight: 500; /* PESO MEDIUM */
+    font-display: swap; /* MOSTRA O FALLBACK ATE A FONTE CARREGAR */
+    src: url('https://cdn.ranked10.co.uk/fonts/Poppins-Medium.woff2') format('woff2'); /* ARQUIVO NO CDN */
+}
+
+/* POPPINS SEMIBOLD (600) - TAMBEM ATENDE OS PESOS 700/800 (bold/extrabold) DO LAYOUT */
+@font-face {
+    font-family: 'Poppins'; /* NOME DA FAMILIA USADO NO --font-sans */
+    font-style: normal; /* ESTILO NORMAL (NAO ITALICO) */
+    font-weight: 600 800; /* INTERVALO: COBRE SEMIBOLD, BOLD E EXTRABOLD COM O MESMO ARQUIVO */
+    font-display: swap; /* MOSTRA O FALLBACK ATE A FONTE CARREGAR */
+    src: url('https://cdn.ranked10.co.uk/fonts/Poppins-SemiBold.woff2') format('woff2'); /* ARQUIVO NO CDN */
+}

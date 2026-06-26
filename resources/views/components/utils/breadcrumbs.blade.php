@@ -31,11 +31,12 @@
 
         @if ($i === $lastIndex){{-- O ULTIMO ITEM E A PAGINA ATUAL, ENTAO NAO E UM LINK --}}
             <span class="font-medium text-slate-900" aria-current="page">{{ $crumb['label'] }}</span>{{-- PAGINA ATUAL SEM LINK --}}
-        @elseif ($i === 0){{-- O PRIMEIRO ITEM (HOME) E REPRESENTADO PELO ICONE DE CASA --}}
-            <a href="{{ $crumb['url'] }}" class="inline-flex items-center hover:text-slate-900" aria-label="Home">
+        @elseif ($i === 0){{-- O PRIMEIRO ITEM (HOME) E O ICONE DE CASA + O TEXTO "HOME" --}}
+            <a href="{{ $crumb['url'] }}" class="inline-flex items-center gap-1.5 hover:text-slate-900">
                 {{-- ICONE DE CASA (BOOTSTRAP ICONS: HOUSE-DOOR) EM SVG INLINE --}}
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M7.97 1.06a.75.75 0 0 1 1.06 0l6 6V13.5A1.5 1.5 0 0 1 13.53 15h-2.53a.5.5 0 0 1-.5-.5V11a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v3.5a.5.5 0 0 1-.5.5H3.5A1.5 1.5 0 0 1 2 13.5V7.06zM8 2.12 3 7.12V13.5a.5.5 0 0 0 .5.5H5v-3a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 11 11v3h1.53a.5.5 0 0 0 .5-.5V7.06z"/></svg>
-            </a>{{-- HOME COMO ICONE DE CASA LINKANDO PARA A ROTA HOME --}}
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M7.97 1.06a.75.75 0 0 1 1.06 0l6 6V13.5A1.5 1.5 0 0 1 13.53 15h-2.53a.5.5 0 0 1-.5-.5V11a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v3.5a.5.5 0 0 1-.5.5H3.5A1.5 1.5 0 0 1 2 13.5V7.06zM8 2.12 3 7.12V13.5a.5.5 0 0 0 .5.5H5v-3a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 11 11v3h1.53a.5.5 0 0 0 .5-.5V7.06z"/></svg>
+                <span>{{ $crumb['label'] }}</span>{{-- TEXTO "HOME" AO LADO DO ICONE --}}
+            </a>{{-- HOME = ICONE DE CASA + TEXTO, LINKANDO PARA A ROTA HOME --}}
         @else{{-- ITENS INTERMEDIARIOS SAO LINKS DE TEXTO --}}
             <a href="{{ $crumb['url'] }}" class="hover:text-slate-900">{{ $crumb['label'] }}</a>{{-- ITEM INTERMEDIARIO COM LINK --}}
         @endif

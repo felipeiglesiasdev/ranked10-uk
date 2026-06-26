@@ -23,7 +23,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         View::composer('layouts.app', function ($view) { // COMPARTILHA AS CATEGORIAS COM O LAYOUT MESTRE PARA MONTAR O MENU
-            $categories = Schema::hasTable('categories') ? Category::orderBy('name')->get() : collect(); // EVITA ERRO ANTES DAS MIGRATIONS RODAREM
+            $categories = Schema::hasTable('categories') // EVITA ERRO ANTES DAS MIGRATIONS RODAREM
+                ? Category::with(['articles' => fn ($q) => $q->publicados()->latest('published_at')->with('products')]) // CARREGA ARTIGOS PUBLICADOS + PRODUTOS PARA O MEGA MENU
+                    ->orderBy('name') // ORDENA AS CATEGORIAS POR NOME
+                    ->get() // EXECUTA A CONSULTA
+                : collect(); // COLECAO VAZIA SE A TABELA AINDA NAO EXISTE
             $view->with('navCategories', $categories); // INJETA A VARIAVEL NAVCATEGORIES NO LAYOUT
         });
     }

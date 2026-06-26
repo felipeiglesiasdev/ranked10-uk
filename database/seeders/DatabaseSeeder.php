@@ -17,6 +17,9 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([ // CHAMA CADA SEEDER DE LISTA EM ORDEM
             \Database\Seeders\Lists\PortableBlendersSeeder::class, // LISTA DE LIQUIDIFICADORES PORTATEIS (KITCHEN)
+            \Database\Seeders\Lists\CordlessLawnMowersSeeder::class, // LISTA DE CORTADORES DE GRAMA SEM FIO (GARDEN)
+            \Database\Seeders\Lists\DogBedsSeeder::class, // LISTA DE CAMAS PARA CACHORRO (PET SUPPLIES)
+            \Database\Seeders\Lists\OfficeChairsSeeder::class, // LISTA DE CADEIRAS DE ESCRITORIO (HOME & OFFICE)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }

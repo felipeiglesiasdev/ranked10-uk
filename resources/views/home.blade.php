@@ -1,20 +1,20 @@
 @extends('layouts.app'){{-- USA O LAYOUT MESTRE UNICO --}}
 
-@push('seo'){{-- INJETA AS META TAGS DE SEO NO HEAD DO LAYOUT --}}
-    <title>ranked10 — The UK's Best Top 10 Buying Guides</title>{{-- TITULO DA HOME --}}
-    <meta name="description" content="Independent top 10 rankings and buying guides for UK shoppers. We research the best products on Amazon so you don't have to.">{{-- META DESCRIPTION DA HOME --}}
-    <link rel="canonical" href="{{ route('home') }}">{{-- URL CANONICA DA HOME --}}
-    <meta property="og:type" content="website">{{-- TIPO OPEN GRAPH --}}
-    <meta property="og:title" content="ranked10 — The UK's Best Top 10 Buying Guides">{{-- TITULO OPEN GRAPH --}}
-    <meta property="og:description" content="Independent top 10 rankings and buying guides for UK shoppers.">{{-- DESCRICAO OPEN GRAPH --}}
-    <meta property="og:url" content="{{ route('home') }}">{{-- URL OPEN GRAPH --}}
-    <meta property="og:site_name" content="ranked10">{{-- NOME DO SITE OPEN GRAPH --}}
+@push('seo')
+    <title>ranked10 — The UK's Best Top 10 Buying Guides</title>
+    <meta name="description" content="Independent top 10 rankings and buying guides for UK shoppers. We research the best products on Amazon so you don't have to.">
+    <link rel="canonical" href="{{ route('home') }}">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ranked10 — The UK's Best Top 10 Buying Guides">
+    <meta property="og:description" content="Independent top 10 rankings and buying guides for UK shoppers.">
+    <meta property="og:url" content="{{ route('home') }}">
+    <meta property="og:site_name" content="ranked10">
 @endpush
 
 @section('content'){{-- INICIO DO CONTEUDO DA HOME --}}
 
     <section class="bg-ink text-white">{{-- HERO ESCURO DE ABERTURA (PRETO DA MARCA) --}}
-        <div class="max-w-6xl mx-auto px-4 py-16 md:py-24 text-center">
+        <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 py-16 md:py-24 text-center">
             <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight">Find the best products in the UK,<br class="hidden md:block"> <span class="text-brand-light">ranked for you.</span></h1>{{-- TITULO PRINCIPAL DO HERO --}}
             <p class="mt-4 max-w-2xl mx-auto text-slate-300 md:text-lg">Honest top 10 lists with pros, cons and real review data — so you can buy with confidence.</p>{{-- SUBTITULO DO HERO --}}
             <div class="mt-8 flex flex-wrap justify-center gap-3">{{-- BOTOES PARA AS CATEGORIAS --}}
@@ -25,7 +25,7 @@
         </div>
     </section>
 
-    <section class="max-w-6xl mx-auto px-4 py-12">{{-- SECAO DE ARTIGOS EM DESTAQUE --}}
+    <section class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 py-12">{{-- SECAO DE ARTIGOS EM DESTAQUE --}}
         <div class="flex items-center justify-between">
             <h2 class="text-2xl font-bold text-slate-900">Latest buying guides</h2>{{-- TITULO DA SECAO --}}
         </div>

@@ -58,7 +58,8 @@
 
 @section('content'){{-- INICIO DO CONTEUDO DO ARTIGO --}}
 
-    <article class="max-w-4xl px-4 py-12">{{-- ARTIGO SEMANTICO ALINHADO A ESQUERDA --}}
+    <article class="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8 py-12">{{-- ARTIGO COM O MESMO GUTTER LATERAL DO HEADER/FOOTER --}}
+        <div class="max-w-4xl">{{-- COLUNA DE LEITURA ALINHADA A ESQUERDA --}}
 
         <x-utils.breadcrumbs :items="[
             ['label' => $category->name, 'url' => route('category', $category)],
@@ -107,6 +108,7 @@
 
         <x-utils.related-articles :articles="$related" />{{-- ARTIGOS RELACIONADOS PARA ANCORAGEM DE LINKS --}}
 
+        </div>{{-- FIM DA COLUNA DE LEITURA --}}
     </article>
 
 @endsection{{-- FIM DO CONTEUDO DO ARTIGO --}}

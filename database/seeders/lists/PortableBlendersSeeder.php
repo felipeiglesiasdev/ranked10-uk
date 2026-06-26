@@ -16,91 +16,197 @@ class PortableBlendersSeeder extends Seeder
         // PARA CRIAR UMA NOVA LISTA, COPIE database/seeders/lists/_TemplateSeeder.php.example
         // ═══════════════════════════════════════════════════════════════
 
-        $category = [
-            'slug' => 'kitchen',                    // SLUG DA CATEGORIA (URL)
-            'name' => 'Kitchen',                    // NOME EXIBIDO
-            'description' => 'Honest, research-led buying guides for the best kitchen gadgets and appliances available in the UK.', // DESCRICAO
-        ];
+        // ═══ EDITE AQUI: DADOS DA LISTA MANUAL ═══
+// PARA RODAR SOMENTE ESTA LISTA: php artisan db:seed --class="Database\Seeders\Lists\PortableBlendersSeeder"
 
-        $article = [
-            'slug' => 'best-portable-blenders-uk',           // SLUG DO ARTIGO (URL)
-            'title' => 'Best Portable Blenders UK',          // TITULO / H1
-            'intro' => 'Portable blenders have become a kitchen staple for anyone who wants a fresh smoothie at the gym, in the office or on a morning commute. We have compared the most popular cordless models available in the UK, weighing up blending power, battery life, capacity and value so you can find the right one for your routine. Here are our top picks.', // INTRO
-            'conclusion' => 'The best portable blender for you comes down to how you plan to use it. If you want trusted blending power and thousands of happy customers behind your purchase, the Ninja range is hard to beat, while the ZHENMI offers a larger capacity at a lower price for those on a tighter budget. Whichever you choose, look for a leak-proof lid, a USB-C rechargeable battery and dishwasher-safe parts to make daily use as easy as possible.', // CONCLUSAO
-            'author' => 'Felipe Iglesias',                   // AUTOR DO ARTIGO (DEVE BATER COM config/authors.php)
-            'published_at' => now(),                         // DATA DE PUBLICACAO
-        ];
+$category = [
+    'slug' => 'kitchen',                    // SLUG DA CATEGORIA (URL)
+    'name' => 'Kitchen',                    // NOME EXIBIDO
+    'description' => 'Honest, research-led buying guides for the best kitchen gadgets and appliances available in the UK.', // DESCRICAO
+];
 
-        $products = [
-            [
-                'position' => 1,                                          // POSICAO NO RANKING
-                'name' => 'Ninja Blast Max Portable Blender 2-Pack, 570ml', // NOME (DA API)
-                'price' => '£129.95',                                     // PRECO (DA API)
-                'rating' => 4.8,                                          // NOTA (DA API)
-                'reviews_count' => 58,                                    // Nº REVIEWS (DA API)
-                'image' => 'https://m.media-amazon.com/images/I/61CvzRSh5TL._AC_SL1400_.jpg', // IMAGEM (DA API)
-                'affiliate_link' => 'https://amazon.co.uk/dp/EXAMPLE?tag=ranked10-21', // LINK AFILIADO (TROCAR DEPOIS)
-                'summary' => 'Ninja\'s most powerful cordless blender, sold here as a two-pack. Crushes ice and frozen fruit in seconds with three one-touch blending modes.', // TEXTO CURTO (CARD)
-                'body' => 'The Ninja Blast Max is the most powerful portable blender in Ninja\'s cordless range, and this bundle includes two units in a Lavender and Silver finish. With a stronger motor than the original Blast, it powers through ice and frozen ingredients in seconds, making it a strong choice for protein shakes and frozen smoothies on the go.
+$article = [
+    'slug' => 'best-portable-blenders-uk',           // SLUG DO ARTIGO (URL)
+    'title' => 'Best Portable Blenders UK',          // TITULO / H1
+    'intro' => 'A good portable blender turns fresh fruit, ice and protein powder into a smooth drink in seconds, wherever you happen to be. Whether you want a pocket-sized cup for the gym, a USB-rechargeable model for travelling, or a more powerful unit for the kitchen worktop, there is something here for every routine and budget. We have compared ten of the most popular portable blenders available in the UK on blending power, battery life, capacity, ease of cleaning and value to help you pick the right one.', // INTRO
+    'conclusion' => 'The best portable blender for you depends on how and where you plan to use it. Compact USB-rechargeable cups are ideal for the gym and travel, while higher-wattage models with multiple bottles suit busy households making several drinks a day. As a rule, look for BPA-free cups, a leak-proof lid with a sip spout, dishwasher-safe parts and enough power to handle ice if you enjoy frozen smoothies. Match those features to your daily routine and you will have a blender that earns its place on the worktop or in your bag.', // CONCLUSAO
+    'author' => 'Editorial Team',
+    'published_at' => now(),
+];
 
-Each 570ml cup uses a twist-and-go design with a leak-proof lid, sip spout and carry handle, so you can blend and drink from the same cup wherever you are. Three blending functions, including Crush, Smoothie and a Manual Blend mode, give you control over the texture of every drink.
+$products = [
+    [
+        'position' => 1,
+        'name' => 'Personal Blender [Upgraded], Portable Blender for Shakes & Smoothies, USB Rechargeable, 6 Stainless Steel Blades',
+        'price' => '£19.99',
+        'rating' => 5.0,
+        'reviews_count' => 21,
+        'image' => 'https://m.media-amazon.com/images/I/71QzWi7pAbL._AC_SL1500_.jpg',
+        'affiliate_link' => 'https://amzn.to/4uTHcE4',
+        'summary' => 'A budget-friendly USB-rechargeable mini blender with a 22,000 RPM motor and six stainless steel blades, built for shakes and smoothies on the go.',
+        'body' => 'This upgraded personal blender is one of the most affordable ways to get into portable blending, pairing a high-speed motor that spins up to 22,000 times per minute with six stainless steel blades to break down fruit and make smooth shakes. At just 480g and with a 380ml capacity, it is genuinely pocket-friendly and easy to drop into a gym bag or work rucksack.
 
-At £129.95 for two, this bundle is best suited to households where more than one person wants their own blender, or anyone who likes the idea of keeping one at home and one at work. The parts are dishwasher safe and Ninja offers a two-year guarantee on registration.', // TEXTO SEO LONGO (FORA DO CARD)
-                'pros' => ['Most powerful motor in the Ninja Blast range', 'Three one-touch blending functions', 'Leak-proof lid with sip spout', 'Two-year guarantee on registration'], // PONTOS POSITIVOS
-                'contras' => ['Premium price for a portable blender', 'Two-pack may be more than a single user needs'], // PONTOS NEGATIVOS
-            ],
-            [
-                'position' => 2,                                          // POSICAO NO RANKING
-                'name' => 'Ninja Blast Portable Blender, 530ml, Denim Blue (BC151UKNV)', // NOME (DA API)
-                'price' => '£39',                                         // PRECO (DA API)
-                'rating' => 4.4,                                          // NOTA (DA API)
-                'reviews_count' => 4271,                                  // Nº REVIEWS (DA API)
-                'image' => null,                                          // SEM IMAGEM AINDA - MOSTRA PLACEHOLDER
-                'affiliate_link' => 'https://amazon.co.uk/dp/EXAMPLE?tag=ranked10-21', // LINK AFILIADO
-                'summary' => 'Ninja\'s most compact and quietest cordless blender. A USB-C rechargeable mini blender that handles ice and frozen fruit with ease.', // TEXTO CURTO (CARD)
-                'body' => 'The Ninja Blast in Denim Blue is the brand\'s most compact and quietest portable blender, and with over four thousand customer ratings it is also one of the most popular cordless models in the UK. The stainless steel BlastBlade assembly crushes ice and frozen fruit to deliver genuinely smooth drinks rather than the lumpy results some smaller blenders produce.
+The 1800mAh battery delivers around ten to twelve blends per charge and tops up over a waterproof USB-C port, with the cable included. A one-button operation keeps things simple, and a self-cleaning mode means you just add water, press, and rinse. Every part is BPA-free, which is reassuring for daily use.
 
-The 530ml BPA-free cup features a leak-proof lid with a sip spout and a comfortable carry handle, making it easy to blend and drink in the same cup at the gym, in the park or at your desk. Blade and cup covers are included for safe storage in a bag.
+It is best understood as a light-duty blender for single servings rather than a worktop workhorse, so it suits soft fruit, protein shakes and pre-cut ingredients more than heavy ice crushing. For the price, it is a sensible first portable blender for students, commuters and gym-goers.',
+        'pros' => ['Very affordable', 'Lightweight and genuinely portable at 480g', 'USB rechargeable with self-cleaning mode', 'BPA-free parts'],
+        'contras' => ['Small 380ml capacity', 'Very few customer reviews so far'],
+    ],
+    [
+        'position' => 2,
+        'name' => 'Portable Blender, Personal Blender USB Rechargeable for Shakes & Smoothies, 6 Blades',
+        'price' => '£16.99',
+        'rating' => 5.0,
+        'reviews_count' => 17,
+        'image' => 'https://m.media-amazon.com/images/I/612Vl1vNVlL._AC_SL1200_.jpg',
+        'affiliate_link' => 'https://amzn.to/44sKTFW',
+        'summary' => 'The cheapest blender in our guide, with a magnetic safety switch, six 304 stainless steel blades and a detachable cup that is easy to clean.',
+        'body' => 'If your priority is keeping costs down, this personal blender is the lowest-priced option in our list and still covers the essentials. It uses six 304 stainless steel blades driven by a pure copper motor to turn fruit and vegetables into smoothies in around a minute, and the makers say a full charge yields 13 to 15 cups before you need to plug it back in.
 
-A single USB-C charge delivers more than ten blends and up to two hours of battery life, with a full charge taking around two hours. At £39 it sits at a far more accessible price point than the Max bundle, and the lid and cup are top-rack dishwasher safe. Ninja includes a two-year guarantee on registration for UK and ROI customers.', // TEXTO SEO LONGO (FORA DO CARD)
-                'pros' => ['Compact and quiet design', 'Over 4,000 customer ratings', 'More than 10 blends per charge', 'Affordable price point'], // PONTOS POSITIVOS
-                'contras' => ['Smaller 530ml capacity', 'Single colour in this listing'], // PONTOS NEGATIVOS
-            ],
-            [
-                'position' => 3,                                          // POSICAO NO RANKING
-                'name' => 'ZHENMI Portable Blender, 980ml, Cordless (Purple)', // NOME (DA API)
-                'price' => '£35.99',                                      // PRECO (DA API)
-                'rating' => 4.0,                                          // NOTA (DA API)
-                'reviews_count' => 71,                                    // Nº REVIEWS (DA API)
-                'image' => 'https://m.media-amazon.com/images/I/41ZPnQxf2lL._AC_.jpg', // IMAGEM (DA API)
-                'affiliate_link' => 'https://amazon.co.uk/dp/EXAMPLE?tag=ranked10-21', // LINK AFILIADO
-                'summary' => 'A larger-capacity budget option with an 18,000RPM motor and eight stainless steel blades. The 980ml Tritan jug suits personal or family use.', // TEXTO CURTO (CARD)
-                'body' => 'The ZHENMI portable blender stands out in this list for its larger 980ml capacity, making it a sensible pick for families or anyone who wants to blend more than a single serving at a time. A high-speed 18,000RPM motor paired with eight stainless steel blades turns ice, fruit, nuts and vegetables into smooth drinks in around thirty seconds.
+A nice touch is the magnetic induction switch, which only allows the blender to run when the cup and base are correctly aligned, adding a layer of safety. The cup is detachable for easy rinsing, and the built-in battery charges from any USB source such as a laptop, power bank or phone charger in three to four hours.
 
-The BPA-free Tritan jug is durable and odour resistant, and at just 0.9kg the whole unit is light enough to drop into a gym bag, backpack or car cup holder. A leak-proof lid with sip spout helps prevent spills when you are out and about, and an LED indicator shows remaining battery so you are not caught out mid-blend.
+As with most budget cups, it is happiest with soft ingredients and small pieces rather than large frozen chunks or hard nuts. For an everyday smoothie or protein shake on a tight budget, though, it is hard to argue with the price.',
+        'pros' => ['Lowest price in this guide', 'Magnetic safety switch', '13–15 cups per full charge', 'Detachable cup is easy to clean'],
+        'contras' => ['Not suited to hard or large frozen ingredients', 'Very small review count'],
+    ],
+    [
+        'position' => 3,
+        'name' => 'nutribullet Flex 591ml Portable Blender with Spout Lid, USB-C, BPA-Free Cup, Purple (NBP013VT)',
+        'price' => '£103.99',
+        'rating' => 4.6,
+        'reviews_count' => 10296,
+        'image' => 'https://m.media-amazon.com/images/I/619kxH78nvL._AC_SL1500_.jpg',
+        'affiliate_link' => 'https://amzn.to/4y1R6q6',
+        'summary' => 'A premium portable blender from a trusted brand, with a large 591ml Tritan cup, detachable motor base and more than 10,000 customer ratings behind it.',
+        'body' => 'The NutriBullet Flex is the most established name in this guide, and with over ten thousand customer ratings at a strong 4.6 average it is the safe choice for anyone who wants a portable blender from a brand they recognise. The headline feature is a detachable motor base that cuts the weight by around half once you have finished blending, so the part you actually carry and drink from is much lighter.
 
-Charging is handled over USB-C in two to three hours, with up to twenty cycles per full charge. All removable parts are dishwasher safe, and the food-grade materials are free from harmful chemicals. At £35.99 it is the most affordable option here and a useful alternative to the Ninja models for budget-conscious buyers.', // TEXTO SEO LONGO (FORA DO CARD)
-                'pros' => ['Large 980ml capacity', 'Most affordable in this list', 'Up to 20 blends per charge', 'Dishwasher-safe parts'], // PONTOS POSITIVOS
-                'contras' => ['Lower average rating than the Ninja models', 'Fewer customer reviews so far'], // PONTOS NEGATIVOS
-            ],
-            [
-                'position' => 4,                                          // POSICAO NO RANKING
-                'name' => 'Ninja 700W Slim Blender & Smoothie Maker, 2x 470ml (QB3001UKS)', // NOME (DA API)
-                'price' => '£49.99',                                      // PRECO (DA API)
-                'rating' => 4.7,                                          // NOTA (DA API)
-                'reviews_count' => 5738,                                  // Nº REVIEWS (DA API)
-                'image' => 'https://m.media-amazon.com/images/I/616E1sfbwHL._AC_SL1500_.jpg', // IMAGEM (DA API)
-                'affiliate_link' => 'https://amazon.co.uk/dp/EXAMPLE?tag=ranked10-21', // LINK AFILIADO
-                'summary' => 'A mains-powered single-serve blender with a 700W motor and the highest review count in our list. Blends directly in the 470ml to-go cup.', // TEXTO CURTO (CARD)
-                'body' => 'Strictly speaking the Ninja 700W Slim is a mains-powered personal blender rather than a cordless one, but with more than five thousand customer ratings and an excellent 4.7 average it earns its place for anyone who blends mostly at home and wants reliable performance.
+The 591ml graduated Tritan cup is a generous size for a portable model, and the 100W motor with four stainless steel blades handles frozen fruit and cold drinks comfortably. A leak-proof travel lid with a carry handle makes it easy to take with you, and the LED battery indicator shows you at a glance how many of its 15-plus 30-second cycles remain before a USB-C recharge.
 
-The 700W power pod uses Ninja\'s blade technology to handle whole fruits and vegetables, nuts, seeds and ice with a simple push-to-blend action. You blend directly in the 470ml cup, then swap on a spout lid to take your smoothie with you, and the bundle includes two cups and two lids so a second drink is always ready to go.
+Cleaning is straightforward thanks to dishwasher-safe removable blades and bowl, or a quick blend of soapy water. It is the priciest option here, but the build quality, capacity and review history justify the premium for many buyers.',
+        'pros' => ['Trusted brand with 10,000+ ratings', 'Large 591ml Tritan cup', 'Detachable base is lighter to carry', 'Dishwasher-safe blades and bowl'],
+        'contras' => ['Most expensive in this guide', 'Modest 100W motor for the price'],
+    ],
+    [
+        'position' => 4,
+        'name' => 'Ninja Blast Portable Blender, 530ml, Leakproof Lid & Sip Spout, Cordless, Black (BC151UKBK)',
+        'price' => '£36.99',
+        'rating' => 4.4,
+        'reviews_count' => 4293,
+        'image' => 'https://m.media-amazon.com/images/I/61vBPSO71LL._AC_SL1400_.jpg',
+        'affiliate_link' => 'https://amzn.to/4w7soCD',
+        'summary' => 'Ninja\'s compact and quiet cordless blender, with a stainless steel BlastBlade for ice, a leak-proof sip lid and thousands of positive reviews.',
+        'body' => 'The Ninja Blast brings a well-known kitchen brand to the portable category, and with more than four thousand ratings it is one of the most popular cordless models in the UK. Ninja describes it as its most compact and quietest blender, and the stainless steel BlastBlade assembly is designed to crush ice and frozen fruit into genuinely smooth drinks rather than the slushy results cheaper cups can produce.
 
-All removable parts are dishwasher safe and the cups are BPA-free. At £49.99 it is keenly priced for the performance on offer, and Ninja provides a two-year guarantee on registration for UK and ROI customers. If counter space and a plug are not an issue, it is one of the most dependable options in this guide.', // TEXTO SEO LONGO (FORA DO CARD)
-                'pros' => ['Powerful 700W motor', 'Highest review count in this list', 'Comes with two cups and lids', 'Excellent 4.7 average rating'], // PONTOS POSITIVOS
-                'contras' => ['Mains-powered, not cordless', 'Less portable than the others'], // PONTOS NEGATIVOS
-            ],
-        ];
+The 530ml BPA-free cup comes with a leak-proof lid, sip spout and a comfortable carry handle, so you can blend and drink from the same container at the gym, the office or the park. Blade and cup covers are included for hygienic storage in a bag, which is a thoughtful detail for commuters.
+
+A USB-C rechargeable base delivers more than ten blends and up to two hours of battery life, with a full charge taking around two hours. The lid and cup are top-rack dishwasher safe, and Ninja offers a two-year guarantee on registration for UK and ROI customers, adding peace of mind at a mid-range price.',
+        'pros' => ['Trusted Ninja brand', 'Crushes ice well for its size', 'Leak-proof lid with sip spout and covers', 'Two-year guarantee on registration'],
+        'contras' => ['Slightly lower average rating than some rivals', 'Around 10 blends per charge'],
+    ],
+    [
+        'position' => 5,
+        'name' => 'Ninja Blast Max Portable Blender, 570ml, 3x Blend Functions, Cordless, Navy (BC251UKNV)',
+        'price' => '£65.50',
+        'rating' => 4.5,
+        'reviews_count' => 213,
+        'image' => 'https://m.media-amazon.com/images/I/61ABnGWWjXL._AC_SL1500_.jpg',
+        'affiliate_link' => 'https://amzn.to/43XIcMr',
+        'summary' => 'The more powerful big brother of the Ninja Blast, with three blending functions, a bigger 570ml cup and up to 25 blends per charge.',
+        'body' => 'The Ninja Blast Max sits a step above the standard Blast, with a more powerful motor that shaves ice and crushes frozen ingredients in seconds. It is the most capable Ninja cordless blender here, and the upgrade shows in both performance and battery life.
+
+Where the regular Blast keeps things simple, the Max adds three one-touch blending functions, including dedicated Crush and Smoothie modes plus a Manual Blend option, giving you more control over texture. The 570ml twist-and-go cup is slightly larger too, with a leak-proof lid, sip spout and carry handle for drinking on the move.
+
+Battery life is a real highlight, with up to 25 blends on a single charge, comfortably more than most rivals in this guide. At £65.50 it is a mid-to-premium choice, but for anyone who blends frozen fruit and ice regularly and wants Ninja reliability without stepping up to the priciest option, it strikes a sensible balance.',
+        'pros' => ['More powerful motor than standard Blast', 'Three blending functions for texture control', 'Up to 25 blends per charge', 'Larger 570ml cup'],
+        'contras' => ['Pricier than the standard Ninja Blast', 'Fewer reviews than the original model'],
+    ],
+    [
+        'position' => 6,
+        'name' => 'H-Duka Smoothie Blender, 25,000 RPM, with 37oz/32oz/23oz Cups, 2-in-1 Blender & Grinder',
+        'price' => '£67.45',
+        'rating' => 4.6,
+        'reviews_count' => 52,
+        'image' => 'https://m.media-amazon.com/images/I/71C0CXmum6L._AC_SL1500_.jpg',
+        'affiliate_link' => 'https://amzn.to/4gBpWjk',
+        'summary' => 'A powerful 1200W 2-in-1 blender and grinder with three cups, reaching 25,000 RPM for ice, frozen fruit and even nut butters.',
+        'body' => 'The H-Duka is the most powerful unit in this guide, with a 1200W motor reaching up to 25,000 RPM. That puts it closer to a compact countertop blender than a pocket cup, making it the pick for anyone who wants to crush ice, frozen fruit and nuts with ease and get consistently smooth results for daily smoothies, protein shakes or homemade nut butters.
+
+Its standout feature is a 2-in-1 system: a six-blade stainless steel assembly for blending and a separate two-blade attachment for grinding coffee, spices and nuts. Three BPA-free cups in 37oz, 32oz and 23oz sizes cover everything from family batches to single servings, and the set includes two travel lids and a resealable lid for storage and on-the-go use.
+
+Safety and stability are well considered, with a lock-to-run design, leak-resistant base, non-slip suction cups and ventilation to protect the motor. All cups are dishwasher safe, and a self-clean function makes maintenance painless. Note that this is a corded model, so it trades true cordless portability for serious blending power.',
+        'pros' => ['Most powerful motor here at 1200W / 25,000 RPM', '2-in-1 blending and grinding system', 'Three cup sizes plus travel and storage lids', 'Dishwasher-safe cups'],
+        'contras' => ['Corded, so less portable', 'Bulkier than pocket-style cups'],
+    ],
+    [
+        'position' => 7,
+        'name' => 'La Reveuse Smoothie Blender Personal Size with 2 BPA-Free Travel Bottles (550ml), 300W, Silver',
+        'price' => '£27.99',
+        'rating' => 4.4,
+        'reviews_count' => 3603,
+        'image' => 'https://m.media-amazon.com/images/I/71ibHGEsG0L._AC_SL1500_.jpg',
+        'affiliate_link' => 'https://amzn.to/4al4T0J',
+        'summary' => 'A well-reviewed corded personal blender with two 550ml travel bottles, a 300W motor and a simple press-and-twist operation.',
+        'body' => 'The La Reveuse is a popular corded personal blender with over three and a half thousand ratings, offering a dependable middle ground between pocket cups and full countertop machines. Its 300W motor and four-leaf stainless steel blade are strong enough to handle fruit and vegetables for smoothies, shakes, baby formula and morning protein drinks.
+
+Operation could not be simpler: press down and twist the bottle to lock it into place for continuous blending, then unlock to stop. The set includes two 550ml BPA-free bottles with leak-proof lids, so two members of the household can each have their own, or you can prepare a second drink in advance and store it for later.
+
+Compact enough to tuck into a cabinet or drawer, it suits home and office use and makes a practical gift. Because it is mains-powered rather than rechargeable, it is best for people who blend in one place rather than truly on the move, but the low price and strong review history make it excellent value.',
+        'pros' => ['Strong review history at this price', 'Two 550ml BPA-free travel bottles', 'Simple press-and-twist operation', 'Compact for storage'],
+        'contras' => ['Corded, not rechargeable', 'Modest 300W power for tough ingredients'],
+    ],
+    [
+        'position' => 8,
+        'name' => 'Qxmcov Blender Smoothie Maker, 500W, Mini Personal Blender with 2 BPA-Free Bottles (600ml)',
+        'price' => '£35.99',
+        'rating' => 4.6,
+        'reviews_count' => 1468,
+        'image' => 'https://m.media-amazon.com/images/I/71Zhe3vY3QL._AC_SL1500_.jpg',
+        'affiliate_link' => 'https://amzn.to/4xNAX7i',
+        'summary' => 'A 500W copper-motor blender reaching 22,000 RPM, supplied with two 600ml travel bottles and a strong 4.6 rating from over 1,400 buyers.',
+        'body' => 'The Qxmcov blender balances power, portability and price well, which helps explain its strong 4.6 average from more than fourteen hundred ratings. An upgraded all-copper turbo motor delivers 500W and speeds up to 22,000 RPM, paired with four thickened 304 stainless steel cross blades to blend baby food, fruit, vegetables, smoothies and milkshakes, and even chop herbs and peppers.
+
+You get two 600ml BPA-free travel bottles that fit most car cup holders, designed to be shatterproof and easy to grip for cycling, camping or the daily commute. One-touch operation keeps it intuitive: press and hold to blend, release to stop. Every detachable part, including blades and bottles, is dishwasher safe, while the stainless steel body wipes clean easily.
+
+Safety features include food-grade silicone rings to reduce leaks, overheat protection on the motor, a ventilation system and non-slip pads for stable blending. It only runs when a bottle is locked in place. For a mid-priced portable blender with two bottles and reassuring reviews, it is a strong all-rounder.',
+        'pros' => ['Strong 4.6 rating from 1,400+ buyers', '500W copper motor at 22,000 RPM', 'Two 600ml travel bottles included', 'Dishwasher-safe parts and overheat protection'],
+        'contras' => ['Mains-powered design', 'Plastic bottles rather than glass'],
+    ],
+    [
+        'position' => 9,
+        'name' => 'TENKER Portable Mini Blender, 850W, with 2x 650ml Bottles, 2 To-Go Lids and 300ml Grinder',
+        'price' => '£31.89',
+        'rating' => 4.1,
+        'reviews_count' => 278,
+        'image' => 'https://m.media-amazon.com/images/I/71P5CxAEoML._AC_SL1500_.jpg',
+        'affiliate_link' => 'https://amzn.to/4v4JIHS',
+        'summary' => 'A high-wattage 850W mini blender bundle with two large 650ml bottles, a separate grinder cup and six-blade stainless steel assembly.',
+        'body' => 'The TENKER stands out for packing a lot into a budget price, headlined by a peak 850W copper turbo motor running at 23,000 RPM. That power, combined with a detachable six-leaf 304 stainless steel blade, lets it crush ice and frozen ingredients and turn tough foods into smoothies and shakes in around ten seconds.
+
+The bundle is generous: two BPA-free 650ml bottles, the largest cups in this guide, plus two to-go lids and portable hooks for carrying to the office, gym or car. There is also a 300ml grinding cup with flat blades for coffee beans, nuts and spices, adding useful versatility for anyone who wants more than just smoothies.
+
+Sensible safety touches include a press-to-run cup, a cooling fan to dissipate heat and four non-slip silicone pads for stability, and all cups and lids are dishwasher safe. Its review average is a little lower than some rivals here, but for large-capacity bottles plus a grinder at this price, it offers a lot of flexibility.',
+        'pros' => ['High 850W peak power', 'Largest bottles here at 2x 650ml', 'Includes a separate grinder cup', 'Dishwasher-safe cups and lids'],
+        'contras' => ['Lowest average rating in this guide', 'Bulky with two large bottles'],
+    ],
+    [
+        'position' => 10,
+        'name' => 'Personal Blender [Upgraded], Portable Blender for Shakes & Smoothies, USB Rechargeable, 12 Stainless Steel Blades',
+        'price' => '£19.99',
+        'rating' => 5.0,
+        'reviews_count' => 21,
+        'image' => 'https://m.media-amazon.com/images/I/716YmWOfNxL._AC_SL1500_.jpg',
+        'affiliate_link' => 'https://amzn.to/4vovhPz',
+        'summary' => 'A compact USB-rechargeable cup with a 12-blade design and self-cleaning mode, aimed at smoothies and shakes for the gym, office or travel.',
+        'body' => 'This SIXNEA personal blender rounds off the guide with a 12-blade take on the affordable portable cup. The high-performance motor spins up to 22,000 times per minute, and the makers position the higher blade count as a way to break ingredients down more finely for smoother shakes and smoothies.
+
+At 380ml and 480g, it is squarely a single-serve, take-anywhere design, easy to carry to the gym, office or on a trip and small enough to keep a prepared drink in the fridge. The 1800mAh battery gives roughly ten to twelve uses per charge through a waterproof USB-C port, and a one-button self-cleaning mode means you simply add water and let it rinse itself.
+
+All parts are BPA-free for safe daily drinking. Like other cups in this class, it is best with soft fruit and pre-cut ingredients rather than heavy ice loads. For a low-cost, genuinely portable blender with a self-clean function, it is an easy everyday option.',
+        'pros' => ['Affordable', '12-blade design for finer blending', 'Self-cleaning mode', 'USB-C rechargeable and BPA-free'],
+        'contras' => ['Small 380ml single-serve capacity', 'Very few reviews so far'],
+    ],
+];
+// ═══ FIM DA AREA EDITAVEL ═══
 
         // ═══════════════════════════════════════════════════════════════
         // ═══ FIM DA AREA EDITAVEL ═══

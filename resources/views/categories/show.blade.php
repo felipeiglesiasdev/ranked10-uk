@@ -13,7 +13,7 @@
 
 @section('content'){{-- INICIO DO CONTEUDO DA CATEGORIA --}}
 
-    <section class="max-w-6xl mx-auto px-4 py-12">{{-- SECAO PRINCIPAL DA CATEGORIA --}}
+    <section class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 py-12">{{-- SECAO PRINCIPAL DA CATEGORIA --}}
         <x-utils.breadcrumbs :items="[['label' => $category->name]]" />{{-- TRILHA: HOME (ICONE) > CATEGORIA ATUAL --}}
 
         <h1 class="mt-4 text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900">{{ $category->name }}</h1>{{-- TITULO DA CATEGORIA --}}
