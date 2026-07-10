@@ -14,7 +14,7 @@
 @section('content'){{-- INICIO DO CONTEUDO DA HOME --}}
 
     <section class="bg-ink text-white">{{-- HERO ESCURO DE ABERTURA (PRETO DA MARCA) --}}
-        <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 py-16 md:py-24 text-center">
+        <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-16 md:py-24 text-center">
             <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight">Find the best products in the UK,<br class="hidden md:block"> <span class="text-brand-light">ranked for you.</span></h1>{{-- TITULO PRINCIPAL DO HERO --}}
             <p class="mt-4 max-w-2xl mx-auto text-slate-300 md:text-lg">Honest top 10 lists with pros, cons and real review data — so you can buy with confidence.</p>{{-- SUBTITULO DO HERO --}}
             <div class="mt-8 flex flex-wrap justify-center gap-3">{{-- BOTOES PARA AS CATEGORIAS --}}
@@ -25,7 +25,7 @@
         </div>
     </section>
 
-    <section class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 py-12">{{-- SECAO DE ARTIGOS EM DESTAQUE --}}
+    <section class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-12">{{-- SECAO DE ARTIGOS EM DESTAQUE --}}
         <div class="flex items-center justify-between">
             <h2 class="text-2xl font-bold text-slate-900">Latest buying guides</h2>{{-- TITULO DA SECAO --}}
         </div>

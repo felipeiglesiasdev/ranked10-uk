@@ -42,15 +42,24 @@
     ];
 @endphp
 
+@php
+    // RESOLVE OS CAMPOS DE SEO COM FALLBACK: USA OS CAMPOS meta_* SE PREENCHIDOS, SENAO DERIVA DO TITULO/INTRO
+    $metaTitle = $article->meta_title ?: $article->title; // META TITLE (FALLBACK = TITULO DO ARTIGO)
+    $metaDescription = $article->meta_description ?: Str::limit($article->intro, 155); // META DESCRIPTION (FALLBACK = INTRO TRUNCADA)
+    $articleUrl = route('article', [$category, $article]); // URL CANONICA DO ARTIGO (REUTILIZADA NAS TAGS)
+@endphp
+
 @push('seo'){{-- INJETA AS META TAGS DE SEO NO HEAD DO LAYOUT --}}
-    <title>{{ $article->title }} | ranked10</title>{{-- TITULO DINAMICO DO ARTIGO --}}
-    <meta name="description" content="{{ Str::limit($article->intro, 155) }}">{{-- META DESCRIPTION COM A INTRO TRUNCADA --}}
-    <link rel="canonical" href="{{ route('article', [$category, $article]) }}">{{-- URL CANONICA DO ARTIGO --}}
+    <title>{{ $metaTitle }} | ranked10</title>{{-- TITULO DA ABA/GOOGLE (meta_title COM FALLBACK PARA O TITULO) --}}
+    <meta name="description" content="{{ $metaDescription }}">{{-- META DESCRIPTION (meta_description COM FALLBACK PARA A INTRO) --}}
+    <link rel="canonical" href="{{ $articleUrl }}">{{-- URL CANONICA DO ARTIGO --}}
     <meta property="og:type" content="article">{{-- TIPO OPEN GRAPH DE ARTIGO --}}
-    <meta property="og:title" content="{{ $article->title }}">{{-- TITULO OPEN GRAPH --}}
-    <meta property="og:description" content="{{ Str::limit($article->intro, 155) }}">{{-- DESCRICAO OPEN GRAPH --}}
-    <meta property="og:url" content="{{ route('article', [$category, $article]) }}">{{-- URL OPEN GRAPH --}}
+    <meta property="og:title" content="{{ $metaTitle }}">{{-- TITULO OPEN GRAPH (MESMO VALOR DO TITLE) --}}
+    <meta property="og:description" content="{{ $metaDescription }}">{{-- DESCRICAO OPEN GRAPH (MESMO VALOR DA META DESCRIPTION) --}}
+    <meta property="og:url" content="{{ $articleUrl }}">{{-- URL OPEN GRAPH --}}
     <meta property="og:site_name" content="ranked10">{{-- NOME DO SITE OPEN GRAPH --}}
+    <meta name="twitter:title" content="{{ $metaTitle }}">{{-- TITULO DO TWITTER/X CARD (MESMO VALOR DO TITLE) --}}
+    <meta name="twitter:description" content="{{ $metaDescription }}">{{-- DESCRICAO DO TWITTER/X CARD (MESMO VALOR DA META DESCRIPTION) --}}
     <meta property="article:published_time" content="{{ $article->published_at->toAtomString() }}">{{-- DATA DE PUBLICACAO OPEN GRAPH --}}
     <meta property="article:modified_time" content="{{ $article->updated_at->toAtomString() }}">{{-- DATA DE ATUALIZACAO OPEN GRAPH --}}
     <script type="application/ld+json">{!! json_encode($jsonLd, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>{{-- DADOS ESTRUTURADOS JSON-LD --}}
@@ -58,8 +67,8 @@
 
 @section('content'){{-- INICIO DO CONTEUDO DO ARTIGO --}}
 
-    <article class="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8 py-12">{{-- ARTIGO COM O MESMO GUTTER LATERAL DO HEADER/FOOTER --}}
-        <div class="max-w-4xl">{{-- COLUNA DE LEITURA ALINHADA A ESQUERDA --}}
+    <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8 py-12">{{-- CONTAINER DO ARTIGO (DIV) COM O MESMO GUTTER LATERAL DO HEADER/FOOTER --}}
+        <div class="max-w-4xl min-w-0">{{-- COLUNA DE LEITURA ALINHADA A ESQUERDA; min-w-0 IMPEDE QUE UM FILHO LARGO A ESTIQUE --}}
 
         <x-utils.breadcrumbs :items="[
             ['label' => $category->name, 'url' => route('category', $category)],
@@ -76,7 +85,7 @@
 
         <div class="mt-10">
             <h2 class="text-xl font-bold text-slate-900">At a glance</h2>{{-- TITULO DA TABELA COMPARATIVA --}}
-            <div class="mt-4">
+            <div class="mt-4 min-w-0 overflow-hidden">{{-- CONTEM A TABELA: NADA AQUI DENTRO PODE VAZAR PARA A PAGINA --}}
                 <x-comparison-table :products="$article->products" />{{-- COMPONENTE DA TABELA COMPARATIVA --}}
             </div>
         </div>
@@ -97,10 +106,10 @@
             @endforeach
         </div>
 
-        <section class="mt-12 rounded-2xl bg-slate-100 p-6 md:p-8">{{-- BLOCO DA CONCLUSAO --}}
-            <h2 class="text-xl font-bold text-slate-900">Our verdict</h2>{{-- TITULO DA CONCLUSAO --}}
+        <div class="mt-12 rounded-2xl bg-slate-100 p-6 md:p-8">{{-- BLOCO DA CONCLUSAO (DIV) --}}
+            <h2 class="text-xl font-bold text-slate-900">Final Verdict</h2>{{-- H2 DA SECAO DE CONCLUSAO --}}
             <p class="mt-3 leading-relaxed text-slate-600">{{ $article->conclusion }}</p>{{-- TEXTO DA CONCLUSAO --}}
-        </section>
+        </div>
 
         <x-utils.share-buttons :url="route('article', [$category, $article])" :title="$article->title" />{{-- BOTOES DE COMPARTILHAR (WHATSAPP, X, FACEBOOK, EMAIL, COPIAR) --}}
 
@@ -109,6 +118,6 @@
         <x-utils.related-articles :articles="$related" />{{-- ARTIGOS RELACIONADOS PARA ANCORAGEM DE LINKS --}}
 
         </div>{{-- FIM DA COLUNA DE LEITURA --}}
-    </article>
+    </div>{{-- FIM DO CONTAINER DO ARTIGO --}}
 
 @endsection{{-- FIM DO CONTEUDO DO ARTIGO --}}

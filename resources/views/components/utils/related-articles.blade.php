@@ -1,7 +1,7 @@
 @props(['articles']){{-- PROP: COLECAO DE ARTIGOS RELACIONADOS --}}
 
 @if ($articles->isNotEmpty()){{-- SO RENDERIZA A SECAO SE HOUVER ARTIGOS RELACIONADOS --}}
-    <section class="mt-12" aria-label="Related guides">{{-- BLOCO DE ARTIGOS RELACIONADOS --}}
+    <div class="mt-12">{{-- BLOCO DE ARTIGOS RELACIONADOS (DIV) --}}
         <h2 class="text-xl font-bold text-slate-900">Related buying guides</h2>{{-- TITULO DA SECAO --}}
 
         <div class="mt-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">{{-- GRID RESPONSIVO DE CARDS --}}
@@ -13,5 +13,5 @@
                 </a>
             @endforeach
         </div>
-    </section>
+    </div>
 @endif

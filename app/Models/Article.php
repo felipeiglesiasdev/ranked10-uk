@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany; // IMPORTA O TIPO DE RETORNO
 
 class Article extends Model
 {
-    protected $fillable = ['category_id', 'slug', 'title', 'intro', 'conclusion', 'author', 'published_at']; // CAMPOS PERMITIDOS NO PREENCHIMENTO EM MASSA
+    protected $fillable = ['category_id', 'slug', 'title', 'meta_title', 'meta_description', 'intro', 'conclusion', 'author', 'published_at']; // CAMPOS PERMITIDOS NO PREENCHIMENTO EM MASSA (META_* SAO OS CAMPOS DE SEO)
 
     protected $casts = ['published_at' => 'datetime']; // CONVERTE PUBLISHED_AT PARA OBJETO CARBON
 

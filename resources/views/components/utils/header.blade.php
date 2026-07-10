@@ -21,7 +21,7 @@
     class="sticky top-0 z-50 bg-white border-b border-slate-200"
     role="banner"
 >
-    <nav class="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8" aria-label="Primary navigation">{{-- CONTAINER COM O MESMO GUTTER DO BODY/FOOTER --}}
+    <nav class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8" aria-label="Primary navigation">{{-- CONTAINER COM O MESMO GUTTER DO BODY/FOOTER --}}
         <div class="flex h-16 items-center justify-between gap-3">{{-- BARRA SUPERIOR --}}
 
             {{-- BOTAO HAMBURGUER: SO NO MOBILE/TABLET (ABAIXO DE lg) --}}
@@ -93,7 +93,7 @@
             @mouseenter="open = {{ $navCategory->id }}"
             class="absolute inset-x-0 top-full hidden lg:block border-t border-slate-100 bg-white shadow-xl"
         >
-            <div class="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8 py-6">{{-- CONTAINER DO PAINEL --}}
+            <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8 py-6">{{-- CONTAINER DO PAINEL --}}
                 <div class="grid gap-8 md:grid-cols-3">{{-- LAYOUT: APRESENTACAO + GUIAS --}}
 
                     <div class="md:col-span-1">{{-- COLUNA DE APRESENTACAO DA CATEGORIA --}}
@@ -135,7 +135,7 @@
 
     {{-- MENU MOBILE (ABAIXO DE lg): ACCORDION DE CATEGORIAS COM x-collapse --}}
     <div id="mobile-menu" x-show="mobileOpen" x-collapse x-cloak class="lg:hidden border-t border-slate-100 bg-white">
-        <div class="mx-auto max-w-6xl px-5 sm:px-6 py-4 space-y-1">{{-- CONTAINER DO MENU MOBILE --}}
+        <div class="mx-auto max-w-7xl px-5 sm:px-6 py-4 space-y-1">{{-- CONTAINER DO MENU MOBILE --}}
             <a href="{{ route('home') }}" class="block rounded-lg px-3 py-2.5 text-sm font-semibold {{ request()->routeIs('home') ? 'bg-brand text-white' : 'text-slate-800 hover:bg-slate-100' }}">Home</a>{{-- LINK DA HOME --}}
 
             @foreach ($navCategories as $navCategory){{-- PERCORRE AS CATEGORIAS --}}

@@ -13,7 +13,7 @@
 
 @section('content'){{-- INICIO DO CONTEUDO DA PAGINA --}}
 
-    <div class="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8 py-12">{{-- CONTAINER COM O MESMO GUTTER DO HEADER/FOOTER --}}
+    <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8 py-12">{{-- CONTAINER COM O MESMO GUTTER DO HEADER/FOOTER --}}
         <div class="max-w-3xl">{{-- COLUNA DE LEITURA ALINHADA A ESQUERDA --}}
 
             <x-utils.breadcrumbs :items="[['label' => 'Privacy Policy']]" />{{-- TRILHA: HOME (ICONE+TEXTO) > PRIVACY POLICY --}}

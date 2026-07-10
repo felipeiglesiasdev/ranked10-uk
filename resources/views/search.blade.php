@@ -8,7 +8,7 @@
 
 @section('content'){{-- INICIO DO CONTEUDO DA BUSCA --}}
 
-    <section class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 py-12">{{-- SECAO PRINCIPAL DA BUSCA --}}
+    <section class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-12">{{-- SECAO PRINCIPAL DA BUSCA --}}
         <div class="max-w-3xl">{{-- COLUNA DE LEITURA ALINHADA A ESQUERDA --}}
         <h1 class="text-3xl font-extrabold tracking-tight text-slate-900">Search</h1>{{-- TITULO DA PAGINA --}}
 

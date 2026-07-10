@@ -1,17 +1,17 @@
 @props(['product']){{-- PROPS: O PRODUTO A SER RENDERIZADO --}}
 
-<section id="product-{{ $product->position }}" class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">{{-- CARD DO PRODUTO COM ANCORA PELA POSICAO --}}
+<div id="product-{{ $product->position }}" class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">{{-- CARD DO PRODUTO (DIV) COM ANCORA PELA POSICAO --}}
 
     <div class="flex items-center gap-3 border-b border-slate-100 bg-slate-50 px-5 py-3">{{-- FAIXA SUPERIOR COM POSICAO E NOME --}}
-        <span class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full {{ $product->position === 1 ? 'bg-brand text-white' : 'bg-ink text-white' }} text-sm font-extrabold">{{ $product->position }}</span>{{-- BADGE DA POSICAO (VERMELHO PARA O 1º LUGAR, PRETO PARA OS DEMAIS) --}}
-        <h3 class="text-lg font-bold text-slate-900">{{ $product->name }}</h3>{{-- NOME DO PRODUTO --}}
+        <span class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full {{ $product->position === 1 ? 'bg-brand text-white' : 'bg-ink text-white' }} text-sm font-extrabold">{{ $product->position }}</span>{{-- BADGE DA POSICAO (RANK VISIVEL; VERMELHO NO 1º LUGAR, PRETO NOS DEMAIS) --}}
+        <h2 class="text-lg font-bold text-slate-900">{{ $product->name }}</h2>{{-- H2 DO PRODUTO (NOME) — RANK FICA NO BADGE AO LADO --}}
     </div>
 
     <div class="grid gap-6 p-5 md:grid-cols-[12rem_1fr]">{{-- GRID COM IMAGEM A ESQUERDA NO DESKTOP --}}
 
         <div class="flex items-start justify-center">{{-- COLUNA DA IMAGEM --}}
             @if ($product->image){{-- SO RENDERIZA A TAG IMG SE HOUVER IMAGEM --}}
-                <img src="{{ $product->image }}" alt="{{ $product->name }}" loading="lazy" class="h-44 w-44 rounded-xl border border-slate-100 object-contain bg-white">{{-- IMAGEM DO PRODUTO COM ALT E LAZY LOADING --}}
+                <img src="{{ $product->image }}" alt="{{ $product->alt_text ?: $product->name }}" loading="lazy" class="h-44 w-44 rounded-xl border border-slate-100 object-contain bg-white">{{-- IMAGEM COM ALT DESCRITIVO (FALLBACK = NOME DO PRODUTO) E LAZY LOADING --}}
             @else{{-- PLACEHOLDER QUANDO NAO HA IMAGEM --}}
                 <div class="flex h-44 w-44 items-center justify-center rounded-xl bg-slate-100 text-slate-300" role="img" aria-label="No image available">
                     {{-- ICONE DE IMAGEM (BOOTSTRAP ICONS: IMAGE) EM SVG INLINE --}}
@@ -41,7 +41,7 @@
 
             <div class="mt-4 grid gap-4 sm:grid-cols-2">{{-- COLUNAS DE PROS E CONTRAS --}}
                 <div>
-                    <h4 class="text-sm font-bold uppercase tracking-wide text-green-700">Pros</h4>{{-- TITULO DA LISTA DE PROS --}}
+                    <h3 class="text-sm font-bold uppercase tracking-wide text-green-700">Pros</h3>{{-- H3: SUBDIVISAO DO PRODUTO (PROS) --}}
                     <ul class="mt-2 space-y-1.5">{{-- LISTA DE PONTOS POSITIVOS --}}
                         @foreach ($product->pros as $pro){{-- PERCORRE OS PROS DO PRODUTO --}}
                             <li class="flex items-start gap-2 text-sm text-slate-600">
@@ -53,7 +53,7 @@
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-sm font-bold uppercase tracking-wide text-red-700">Cons</h4>{{-- TITULO DA LISTA DE CONTRAS --}}
+                    <h3 class="text-sm font-bold uppercase tracking-wide text-red-700">Cons</h3>{{-- H3: SUBDIVISAO DO PRODUTO (CONS) --}}
                     <ul class="mt-2 space-y-1.5">{{-- LISTA DE PONTOS NEGATIVOS --}}
                         @foreach ($product->contras as $contra){{-- PERCORRE OS CONTRAS DO PRODUTO --}}
                             <li class="flex items-start gap-2 text-sm text-slate-600">
@@ -73,4 +73,4 @@
             </a>
         </div>
     </div>
-</section>
+</div>

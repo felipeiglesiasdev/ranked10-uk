@@ -10,7 +10,7 @@
     $email = "mailto:?subject={$t}&body={$u}"; // LINK DE COMPARTILHAR POR E-MAIL
 @endphp
 
-<section class="mt-12" aria-label="Share this article">{{-- BLOCO DE COMPARTILHAMENTO --}}
+<div class="mt-12">{{-- BLOCO DE COMPARTILHAMENTO (DIV) --}}
     <p class="text-sm font-semibold text-slate-900">Share this guide</p>{{-- TITULO DA SECAO --}}
 
     <div class="mt-3 flex flex-wrap items-center gap-2">{{-- LINHA DE BOTOES DE SHARE --}}
@@ -46,4 +46,4 @@
             <span data-label class="hidden sm:inline">Copy link</span>{{-- ROTULO QUE VIRA "COPIED!" TEMPORARIAMENTE --}}
         </button>
     </div>
-</section>
+</div>

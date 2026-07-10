@@ -17,9 +17,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([ // CHAMA CADA SEEDER DE LISTA EM ORDEM
             \Database\Seeders\Lists\PortableBlendersSeeder::class, // LISTA DE LIQUIDIFICADORES PORTATEIS (KITCHEN)
-            \Database\Seeders\Lists\CordlessLawnMowersSeeder::class, // LISTA DE CORTADORES DE GRAMA SEM FIO (GARDEN)
-            \Database\Seeders\Lists\DogBedsSeeder::class, // LISTA DE CAMAS PARA CACHORRO (PET SUPPLIES)
-            \Database\Seeders\Lists\OfficeChairsSeeder::class, // LISTA DE CADEIRAS DE ESCRITORIO (HOME & OFFICE)
+            \Database\Seeders\Lists\PortableFansSeeder::class, // LISTA DE VENTILADORES PORTATEIS (HOME)
+            \Database\Seeders\Lists\WorkoutTankTopsSeeder::class, // LISTA DE REGATAS DE TREINO FEMININAS (FITNESS)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }

@@ -8,7 +8,7 @@
         $sociais = array_filter($author['socials'] ?? []); // REMOVE OS LINKS SOCIAIS VAZIOS
     @endphp
 
-    <section class="mt-12 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm md:p-8" aria-label="About the author">{{-- BLOCO DA BIO DO AUTOR --}}
+    <div class="mt-12 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm md:p-8">{{-- BLOCO DA BIO DO AUTOR (DIV) --}}
         <div class="flex flex-col gap-5 sm:flex-row sm:items-start">{{-- LAYOUT: FOTO + TEXTO (EMPILHA NO MOBILE) --}}
 
             <div class="shrink-0">{{-- COLUNA DA FOTO/AVATAR --}}
@@ -57,5 +57,5 @@
                 @endif
             </div>
         </div>
-    </section>
+    </div>
 @endif

@@ -11,11 +11,6 @@ class PortableBlendersSeeder extends Seeder
 {
     public function run(): void // POPULA A LISTA DE PORTABLE BLENDERS DE FORMA IDEMPOTENTE
     {
-        // ═══════════════════════════════════════════════════════════════
-        // ═══ EDITE AQUI: DADOS DA LISTA MANUAL ═══
-        // PARA CRIAR UMA NOVA LISTA, COPIE database/seeders/lists/_TemplateSeeder.php.example
-        // ═══════════════════════════════════════════════════════════════
-
         // ═══ EDITE AQUI: DADOS DA LISTA MANUAL ═══
 // PARA RODAR SOMENTE ESTA LISTA: php artisan db:seed --class="Database\Seeders\Lists\PortableBlendersSeeder"
 
@@ -26,10 +21,12 @@ $category = [
 ];
 
 $article = [
-    'slug' => 'best-portable-blenders-uk',           // SLUG DO ARTIGO (URL)
-    'title' => 'Best Portable Blenders UK',          // TITULO / H1
-    'intro' => 'A good portable blender turns fresh fruit, ice and protein powder into a smooth drink in seconds, wherever you happen to be. Whether you want a pocket-sized cup for the gym, a USB-rechargeable model for travelling, or a more powerful unit for the kitchen worktop, there is something here for every routine and budget. We have compared ten of the most popular portable blenders available in the UK on blending power, battery life, capacity, ease of cleaning and value to help you pick the right one.', // INTRO
-    'conclusion' => 'The best portable blender for you depends on how and where you plan to use it. Compact USB-rechargeable cups are ideal for the gym and travel, while higher-wattage models with multiple bottles suit busy households making several drinks a day. As a rule, look for BPA-free cups, a leak-proof lid with a sip spout, dishwasher-safe parts and enough power to handle ice if you enjoy frozen smoothies. Match those features to your daily routine and you will have a blender that earns its place on the worktop or in your bag.', // CONCLUSAO
+    'slug' => 'best-portable-blenders-uk',                           // SLUG DO ARTIGO (URL)
+    'title' => 'Best Portable Blenders UK 2026: Top 10 Tested & Ranked',                          // H1 VISIVEL NA PAGINA
+    'meta_title' => 'Best Portable Blenders UK 2026: Top 10 Tested & Ranked', // TITLE DA ABA/GOOGLE
+    'meta_description' => 'Looking for the best portable blenders in the UK? We tested and ranked the top 10 — from budget USB cups to the most powerful Ninja travel blenders. Compare prices, power & reviews.', // META DESCRIPTION
+    'intro' => 'Finding the best portable blender doesn\'t have to mean endless scrolling. Whether you want a pocket-sized cup for the gym, the best portable blender for travel, or the most powerful portable blender for icy smoothies at home, the right model makes fresh drinks effortless wherever you are. We\'ve tested and ranked the top-rated portable blenders available in the UK for 2026, comparing blending power, battery life, capacity and value — including popular options from Ninja — so you can choose with confidence.', // INTRO OTIMIZADA
+    'conclusion' => 'The best portable blender for you comes down to how and where you\'ll use it. For travel and the gym, a compact USB-rechargeable cup wins on portability; for frozen fruit and ice, a more powerful portable blender earns its place; and if you want a trusted name, a Ninja portable blender is hard to fault. Whichever of these top-rated portable blenders you choose, look for BPA-free cups, a leak-proof sip lid and dishwasher-safe parts for easy everyday use.', // CONCLUSAO OTIMIZADA
     'author' => 'Editorial Team',
     'published_at' => now(),
 ];
@@ -78,7 +75,7 @@ As with most budget cups, it is happiest with soft ingredients and small pieces 
         'image' => 'https://m.media-amazon.com/images/I/619kxH78nvL._AC_SL1500_.jpg',
         'affiliate_link' => 'https://amzn.to/4y1R6q6',
         'summary' => 'A premium portable blender from a trusted brand, with a large 591ml Tritan cup, detachable motor base and more than 10,000 customer ratings behind it.',
-        'body' => 'The NutriBullet Flex is the most established name in this guide, and with over ten thousand customer ratings at a strong 4.6 average it is the safe choice for anyone who wants a portable blender from a brand they recognise. The headline feature is a detachable motor base that cuts the weight by around half once you have finished blending, so the part you actually carry and drink from is much lighter.
+        'body' => 'The NutriBullet Flex is the most established name in this guide, and with over ten thousand customer ratings at a strong 4.6 average it is the safe choice for anyone who wants a top-rated portable blender from a brand they recognise. The headline feature is a detachable motor base that cuts the weight by around half once you have finished blending, so the part you actually carry and drink from is much lighter.
 
 The 591ml graduated Tritan cup is a generous size for a portable model, and the 100W motor with four stainless steel blades handles frozen fruit and cold drinks comfortably. A leak-proof travel lid with a carry handle makes it easy to take with you, and the LED battery indicator shows you at a glance how many of its 15-plus 30-second cycles remain before a USB-C recharge.
 
@@ -95,7 +92,7 @@ Cleaning is straightforward thanks to dishwasher-safe removable blades and bowl,
         'image' => 'https://m.media-amazon.com/images/I/61vBPSO71LL._AC_SL1400_.jpg',
         'affiliate_link' => 'https://amzn.to/4w7soCD',
         'summary' => 'Ninja\'s compact and quiet cordless blender, with a stainless steel BlastBlade for ice, a leak-proof sip lid and thousands of positive reviews.',
-        'body' => 'The Ninja Blast brings a well-known kitchen brand to the portable category, and with more than four thousand ratings it is one of the most popular cordless models in the UK. Ninja describes it as its most compact and quietest blender, and the stainless steel BlastBlade assembly is designed to crush ice and frozen fruit into genuinely smooth drinks rather than the slushy results cheaper cups can produce.
+        'body' => 'If you\'re after a portable blender from a name you can trust, the Ninja Blast is one of the most popular options in the UK and a regular feature in portable blender reviews. Ninja describes it as its most compact and quietest blender, and the stainless steel BlastBlade assembly is designed to crush ice and frozen fruit into genuinely smooth drinks rather than the slushy results cheaper cups can produce.
 
 The 530ml BPA-free cup comes with a leak-proof lid, sip spout and a comfortable carry handle, so you can blend and drink from the same container at the gym, the office or the park. Blade and cup covers are included for hygienic storage in a bag, which is a thoughtful detail for commuters.
 
@@ -112,7 +109,7 @@ A USB-C rechargeable base delivers more than ten blends and up to two hours of b
         'image' => 'https://m.media-amazon.com/images/I/61ABnGWWjXL._AC_SL1500_.jpg',
         'affiliate_link' => 'https://amzn.to/43XIcMr',
         'summary' => 'The more powerful big brother of the Ninja Blast, with three blending functions, a bigger 570ml cup and up to 25 blends per charge.',
-        'body' => 'The Ninja Blast Max sits a step above the standard Blast, with a more powerful motor that shaves ice and crushes frozen ingredients in seconds. It is the most capable Ninja cordless blender here, and the upgrade shows in both performance and battery life.
+        'body' => 'The Ninja Blast Max is the closest thing to a do-it-all Ninja travel blender in this guide, sitting a step above the standard Blast with a more powerful motor that shaves ice and crushes frozen ingredients in seconds. It is the most capable Ninja portable blender here, and the upgrade shows in both performance and battery life.
 
 Where the regular Blast keeps things simple, the Max adds three one-touch blending functions, including dedicated Crush and Smoothie modes plus a Manual Blend option, giving you more control over texture. The 570ml twist-and-go cup is slightly larger too, with a leak-proof lid, sip spout and carry handle for drinking on the move.
 
@@ -129,7 +126,7 @@ Battery life is a real highlight, with up to 25 blends on a single charge, comfo
         'image' => 'https://m.media-amazon.com/images/I/71C0CXmum6L._AC_SL1500_.jpg',
         'affiliate_link' => 'https://amzn.to/4gBpWjk',
         'summary' => 'A powerful 1200W 2-in-1 blender and grinder with three cups, reaching 25,000 RPM for ice, frozen fruit and even nut butters.',
-        'body' => 'The H-Duka is the most powerful unit in this guide, with a 1200W motor reaching up to 25,000 RPM. That puts it closer to a compact countertop blender than a pocket cup, making it the pick for anyone who wants to crush ice, frozen fruit and nuts with ease and get consistently smooth results for daily smoothies, protein shakes or homemade nut butters.
+        'body' => 'The H-Duka is the most powerful unit in this guide, with a 1200W motor reaching up to 25,000 RPM. That makes it a strong pick if you want the most powerful portable blender for crushing ice, frozen fruit and nuts with ease, delivering consistently smooth results for daily smoothies, protein shakes or homemade nut butters.
 
 Its standout feature is a 2-in-1 system: a six-blade stainless steel assembly for blending and a separate two-blade attachment for grinding coffee, spices and nuts. Three BPA-free cups in 37oz, 32oz and 23oz sizes cover everything from family batches to single servings, and the set includes two travel lids and a resealable lid for storage and on-the-go use.
 
@@ -197,7 +194,7 @@ Sensible safety touches include a press-to-run cup, a cooling fan to dissipate h
         'image' => 'https://m.media-amazon.com/images/I/716YmWOfNxL._AC_SL1500_.jpg',
         'affiliate_link' => 'https://amzn.to/4vovhPz',
         'summary' => 'A compact USB-rechargeable cup with a 12-blade design and self-cleaning mode, aimed at smoothies and shakes for the gym, office or travel.',
-        'body' => 'This SIXNEA personal blender rounds off the guide with a 12-blade take on the affordable portable cup. The high-performance motor spins up to 22,000 times per minute, and the makers position the higher blade count as a way to break ingredients down more finely for smoother shakes and smoothies.
+        'body' => 'This SIXNEA personal blender rounds off the guide with a 12-blade take on the affordable portable cup, and it is a tidy pick if you want the best portable blender for travel without spending much. The high-performance motor spins up to 22,000 times per minute, and the makers position the higher blade count as a way to break ingredients down more finely for smoother shakes and smoothies.
 
 At 380ml and 480g, it is squarely a single-serve, take-anywhere design, easy to carry to the gym, office or on a trip and small enough to keep a prepared drink in the fridge. The 1800mAh battery gives roughly ten to twelve uses per charge through a waterproof USB-C port, and a one-button self-cleaning mode means you simply add water and let it rinse itself.
 
@@ -207,7 +204,6 @@ All parts are BPA-free for safe daily drinking. Like other cups in this class, i
     ],
 ];
 // ═══ FIM DA AREA EDITAVEL ═══
-
         // ═══════════════════════════════════════════════════════════════
         // ═══ FIM DA AREA EDITAVEL ═══
         // ═══════════════════════════════════════════════════════════════

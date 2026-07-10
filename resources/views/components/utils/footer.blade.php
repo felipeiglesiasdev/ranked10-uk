@@ -7,7 +7,7 @@
 
 {{-- FOOTER UNICO E RESPONSIVO: COLUNAS NO DESKTOP, EMPILHADO NO MOBILE --}}
 <footer class="mt-16 bg-ink text-slate-300" role="contentinfo">{{-- RODAPE ESCURO (PRETO DA MARCA) --}}
-    <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 py-12">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-12">
         <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">{{-- GRID QUE COLAPSA: 1 -> 2 -> 4 COLUNAS --}}
 
             {{-- COLUNA 1: MARCA + MISSAO + DISCLOSURE CURTO --}}
