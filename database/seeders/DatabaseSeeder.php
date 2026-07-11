@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\PortableBlendersSeeder::class, // LISTA DE LIQUIDIFICADORES PORTATEIS (KITCHEN)
             \Database\Seeders\Lists\PortableFansSeeder::class, // LISTA DE VENTILADORES PORTATEIS (HOME)
             \Database\Seeders\Lists\WorkoutTankTopsSeeder::class, // LISTA DE REGATAS DE TREINO FEMININAS (FITNESS)
+            \Database\Seeders\Lists\AndroidPhonesSeeder::class, // LISTA DE SMARTPHONES ANDROID (TECH)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }

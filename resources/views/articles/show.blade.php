@@ -47,6 +47,10 @@
     $metaTitle = $article->meta_title ?: $article->title; // META TITLE (FALLBACK = TITULO DO ARTIGO)
     $metaDescription = $article->meta_description ?: Str::limit($article->intro, 155); // META DESCRIPTION (FALLBACK = INTRO TRUNCADA)
     $articleUrl = route('article', [$category, $article]); // URL CANONICA DO ARTIGO (REUTILIZADA NAS TAGS)
+    $heroImage = $article->hero_image; // HERO FEITO A MAO (OPCIONAL) — SOBREPOE A FOTO AUTOMATICA SE PREENCHIDO
+    $socialImage = $heroImage ?: optional($article->products->first())->image; // IMAGEM SOCIAL/GOOGLE: HERO OU, SENAO, A FOTO DO PRODUTO #1 (AUTOMATICO, VEM DA API)
+    $heroAlt = $article->focus_keyword ?: $article->title; // ALT DA IMAGEM = PALAVRA-CHAVE PRINCIPAL (FALLBACK = TITULO)
+    if ($socialImage) { $jsonLd['image'] = $socialImage; } // ADICIONA A IMAGEM AO SCHEMA ITEMLIST (HERO OU PRODUTO #1)
 @endphp
 
 @push('seo'){{-- INJETA AS META TAGS DE SEO NO HEAD DO LAYOUT --}}
@@ -60,6 +64,11 @@
     <meta property="og:site_name" content="ranked10">{{-- NOME DO SITE OPEN GRAPH --}}
     <meta name="twitter:title" content="{{ $metaTitle }}">{{-- TITULO DO TWITTER/X CARD (MESMO VALOR DO TITLE) --}}
     <meta name="twitter:description" content="{{ $metaDescription }}">{{-- DESCRICAO DO TWITTER/X CARD (MESMO VALOR DA META DESCRIPTION) --}}
+    @if ($socialImage){{-- IMAGEM SOCIAL/GOOGLE = HERO MANUAL OU, SE NAO HOUVER, A FOTO DO PRODUTO #1 --}}
+        <meta property="og:image" content="{{ $socialImage }}">{{-- IMAGEM DO CARD OPEN GRAPH --}}
+        <meta property="og:image:alt" content="{{ $heroAlt }}">{{-- ALT DA IMAGEM SOCIAL = PALAVRA-CHAVE PRINCIPAL --}}
+        <meta name="twitter:image" content="{{ $socialImage }}">{{-- IMAGEM DO CARD DO TWITTER/X --}}
+    @endif{{-- (SEM og:image:width/height PORQUE A FOTO DO PRODUTO TEM DIMENSOES VARIAVEIS) --}}
     <meta property="article:published_time" content="{{ $article->published_at->toAtomString() }}">{{-- DATA DE PUBLICACAO OPEN GRAPH --}}
     <meta property="article:modified_time" content="{{ $article->updated_at->toAtomString() }}">{{-- DATA DE ATUALIZACAO OPEN GRAPH --}}
     <script type="application/ld+json">{!! json_encode($jsonLd, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>{{-- DADOS ESTRUTURADOS JSON-LD --}}
@@ -80,6 +89,10 @@
         <div class="mt-4">
             <x-article-meta :author="$article->author" :date="$article->updated_at" />{{-- COMPONENTE COM AUTOR E DATA DE ATUALIZACAO --}}
         </div>
+
+        @if ($heroImage){{-- IMAGEM PRINCIPAL (HERO) DO ARTIGO — ALT = PALAVRA-CHAVE PRINCIPAL --}}
+            <img src="{{ $heroImage }}" alt="{{ $heroAlt }}" width="1200" height="630" fetchpriority="high" class="mt-6 aspect-[1200/630] w-full rounded-2xl border border-slate-200 object-cover bg-slate-100">{{-- HERO 1200x630 WEBP; fetchpriority=high POIS E O ELEMENTO LCP; width/height RESERVAM O ESPACO (EVITA CLS) --}}
+        @endif
 
         <p class="mt-6 text-lg leading-relaxed text-slate-600">{{ $article->intro }}</p>{{-- TEXTO DE INTRODUCAO --}}
 

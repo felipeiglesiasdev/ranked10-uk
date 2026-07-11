@@ -33,11 +33,19 @@ class _TemplateSeeder extends Seeder // RENOMEIE PARA NomeDaListaSeeder (PASSO 2
             'description' => '',     // PREENCHA AQUI: DESCRICAO CURTA DA CATEGORIA
         ];
 
+        // ── REGRA DE SEO (AMARRA TUDO NA PALAVRA-CHAVE PRINCIPAL) ──
+        // 1. focus_keyword = A PALAVRA-CHAVE PRINCIPAL. DEVE APARECER EM: slug, title, meta_title, meta_description, e SE REPETIR NO intro/conclusion/body.
+        // 2. slug = A PALAVRA-CHAVE EM formato-url (EX: keyword "best air fryers UK" -> slug "best-air-fryers-uk").
+        // 3. hero_image = URL DA IMAGEM PRINCIPAL NO CDN R2, EM WEBP, 1200x630px. O alt DELA SERA A focus_keyword AUTOMATICAMENTE.
         $article = [
-            'slug' => '',                       // PREENCHA AQUI: SLUG DO ARTIGO NA URL (EX: 'best-air-fryers-uk')
-            'title' => '',                      // PREENCHA AQUI: TITULO / H1 DO ARTIGO
-            'intro' => '',                      // PREENCHA AQUI: PARAGRAFO DE INTRODUCAO
-            'conclusion' => '',                 // PREENCHA AQUI: PARAGRAFO DE CONCLUSAO
+            'slug' => '',                       // PREENCHA AQUI: A PALAVRA-CHAVE EM formato-url (EX: 'best-air-fryers-uk')
+            'title' => '',                      // PREENCHA AQUI: TITULO / H1 — DEVE CONTER A PALAVRA-CHAVE
+            'meta_title' => '',                 // PREENCHA AQUI: TITLE DO GOOGLE (<= 60 CHARS) — DEVE CONTER A PALAVRA-CHAVE
+            'meta_description' => '',           // PREENCHA AQUI: META DESCRIPTION (<= 160 CHARS) — DEVE CONTER A PALAVRA-CHAVE
+            'focus_keyword' => '',              // PREENCHA AQUI: PALAVRA-CHAVE PRINCIPAL (EX: 'best air fryers UK') — VIRA O ALT DO HERO
+            'hero_image' => '',                 // PREENCHA AQUI: URL DA IMAGEM PRINCIPAL NO CDN (EX: 'https://cdn.ranked10.co.uk/articles/best-air-fryers-uk.webp')
+            'intro' => '',                      // PREENCHA AQUI: INTRODUCAO — REPITA A PALAVRA-CHAVE NATURALMENTE
+            'conclusion' => '',                 // PREENCHA AQUI: CONCLUSAO — REPITA A PALAVRA-CHAVE NATURALMENTE
             'author' => 'Felipe Iglesias',      // AUTOR DO ARTIGO (DEVE BATER COM UM 'name' EM config/authors.php)
             'published_at' => now(),            // DATA DE PUBLICACAO (now() = PUBLICA IMEDIATAMENTE)
         ];
