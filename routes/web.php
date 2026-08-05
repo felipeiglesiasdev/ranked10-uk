@@ -12,5 +12,8 @@ Route::get('/sitemap.xml', [SitemapController::class, 'index']); // ROTA DO SITE
 Route::get('/search', [SearchController::class, 'index'])->name('search'); // ROTA DA BUSCA POR TITULO
 Route::view('/privacy-policy', 'pages.privacy')->name('privacy'); // ROTA DA POLITICA DE PRIVACIDADE (FIXA, ANTES DO CATCH-ALL DE CATEGORIA)
 
+// REDIRECTS 301 DE SLUGS ANTIGOS (SEMPRE ANTES DO CATCH-ALL, PARA NAO PERDER SEO DE URLS JA INDEXADAS)
+Route::redirect('/home/best-portable-fans-uk', '/home/best-handheld-fans', 301); // SLUG ANTIGO DO ARTIGO DE VENTILADORES PORTATEIS
+
 Route::get('/{category:slug}', [CategoryController::class, 'show'])->name('category'); // ROTA DA CATEGORIA (FICA POR ULTIMO PARA NAO CONFLITAR COM ROTAS FIXAS)
 Route::get('/{category:slug}/{article:slug}', [ArticleController::class, 'show'])->name('article'); // ROTA DO ARTIGO DENTRO DA CATEGORIA

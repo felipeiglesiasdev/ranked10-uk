@@ -20,6 +20,9 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\PortableFansSeeder::class, // LISTA DE VENTILADORES PORTATEIS (HOME)
             \Database\Seeders\Lists\WorkoutTankTopsSeeder::class, // LISTA DE REGATAS DE TREINO FEMININAS (FITNESS)
             \Database\Seeders\Lists\AndroidPhonesSeeder::class, // LISTA DE SMARTPHONES ANDROID (TECH)
+            \Database\Seeders\Lists\SpinMopsSeeder::class, // LISTA DE SPIN MOPS (HOME)
+            \Database\Seeders\Lists\MicroSDCardsSeeder::class, // LISTA DE CARTOES MICROSD 256GB (TECH)
+            \Database\Seeders\Lists\PcSpeakersSeeder::class, // LISTA DE CAIXAS DE SOM PARA PC (HOME & OFFICE)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }

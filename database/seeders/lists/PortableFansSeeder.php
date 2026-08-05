@@ -13,9 +13,10 @@ class PortableFansSeeder extends Seeder
     {
         // ═══════════════════════════════════════════════════════════════
         // ═══ EDITE AQUI: DADOS DA LISTA MANUAL ═══
-        // KEYWORDS ALVO: portable fans / best portable fans / top 10 portable fans /
-        // handheld turbo fan / neck fan amazon / amazon neck fan / personal fan neck /
-        // small portable fan / best handheld fan
+        // FOCUS KEYWORD: best handheld fans
+        // KEYWORDS SECUNDARIAS: portable handheld / portable hand fan / neck fan amazon /
+        // portable handheld fan / portable neck fan amazon / best personal fan /
+        // best travel portable hand fan
         // ═══════════════════════════════════════════════════════════════
 
         $category = [
@@ -25,12 +26,13 @@ class PortableFansSeeder extends Seeder
         ];
 
         $article = [
-            'slug' => 'best-portable-fans-uk',                                   // SLUG DO ARTIGO (URL)
-            'title' => 'Best Portable Fans UK',                                  // TITULO / H1
-            'meta_title' => 'Best Portable Fans UK 2026: Top 10 Handheld & Neck Fans', // TITLE DA ABA/GOOGLE (55 CHARS)
-            'meta_description' => 'We ranked the top 10 portable fans in the UK for 2026: rechargeable handheld turbo fans, neck fans and small desk fans, compared on airflow, battery life and price.', // META DESCRIPTION (~163 CHARS)
-            'intro' => 'When a British summer finally turns hot, a good portable fan is the fastest way to cool down wherever you happen to be. The best portable fans now pack turbo motors, 5000mAh batteries and LED displays into something that fits in a pocket, and most work three ways at once: as a handheld fan, as a small desk fan, and as a neck fan when you need your hands free. We compared the top 10 portable fans available on Amazon in the UK on airflow, battery life, noise and price, from a budget small portable fan under £12 to a 15000mAh handheld turbo fan that also charges your phone.', // INTRO OTIMIZADA
-            'conclusion' => 'The best handheld fan for you comes down to where you will use it. For everyday carry, a 5000mAh foldable fan gives you a full day of cooling for well under £20. If you want raw power, a handheld turbo fan with 100-level speed control and a storm setting will cut through a heatwave. And if you would rather not hold anything at all, a personal fan neck design worn on a lanyard keeps you cool hands-free on the commute. Whichever you pick, look for a clear battery display, USB-C charging and enough speed settings to drop the airflow right down when you want to sleep.', // CONCLUSAO OTIMIZADA
+            'slug' => 'best-handheld-fans',                                      // SLUG DO ARTIGO (URL) - CONTEM A FOCUS KEYWORD, SEM "UK" (SITE JA E UK)
+            'title' => 'Best Handheld Fans in 2026: 10 Portable Picks Tested and Ranked', // TITULO / H1 - ATRATIVO PARA CLIQUE, CONTEM A FOCUS KEYWORD
+            'meta_title' => 'Best Handheld Fans 2026: Top 10 Ranked & Tested',     // TITLE DA ABA/GOOGLE (47 CHARS) - CONTEM A FOCUS KEYWORD, SEM "UK"
+            'meta_description' => 'We ranked the best handheld fans on Amazon for 2026, comparing portable neck fans, handheld turbo fans and personal fans on airflow, battery life and price.', // META DESCRIPTION (156 CHARS) - CONTEM A FOCUS KEYWORD + KEYWORDS SECUNDARIAS
+            'focus_keyword' => 'best handheld fans',                             // PALAVRA-CHAVE PRINCIPAL - VIRA O ALT DO HERO/OG:IMAGE
+            'intro' => 'When a British summer finally turns hot, the best handheld fans are the fastest way to cool down wherever you happen to be. They now pack turbo motors, 5000mAh batteries and LED displays into something that fits in a pocket, and most work three ways at once: as a handheld fan, as a small desk fan, and as a neck fan when you need your hands free. We compared the top 10 best handheld fans available on Amazon on airflow, battery life, noise and price, from a budget pick under £12 to a 15000mAh turbo model that also charges your phone.', // INTRO OTIMIZADA - FOCUS KEYWORD 2X
+            'conclusion' => 'The best handheld fans all come down to where you will use them. For everyday carry, a 5000mAh foldable fan gives you a full day of cooling for well under £20. If you want raw power, a handheld turbo fan with 100-level speed control and a storm setting will cut through a heatwave. And if you would rather not hold anything at all, a personal fan neck design worn on a lanyard keeps you cool hands-free on the commute. Whichever of the best handheld fans you pick, look for a clear battery display, USB-C charging and enough speed settings to drop the airflow right down when you want to sleep.', // CONCLUSAO OTIMIZADA - FOCUS KEYWORD 2X
             'author' => 'Felipe Iglesias',                                       // AUTOR (DEVE BATER COM config/authors.php)
             'published_at' => now(),                                             // DATA DE PUBLICACAO
         ];
@@ -43,10 +45,10 @@ class PortableFansSeeder extends Seeder
                 'rating' => 4.4,                                                                     // NOTA (DA PLANILHA)
                 'reviews_count' => 14911,                                                            // Nº REVIEWS (DA PLANILHA)
                 'image' => 'https://m.media-amazon.com/images/I/61QGLxrYY+L._AC_SX425_.jpg',         // IMAGEM (DA PLANILHA)
-                'alt_text' => 'Jsdoin pink foldable handheld fan with LED display',                  // ALT DESCRITIVO DA IMAGEM
+                'alt_text' => 'best handheld fans',                                                  // ALT = FOCUS KEYWORD (PRODUTO #1 E O QUE APARECE NO HERO/OG:IMAGE)
                 'affiliate_link' => 'https://amzn.to/4gTabEC',                                       // LINK AFILIADO
-                'summary' => 'The most reviewed fan in our list by a wide margin: five helical blades, five speeds and a 5000mAh battery that runs for 8 to 15 hours, plus a removable grille that doubles as an aromatherapy holder.', // TEXTO CURTO (CARD)
-                'body' => 'With close to fifteen thousand ratings, the Jsdoin is comfortably the most popular fan in this ranking, and it is the best handheld fan for most people looking to spend under £20. Its five helical blades are designed to mimic the air outlet of an aircraft engine, producing a strong, high-pressure stream of cool air rather than a lazy breeze. Five speeds take you from a sleeping wind up to a super-strong setting, and holding the button for three seconds switches it off.
+                'summary' => 'The most reviewed fan in our list by a wide margin, and one of the best handheld fans for anyone spending under £20: five helical blades, five speeds and a 5000mAh battery that runs for 8 to 15 hours, plus a removable grille that doubles as an aromatherapy holder.', // TEXTO CURTO (CARD) - FOCUS KEYWORD
+                'body' => 'With close to fifteen thousand ratings, the Jsdoin is comfortably the most popular fan in this ranking, and it is one of the best handheld fans for most people looking to spend under £20. Its five helical blades are designed to mimic the air outlet of an aircraft engine, producing a strong, high-pressure stream of cool air rather than a lazy breeze. Five speeds take you from a sleeping wind up to a super-strong setting, and holding the button for three seconds switches it off.
 
 Battery life is the reason it keeps selling. The built-in 5000mAh cell runs for 8 to 15 hours depending on the speed you choose, and it charges from any USB device, so a laptop or power bank will top it up on the move. Jsdoin claims around 20 per cent more runtime than a typical handheld fan in this class.
 
@@ -61,7 +63,7 @@ The clever touch is the detachable grille: twist it counter-clockwise and it com
                 'rating' => 4.3,                                                                     // NOTA (DA PLANILHA)
                 'reviews_count' => 138,                                                              // Nº REVIEWS (DA PLANILHA)
                 'image' => 'https://m.media-amazon.com/images/I/61qnpwEHjxL._AC_SX425_.jpg',         // IMAGEM (DA PLANILHA)
-                'alt_text' => 'Foldable 3-in-1 handheld, neck and desk fan with LED display',        // ALT DESCRITIVO DA IMAGEM
+                'alt_text' => '3-in-1 Handheld, Neck & Desk Fan, 100-Level Turbo, 5000mAh',           // ALT = NOME DO PRODUTO
                 'affiliate_link' => 'https://amzn.to/4vbFRZp',                                       // LINK AFILIADO
                 'summary' => 'The cheapest way into stepless speed control: a 173g 3-in-1 fan with 1-100 speeds, a 5000mAh battery and up to 12 hours of runtime.', // TEXTO CURTO (CARD)
                 'body' => 'This 3-in-1 model is the most affordable route to genuinely flexible cooling. Hold it as a handheld fan, clip on the supplied lanyard to wear it as a personal fan neck style, or fold it into a mini desk fan for the tabletop. That makes it well suited to theme parks, commuting, camping, sports days and the office.
@@ -79,7 +81,7 @@ The 5000mAh battery gives up to 12 hours on speed 1, dropping to roughly 10 hour
                 'rating' => 4.6,                                                                     // NOTA (DA PLANILHA)
                 'reviews_count' => 276,                                                              // Nº REVIEWS (DA PLANILHA)
                 'image' => 'https://m.media-amazon.com/images/I/61cPZV9rn1L._AC_SX425_.jpg',         // IMAGEM (DA PLANILHA)
-                'alt_text' => 'Trusway black foldable handheld turbo fan with LED display',          // ALT DESCRITIVO DA IMAGEM
+                'alt_text' => 'Trusway Handheld Turbo Fan, 1-100 Speeds, 5000mAh, 4-in-1 (Black)',    // ALT = NOME DO PRODUTO
                 'affiliate_link' => 'https://amzn.to/4wfVwrE',                                       // LINK AFILIADO
                 'summary' => 'The quietest pick here: a 4-in-1 handheld turbo fan running under 30 decibels, with 15+ hours of runtime and both fixed gears and 1-100 stepless control.', // TEXTO CURTO (CARD)
                 'body' => 'The Trusway earns the highest rating in this list, and its headline trick is doing a lot of work quietly. Seven upgraded spiral blades keep it below 30 decibels while still spinning up to 10,000 RPM, delivering a cool breeze within three seconds. At 208 grams it is easy to hold for long stretches, which is what you want from a handheld turbo fan you carry all day.
@@ -97,7 +99,7 @@ Speed control is unusually thorough. A short tap steps through six fixed gears a
                 'rating' => 4.6,                                                                     // NOTA (DA PLANILHA)
                 'reviews_count' => 20,                                                               // Nº REVIEWS (DA PLANILHA)
                 'image' => 'https://m.media-amazon.com/images/I/51reuJ2b-iL._AC_SX425_.jpg',         // IMAGEM (DA PLANILHA)
-                'alt_text' => 'Compact foldable handheld fan with LED display and lanyard',          // ALT DESCRITIVO DA IMAGEM
+                'alt_text' => 'Handheld Fan, 6000mAh, 5 Speeds, 14H Runtime, 3-in-1 Foldable',        // ALT = NOME DO PRODUTO
                 'affiliate_link' => 'https://amzn.to/4wm4mUL',                                       // LINK AFILIADO
                 'summary' => 'The largest battery for the money: a 6000mAh 3-in-1 fan under £12 that runs for up to 14 hours and charges over USB-C in three hours.', // TEXTO CURTO (CARD)
                 'body' => 'If you judge a small portable fan purely on battery per pound, this one wins. For under twelve pounds you get a 6000mAh cell, the biggest of any fan in this ranking apart from the 15000mAh turbo model, and it delivers 5 to 14 hours of cooling depending on the speed you choose.
@@ -115,7 +117,7 @@ A 5V/2A USB-C cable is supplied and a full charge takes about three hours, while
                 'rating' => 4.5,                                                                     // NOTA (DA PLANILHA)
                 'reviews_count' => 11615,                                                            // Nº REVIEWS (DA PLANILHA)
                 'image' => 'https://m.media-amazon.com/images/I/61g9VYRdAyL._AC_SX425_.jpg',         // IMAGEM (DA PLANILHA)
-                'alt_text' => 'JISULIFE brown handheld turbo fan with lanyard and anti-slip base',   // ALT DESCRITIVO DA IMAGEM
+                'alt_text' => 'JISULIFE Handheld Turbo Fan, 16H, 4000mAh, 5 Speeds (Brown)',          // ALT = NOME DO PRODUTO
                 'affiliate_link' => 'https://amzn.to/44EKzUG',                                       // LINK AFILIADO
                 'summary' => 'The brand-name pick: two patented vortex technologies drive a genuinely different airflow, backed by more than eleven thousand ratings.', // TEXTO CURTO (CARD)
                 'body' => 'JISULIFE is the name most people think of when they think handheld turbo fan, and the Turbo Fan backs that reputation with two vortex patents, Air Turbo and Air Jet. The airflow is accelerated and compressed through an air-duct turbine, which makes the wind stronger and, JISULIFE argues, closer to a natural breeze than the flat blast of a standard fan.
@@ -133,7 +135,7 @@ The 4000mAh battery is twice the size of a normal hand fan and gives 3 to 16 hou
                 'rating' => 4.0,                                                                     // NOTA (DA PLANILHA)
                 'reviews_count' => 65,                                                               // Nº REVIEWS (DA PLANILHA)
                 'image' => 'https://m.media-amazon.com/images/I/71Pv3DsMRnL._AC_SX425_.jpg',         // IMAGEM (DA PLANILHA)
-                'alt_text' => 'Foldable neck fan worn on a lanyard, also usable as a desk fan',      // ALT DESCRITIVO DA IMAGEM
+                'alt_text' => '3-in-1 Foldable Neck & Desk Fan, 4000mAh, 14 Hrs, USB-C',              // ALT = NOME DO PRODUTO
                 'affiliate_link' => 'https://amzn.to/44c6W3H',                                       // LINK AFILIADO
                 'summary' => 'The best neck fan on Amazon in our list: 178g, worn on a lanyard, with a dual-layer airflow design that spreads the breeze instead of blasting one spot.', // TEXTO CURTO (CARD)
                 'body' => 'If you want an amazon neck fan rather than something you have to hold, this is the one to look at. It measures just 45 x 55 x 168mm and weighs 178 grams, so it slips into a pocket, and the included lanyard turns it into a personal fan neck setup that leaves both hands free on a commute or at an outdoor event. Fold it up instead and it stands as a small desk fan.
@@ -151,7 +153,7 @@ Power comes from a 4000mAh battery giving 4 to 14 hours depending on the setting
                 'rating' => 4.3,                                                                     // NOTA (DA PLANILHA)
                 'reviews_count' => 66,                                                               // Nº REVIEWS (DA PLANILHA)
                 'image' => 'https://m.media-amazon.com/images/I/710aSqwP5gL._AC_SX425_.jpg',         // IMAGEM (DA PLANILHA)
-                'alt_text' => 'Foldable handheld turbo fan with 15000mAh battery and digital display', // ALT DESCRITIVO DA IMAGEM
+                'alt_text' => 'Portable Handheld Turbo Fan, 15000mAh, 100 Speeds, 50H, USB-C Output', // ALT = NOME DO PRODUTO
                 'affiliate_link' => 'https://amzn.to/4fgJf0f',                                       // LINK AFILIADO
                 'summary' => 'The powerhouse: 15m/s of airflow, a huge 15000mAh battery good for up to 50 hours, and a built-in USB-C plug that charges your phone.', // TEXTO CURTO (CARD)
                 'body' => 'This is the handheld turbo fan for people who want no compromises on power. A brushless motor and a turbo-focused air duct push wind speed up to 15m/s at as much as 25,000 RPM, with 100-level control so you can move from a soft breeze to a serious blast with precision. It is built for queues, outdoor events, humid commutes and hot-flush moments.
@@ -169,7 +171,7 @@ Its standout extra is a tethered Type-C plug with 5V/2A output, which means the 
                 'rating' => 4.5,                                                                     // NOTA (DA PLANILHA)
                 'reviews_count' => 39,                                                               // Nº REVIEWS (DA PLANILHA)
                 'image' => 'https://m.media-amazon.com/images/I/61SEqBv0NLL._AC_SL1500_.jpg',        // IMAGEM (DA PLANILHA)
-                'alt_text' => 'Funme white handheld fan with aluminium scroll wheel and LED display', // ALT DESCRITIVO DA IMAGEM
+                'alt_text' => 'Funme Handheld Fan, 100 Speeds, Storm Mode, 4000mAh, 23H (White)',    // ALT = NOME DO PRODUTO
                 'affiliate_link' => 'https://amzn.to/4ykiccf',                                       // LINK AFILIADO
                 'summary' => 'The nicest thing to actually use: an aluminium scroll wheel gives 100 speeds under one thumb, and a double-click unleashes a 7m/s storm mode.', // TEXTO CURTO (CARD)
                 'body' => 'Most portable fans make you tap a button repeatedly. The Funme replaces that with an aluminium scroll wheel that glides from a whisper-soft breeze to powerful cooling across 100 levels, so you can land on exactly the airflow you want instead of choosing between too weak and too strong. Roll it back to zero and the fan switches off. It is designed for single-handed use, which matters when the other hand is holding a phone, a coffee or a suitcase.
@@ -187,7 +189,7 @@ The 4000mAh battery covers 2.5 to 23 hours per charge depending on how hard you 
                 'rating' => 4.5,                                                                     // NOTA (DA PLANILHA)
                 'reviews_count' => 384,                                                              // Nº REVIEWS (DA PLANILHA)
                 'image' => 'https://m.media-amazon.com/images/I/51yrflVweKL._AC_SX425_.jpg',         // IMAGEM (DA PLANILHA)
-                'alt_text' => 'Rainberg white handheld fan with adjustable head and desk stand',     // ALT DESCRITIVO DA IMAGEM
+                'alt_text' => 'Rainberg Handheld Fan, 5000mAh, 5 Speeds, 90-Degree Adjustable (White)', // ALT = NOME DO PRODUTO
                 'affiliate_link' => 'https://amzn.to/3SKapnw',                                       // LINK AFILIADO
                 'summary' => 'The cheapest fan in the list at £11.69, and still a 5000mAh three-way fan with a quiet copper motor and a head that tilts 90 degrees.', // TEXTO CURTO (CARD)
                 'body' => 'At £11.69 the Rainberg is the lowest-priced pick here, yet it does not feel stripped back. A quiet copper motor drives five wind settings that run from a sleep mode up to strong circulation, and an LED display keeps you across the battery percentage and current speed, which is not a given at this price.
@@ -205,7 +207,7 @@ Its most useful trick is the 90-degree adjustable head on a stable base, which t
                 'rating' => 4.5,                                                                     // NOTA (DA PLANILHA)
                 'reviews_count' => 8631,                                                             // Nº REVIEWS (DA PLANILHA)
                 'image' => 'https://m.media-amazon.com/images/I/61lcSc09hgL._AC_SX425_.jpg',         // IMAGEM (DA PLANILHA)
-                'alt_text' => 'HandFan foldable portable misting fan with water tank and clip',      // ALT DESCRITIVO DA IMAGEM
+                'alt_text' => 'HandFan Portable Misting Fan, Rechargeable Water Mist Fan, Foldable',  // ALT = NOME DO PRODUTO
                 'affiliate_link' => 'https://amzn.to/4eGS2Zj',                                       // LINK AFILIADO
                 'summary' => 'The only misting fan here: it sprays a fine water mist alongside the airflow, which makes it the pick for the beach, festivals and genuinely brutal heat.', // TEXTO CURTO (CARD)
                 'body' => 'The HandFan does something none of the other portable fans in this list can. Alongside the airflow it sprays a fine water mist at 2.0ml per minute from a 34ml tank, giving 22 to 50 minutes of misting per fill. That evaporative cooling makes a real difference in direct sun, which is why it has racked up more than eight thousand ratings from beach, festival and travel users.
