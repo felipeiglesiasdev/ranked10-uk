@@ -23,6 +23,10 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\SpinMopsSeeder::class, // LISTA DE SPIN MOPS (HOME)
             \Database\Seeders\Lists\MicroSDCardsSeeder::class, // LISTA DE CARTOES MICROSD 256GB (TECH)
             \Database\Seeders\Lists\PcSpeakersSeeder::class, // LISTA DE CAIXAS DE SOM PARA PC (HOME & OFFICE)
+            \Database\Seeders\Lists\RetractableGardenHoseSeeder::class, // LISTA DE MANGUEIRAS RETRATEIS DE JARDIM (GARDEN)
+            \Database\Seeders\Lists\CatToysSeeder::class, // LISTA DE BRINQUEDOS PARA GATOS (PET SUPPLIES)
+            \Database\Seeders\Lists\SolarPoolIonizerSeeder::class, // LISTA DE IONIZADORES SOLARES PARA PISCINA (GARDEN)
+            \Database\Seeders\Lists\Smart4kProjectorSeeder::class, // LISTA DE PROJETORES SMART 4K (TECH)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }
