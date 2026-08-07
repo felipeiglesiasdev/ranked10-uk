@@ -36,6 +36,19 @@
                 <p class="text-slate-500">No guides in this category yet. Check back soon!</p>{{-- MENSAGEM DE LISTA VAZIA --}}
             @endforelse
         </div>
+
+        @if ($topProducts->isNotEmpty()){{-- BLOCO DE MELHOR AVALIADOS DA CATEGORIA --}}
+            <div class="mt-14 border-t border-slate-200 pt-10">{{-- SEPARADOR ANTES DOS MELHORES PRODUTOS --}}
+                <x-utils.top-products
+                    :products="$topProducts"
+                    :title="'Highest rated '.strtolower($category->name).' products'"
+                    subtitle="Weighted by how many people rated each product, not just the score." />{{-- LINKS INTERNOS PROFUNDOS PARA OS PRODUTOS DESTA CATEGORIA --}}
+            </div>
+        @endif
+
+        <div class="mt-14 border-t border-slate-200 pt-10">{{-- SEPARADOR ANTES DAS OUTRAS CATEGORIAS --}}
+            <x-utils.category-grid :categories="$otherCategories" title="Explore other categories" />{{-- CROSS-LINK ENTRE CATEGORIAS (FECHA O GRAFO DE LINKS) --}}
+        </div>
     </section>
 
 @endsection{{-- FIM DO CONTEUDO DA CATEGORIA --}}

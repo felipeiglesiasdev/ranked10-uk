@@ -96,7 +96,9 @@
 
         <p class="mt-6 text-lg leading-relaxed text-slate-600">{{ $article->intro }}</p>{{-- TEXTO DE INTRODUCAO --}}
 
-        <div class="mt-10">
+        <x-utils.toc :products="$article->products" :has-verdict="filled($article->conclusion)" />{{-- INDICE COM ANCORAS PARA CADA PRODUTO (LINKS INTERNOS + SITELINKS DE SALTO NO GOOGLE) --}}
+
+        <div id="at-a-glance" class="mt-10 scroll-mt-24">{{-- ANCORA DA TABELA COMPARATIVA (scroll-mt COMPENSA O HEADER STICKY) --}}
             <h2 class="text-xl font-bold text-slate-900">At a glance</h2>{{-- TITULO DA TABELA COMPARATIVA --}}
             <div class="mt-4 min-w-0 overflow-hidden">{{-- CONTEM A TABELA: NADA AQUI DENTRO PODE VAZAR PARA A PAGINA --}}
                 <x-comparison-table :products="$article->products" />{{-- COMPONENTE DA TABELA COMPARATIVA --}}
@@ -119,7 +121,7 @@
             @endforeach
         </div>
 
-        <div class="mt-12 rounded-2xl bg-slate-100 p-6 md:p-8">{{-- BLOCO DA CONCLUSAO (DIV) --}}
+        <div id="final-verdict" class="mt-12 scroll-mt-24 rounded-2xl bg-slate-100 p-6 md:p-8">{{-- BLOCO DA CONCLUSAO (DIV) COM ANCORA PARA O INDICE --}}
             <h2 class="text-xl font-bold text-slate-900">Final Verdict</h2>{{-- H2 DA SECAO DE CONCLUSAO --}}
             <p class="mt-3 leading-relaxed text-slate-600">{{ $article->conclusion }}</p>{{-- TEXTO DA CONCLUSAO --}}
         </div>
@@ -128,7 +130,16 @@
 
         <x-utils.author-bio :author="$author" />{{-- FOTO E BIO DO AUTOR DO ARTIGO --}}
 
-        <x-utils.related-articles :articles="$related" />{{-- ARTIGOS RELACIONADOS PARA ANCORAGEM DE LINKS --}}
+        <x-utils.related-articles :articles="$related" :category="$category" />{{-- ARTIGOS RELACIONADOS + LINK PARA A CATEGORIA (ANCORAGEM DE LINKS) --}}
+
+        @if ($topProducts->isNotEmpty()){{-- MELHOR AVALIADOS DE OUTROS GUIAS: LEVA O LEITOR PARA DENTRO DE OUTROS ARTIGOS --}}
+            <div class="mt-14 border-t border-slate-200 pt-10">{{-- SEPARADOR ANTES DO BLOCO --}}
+                <x-utils.top-products
+                    :products="$topProducts"
+                    title="Highest rated in our other guides"
+                    subtitle="Weighted by how many people rated each product, not just the score." />{{-- LINKS INTERNOS PROFUNDOS PARA PRODUTOS DE OUTROS ARTIGOS --}}
+            </div>
+        @endif
 
         </div>{{-- FIM DA COLUNA DE LEITURA --}}
     </div>{{-- FIM DO CONTAINER DO ARTIGO --}}

@@ -1,6 +1,6 @@
 @props(['product']){{-- PROPS: O PRODUTO A SER RENDERIZADO --}}
 
-<div id="product-{{ $product->position }}" class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">{{-- CARD DO PRODUTO (DIV) COM ANCORA PELA POSICAO --}}
+<div id="product-{{ $product->position }}" class="scroll-mt-24 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">{{-- CARD DO PRODUTO (DIV) COM ANCORA PELA POSICAO; scroll-mt COMPENSA O HEADER STICKY AO SALTAR PELO INDICE --}}
 
     <div class="flex items-center gap-3 border-b border-slate-100 bg-slate-50 px-5 py-3">{{-- FAIXA SUPERIOR COM POSICAO E NOME --}}
         <span class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full {{ $product->position === 1 ? 'bg-brand text-white' : 'bg-ink text-white' }} text-sm font-extrabold">{{ $product->position }}</span>{{-- BADGE DA POSICAO (RANK VISIVEL; VERMELHO NO 1º LUGAR, PRETO NOS DEMAIS) --}}

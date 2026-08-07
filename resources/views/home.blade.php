@@ -26,8 +26,11 @@
     </section>
 
     <section class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-12">{{-- SECAO DE ARTIGOS EM DESTAQUE --}}
-        <div class="flex items-center justify-between">
-            <h2 class="text-2xl font-bold text-slate-900">Latest buying guides</h2>{{-- TITULO DA SECAO --}}
+        <div class="flex flex-wrap items-end justify-between gap-2">
+            <div>
+                <h2 class="text-2xl font-bold text-slate-900">Latest buying guides</h2>{{-- TITULO DA SECAO --}}
+                <p class="mt-1 text-sm text-slate-500">The most recent top 10 rankings we've researched and published.</p>{{-- LINHA DE APOIO DA SECAO --}}
+            </div>
         </div>
 
         <div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">{{-- GRID RESPONSIVO DE CARDS --}}
@@ -46,6 +49,19 @@
                 <p class="text-slate-500">No guides published yet. Check back soon!</p>{{-- MENSAGEM DE LISTA VAZIA --}}
             @endforelse
         </div>
+    </section>
+
+    <section class="border-y border-slate-200 bg-white">{{-- FAIXA CLARA PARA SEPARAR O BLOCO DE PRODUTOS DO RESTO --}}
+        <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-12">
+            <x-utils.top-products
+                :products="$topProducts"
+                title="Highest rated products we've reviewed"
+                subtitle="Ranked by review score weighted against how many people actually rated them, so a 5.0 from two buyers doesn't outrank a 4.7 from thousands." />{{-- MELHOR AVALIADOS: LINKS INTERNOS PROFUNDOS PARA A ANCORA DE CADA PRODUTO --}}
+        </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-12">{{-- SECAO DA GRADE DE CATEGORIAS --}}
+        <x-utils.category-grid :categories="$categories" title="Browse by category" />{{-- GRADE DE CATEGORIAS COM CONTADOR DE GUIAS --}}
     </section>
 
 @endsection{{-- FIM DO CONTEUDO DA HOME --}}

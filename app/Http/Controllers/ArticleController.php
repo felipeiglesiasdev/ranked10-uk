@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article; // IMPORTA O MODEL DE ARTIGOS
 use App\Models\Category; // IMPORTA O MODEL DE CATEGORIAS
+use App\Models\Product; // IMPORTA O MODEL DE PRODUTOS (BLOCO DE MELHOR AVALIADOS DE OUTROS GUIAS)
 use Illuminate\View\View; // IMPORTA O TIPO DE RETORNO DAS VIEWS
 
 class ArticleController extends Controller
@@ -20,7 +21,13 @@ class ArticleController extends Controller
 
         $related = $this->relacionados($category, $article); // BUSCA OS ARTIGOS RELACIONADOS PARA ANCORAGEM DE LINKS
 
-        return view('articles.show', compact('category', 'article', 'author', 'related')); // RETORNA A VIEW DO ARTIGO COM OS DADOS
+        $topProducts = Product::melhorAvaliados() // ORDENA PELA NOTA PONDERADA PELO VOLUME DE AVALIACOES
+            ->where('article_id', '!=', $article->id) // EXCLUI OS PRODUTOS DO PROPRIO ARTIGO (JA ESTAO NA PAGINA)
+            ->with('article.category') // CARREGA ARTIGO E CATEGORIA PARA MONTAR O LINK INTERNO SEM N+1
+            ->take(4) // LIMITA AOS 4 MELHORES DE OUTROS GUIAS
+            ->get(); // EXECUTA A CONSULTA
+
+        return view('articles.show', compact('category', 'article', 'author', 'related', 'topProducts')); // RETORNA A VIEW DO ARTIGO COM OS DADOS
     }
 
     private function relacionados(Category $category, Article $article) // MONTA ATE 3 ARTIGOS RELACIONADOS

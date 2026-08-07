@@ -1,8 +1,13 @@
 @props(['navCategories' => collect()]){{-- PROP: CATEGORIAS COM ARTIGOS (PARA OS LINKS DO FOOTER) --}}
 
 @php
-    // MONTA UMA LISTA DE "GUIAS POPULARES" JUNTANDO OS ARTIGOS DE TODAS AS CATEGORIAS (PARA O GRAFO DE LINKS)
-    $popularArticles = $navCategories->flatMap->articles->sortByDesc('published_at')->take(6); // ATE 6 ARTIGOS MAIS RECENTES
+    // MONTA UMA LISTA DE "GUIAS POPULARES" JUNTANDO OS ARTIGOS DE TODAS AS CATEGORIAS (PARA O GRAFO DE LINKS).
+    // O setRelation ABAIXO DEVOLVE A CATEGORIA DE ORIGEM PARA CADA ARTIGO: SEM ELE, O route() LA EMBAIXO
+    // DISPARA UMA CONSULTA POR LINK (N+1 DE 6 QUERIES EM *TODAS* AS PAGINAS DO SITE).
+    $popularArticles = $navCategories
+        ->flatMap(fn ($c) => $c->articles->each->setRelation('category', $c)) // JUNTA OS ARTIGOS JA COM A CATEGORIA RESOLVIDA
+        ->sortByDesc('published_at') // MAIS RECENTES PRIMEIRO
+        ->take(6); // ATE 6 ARTIGOS
 @endphp
 
 {{-- FOOTER UNICO E RESPONSIVO: COLUNAS NO DESKTOP, EMPILHADO NO MOBILE --}}
