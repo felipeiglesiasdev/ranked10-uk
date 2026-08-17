@@ -33,7 +33,7 @@
                     <li>
                         <a href="#product-{{ $product->position }}" class="flex items-start gap-3 rounded-lg px-2 py-1.5 text-sm text-slate-600 transition hover:bg-slate-50 hover:text-brand">{{-- ANCORA DIRETA DO CARD DO PRODUTO --}}
                             <span class="mt-px w-6 shrink-0 rounded text-center text-xs font-extrabold {{ $product->position === 1 ? 'text-brand' : 'text-slate-400' }}">{{ $product->position }}</span>{{-- NUMERO DA POSICAO (1º EM VERMELHO) --}}
-                            <span class="min-w-0 font-medium">{{ $product->name }}</span>{{-- NOME DO PRODUTO (min-w-0 PERMITE QUEBRAR NOMES LONGOS) --}}
+                            <span class="min-w-0 break-words font-medium">{{ $product->name }}</span>{{-- NOME DO PRODUTO; min-w-0 + break-words GARANTEM QUEBRA MESMO EM CODIGOS DE MODELO LONGOS SEM ESPACO --}}
                         </a>
                     </li>
                 @endforeach

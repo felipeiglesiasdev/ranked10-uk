@@ -18,7 +18,8 @@
 
         <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{{-- GRID RESPONSIVO: 1 -> 2 -> 3 COLUNAS --}}
             @foreach ($lista as $categoria){{-- PERCORRE AS CATEGORIAS --}}
-                <a href="{{ route('category', $categoria) }}" class="group flex items-start justify-between gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:border-brand/40 hover:shadow-md">{{-- CARD CLICAVEL DA CATEGORIA --}}
+                {{-- min-w-0 PELO MESMO MOTIVO DO BLOCO DE PRODUTOS: ITEM DE GRID NAO ENCOLHE ABAIXO DO min-content SEM ISSO --}}
+                <a href="{{ route('category', $categoria) }}" class="group flex min-w-0 items-start justify-between gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:border-brand/40 hover:shadow-md">{{-- CARD CLICAVEL DA CATEGORIA --}}
                     <div class="min-w-0">{{-- COLUNA DE TEXTO --}}
                         <h3 class="font-bold text-slate-900 group-hover:text-brand">{{ $categoria->name }}</h3>{{-- NOME DA CATEGORIA --}}
                         @if ($categoria->description){{-- DESCRICAO QUANDO EXISTIR --}}

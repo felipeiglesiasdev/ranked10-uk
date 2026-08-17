@@ -20,7 +20,9 @@
         <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{{-- GRID RESPONSIVO: 1 -> 2 -> 4 COLUNAS --}}
             @foreach ($products as $product){{-- PERCORRE OS PRODUTOS MELHOR AVALIADOS --}}
                 @if ($product->url){{-- SO LINKA SE O PRODUTO TIVER ARTIGO E CATEGORIA VALIDOS --}}
-                    <a href="{{ $product->url }}" class="group flex flex-col rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:border-brand/40 hover:shadow-md">{{-- CARD CLICAVEL (LINK INTERNO PROFUNDO) --}}
+                    {{-- min-w-0 E OBRIGATORIO: ITEM DE GRID NASCE COM min-width:auto E SE RECUSA A ENCOLHER ABAIXO DO
+                         PROPRIO min-content, ENTAO SEM ISSO UM TEXTO LONGO AQUI DENTRO EMPURRA A PAGINA NO MOBILE. --}}
+                    <a href="{{ $product->url }}" class="group flex min-w-0 flex-col rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:border-brand/40 hover:shadow-md">{{-- CARD CLICAVEL (LINK INTERNO PROFUNDO) --}}
 
                         <div class="flex items-start gap-4">{{-- LINHA COM IMAGEM E DADOS --}}
                             @if ($product->image){{-- IMAGEM DO PRODUTO QUANDO EXISTIR --}}
@@ -39,7 +41,7 @@
                                         <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" viewBox="0 0 16 16" class="text-amber-400" aria-hidden="true"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg>
                                         <span class="text-sm font-bold text-slate-900">{{ number_format($product->rating, 1) }}</span>{{-- NOTA NUMERICA --}}
                                         @if ($product->reviews_count > 0){{-- CONTADOR DE AVALIACOES --}}
-                                            <span class="truncate text-xs text-slate-400">({{ number_format($product->reviews_count) }})</span>{{-- QUANTIDADE DE AVALIACOES --}}
+                                            <span class="text-xs text-slate-400">({{ number_format($product->reviews_count) }})</span>{{-- QUANTIDADE DE AVALIACOES --}}
                                         @endif
                                     </div>
                                 @endif
@@ -50,7 +52,7 @@
 
                         <div class="mt-4 flex items-center gap-2 border-t border-slate-100 pt-3">{{-- RODAPE DO CARD: DE QUAL GUIA O PRODUTO VEIO --}}
                             <span class="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full {{ $product->position === 1 ? 'bg-brand' : 'bg-ink' }} text-[10px] font-extrabold text-white">{{ $product->position }}</span>{{-- POSICAO NO RANKING DE ORIGEM --}}
-                            <span class="min-w-0 truncate text-xs text-slate-500">in {{ $product->article->title }}</span>{{-- TITULO DO GUIA DE ORIGEM (CONTEXTO DO LINK) --}}
+                            <span class="min-w-0 line-clamp-1 text-xs text-slate-500">in {{ $product->article->title }}</span>{{-- TITULO DO GUIA DE ORIGEM; line-clamp-1 (E NAO truncate) PORQUE truncate APLICA white-space:nowrap E O TITULO LONGO VIRA UMA LINHA INDIVISIVEL QUE ESTOURA A LARGURA NO MOBILE --}}
                         </div>
                     </a>
                 @endif
