@@ -16,6 +16,20 @@
     <meta property="og:locale" content="en_GB">{{-- LOCALE OPEN GRAPH --}}
     <meta name="twitter:card" content="summary_large_image">{{-- CARTAO DO TWITTER/X --}}
 
+    {{-- GOOGLE ANALYTICS 4 (GA4). NAO CARREGA EM AMBIENTE local PARA O TRAFEGO DE DESENVOLVIMENTO
+         NAO SUJAR OS RELATORIOS — DADO DE ANALYTICS NAO PODE SER LIMPO DEPOIS.
+         A CONDICAO E "TUDO QUE NAO FOR local", ENTAO SE O SERVIDOR NAO DEFINIR APP_ENV A TAG CARREGA IGUAL. --}}
+    @unless (app()->environment('local'))
+        <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>{{-- PRECONNECT COM O HOST DO GTAG PARA REDUZIR A LATENCIA DA TAG --}}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-81KLERKV14"></script>{{-- CARREGA O SCRIPT DO GA4 DE FORMA ASSINCRONA (NAO BLOQUEIA O RENDER) --}}
+        <script>
+            window.dataLayer = window.dataLayer || []; // FILA DE EVENTOS DO GTAG
+            function gtag(){dataLayer.push(arguments);} // FUNCAO PADRAO QUE EMPILHA OS ARGUMENTOS NA FILA
+            gtag('js', new Date()); // MARCA O INICIO DA SESSAO DE MEDICAO
+            gtag('config', 'G-81KLERKV14'); // ID DE MEDICAO DA PROPRIEDADE GA4 DO ranked10
+        </script>
+    @endunless
+
     @stack('seo'){{-- PONTO ONDE CADA VIEW INJETA SUAS META TAGS E SCHEMAS DE SEO --}}
 
     {{-- SCHEMA GLOBAL: ORGANIZATION + WEBSITE COM CAIXA DE BUSCA (SITELINKS SEARCHBOX) --}}
