@@ -5,9 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">{{-- VIEWPORT RESPONSIVO MOBILE-FIRST --}}
 
     {{-- GOOGLE TAG MANAGER (GTM-W6JNCFFC) — O MAIS ALTO POSSIVEL NO <head>, SO DEPOIS DE charset/viewport.
-         MESMA REGRA DO GA4 ABAIXO: NAO CARREGA EM ambiente local. COM O GTM ISSO PESA AINDA MAIS, PORQUE O
-         CONTAINER PODE DISPARAR VARIAS TAGS (GA4, PIXELS, CONVERSOES) E TODAS SUJARIAM OS DADOS EM DESENVOLVIMENTO. --}}
+         O GA4 NAO E CARREGADO AQUI DE PROPOSITO: ELE E GERENCIADO DENTRO DO PROPRIO CONTAINER (TAG DO GOOGLE
+         COM O ID G-81KLERKV14). CONFIGURAR O MESMO ID NOS DOIS LUGARES DUPLICARIA TODO PAGEVIEW.
+         NAO CARREGA EM ambiente local PARA O TRAFEGO DE DESENVOLVIMENTO NAO SUJAR OS RELATORIOS —
+         DADO DE ANALYTICS NAO PODE SER LIMPO DEPOIS. A CONDICAO E "TUDO QUE NAO FOR local", ENTAO SE O
+         SERVIDOR NAO DEFINIR APP_ENV O CONTAINER CARREGA IGUAL. --}}
     @unless (app()->environment('local'))
+        <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>{{-- PRECONNECT COM O HOST DO GTM PARA REDUZIR A LATENCIA --}}
         <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
         j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -27,20 +31,6 @@
     <link rel="manifest" href="/site.webmanifest" />
     <meta property="og:locale" content="en_GB">{{-- LOCALE OPEN GRAPH --}}
     <meta name="twitter:card" content="summary_large_image">{{-- CARTAO DO TWITTER/X --}}
-
-    {{-- GOOGLE ANALYTICS 4 (GA4). NAO CARREGA EM AMBIENTE local PARA O TRAFEGO DE DESENVOLVIMENTO
-         NAO SUJAR OS RELATORIOS — DADO DE ANALYTICS NAO PODE SER LIMPO DEPOIS.
-         A CONDICAO E "TUDO QUE NAO FOR local", ENTAO SE O SERVIDOR NAO DEFINIR APP_ENV A TAG CARREGA IGUAL. --}}
-    @unless (app()->environment('local'))
-        <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>{{-- PRECONNECT COM O HOST DO GTAG PARA REDUZIR A LATENCIA DA TAG --}}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-81KLERKV14"></script>{{-- CARREGA O SCRIPT DO GA4 DE FORMA ASSINCRONA (NAO BLOQUEIA O RENDER) --}}
-        <script>
-            window.dataLayer = window.dataLayer || []; // FILA DE EVENTOS DO GTAG
-            function gtag(){dataLayer.push(arguments);} // FUNCAO PADRAO QUE EMPILHA OS ARGUMENTOS NA FILA
-            gtag('js', new Date()); // MARCA O INICIO DA SESSAO DE MEDICAO
-            gtag('config', 'G-81KLERKV14'); // ID DE MEDICAO DA PROPRIEDADE GA4 DO ranked10
-        </script>
-    @endunless
 
     @stack('seo'){{-- PONTO ONDE CADA VIEW INJETA SUAS META TAGS E SCHEMAS DE SEO --}}
 
