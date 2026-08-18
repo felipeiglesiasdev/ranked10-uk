@@ -1,8 +1,20 @@
 <!DOCTYPE html>{{-- DECLARA O DOCUMENTO COMO HTML5 --}}
 <html lang="en-GB">{{-- IDIOMA INGLES BRITANICO PARA SEO E ACESSIBILIDADE --}}
 <head>
-    <meta charset="utf-8">{{-- CHARSET UTF-8 --}}
+    <meta charset="utf-8">{{-- CHARSET UTF-8 (FICA EM PRIMEIRO PARA O NAVEGADOR NAO REINTERPRETAR O DOCUMENTO) --}}
     <meta name="viewport" content="width=device-width, initial-scale=1">{{-- VIEWPORT RESPONSIVO MOBILE-FIRST --}}
+
+    {{-- GOOGLE TAG MANAGER (GTM-W6JNCFFC) — O MAIS ALTO POSSIVEL NO <head>, SO DEPOIS DE charset/viewport.
+         MESMA REGRA DO GA4 ABAIXO: NAO CARREGA EM ambiente local. COM O GTM ISSO PESA AINDA MAIS, PORQUE O
+         CONTAINER PODE DISPARAR VARIAS TAGS (GA4, PIXELS, CONVERSOES) E TODAS SUJARIAM OS DADOS EM DESENVOLVIMENTO. --}}
+    @unless (app()->environment('local'))
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-W6JNCFFC');</script>{{-- SNIPPET DO CONTAINER GTM --}}
+    @endunless
+
     <meta name="theme-color" content="#BE1627">{{-- COR DA BARRA DO NAVEGADOR (MOBILE) NA COR DA MARCA --}}
     <meta name="robots" content="index, follow, max-image-preview:large">{{-- PADRAO: INDEXAR E SEGUIR (PAGINAS PODEM SOBRESCREVER) --}}
     <meta name="author" content="ranked10">{{-- AUTOR/PUBLISHER DO SITE --}}
@@ -71,6 +83,13 @@
     @vite(['resources/css/app.css', 'resources/js/app.js']){{-- CARREGA O TAILWIND + ALPINE COMPILADOS PELO VITE --}}
 </head>
 <body class="min-h-screen flex flex-col bg-slate-50 font-sans text-slate-800 antialiased">{{-- CORPO COM FLEX COLUNA PARA O FOOTER COLAR NO FIM --}}
+
+    {{-- GOOGLE TAG MANAGER (noscript) — TEM QUE FICAR IMEDIATAMENTE APOS A ABERTURA DO <body>.
+         SERVE PARA NAVEGADORES COM JAVASCRIPT DESABILITADO. MESMA GUARDA DE AMBIENTE DO SNIPPET DO <head>. --}}
+    @unless (app()->environment('local'))
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W6JNCFFC"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>{{-- FALLBACK SEM JAVASCRIPT --}}
+    @endunless
 
     <x-utils.header :nav-categories="$navCategories" />{{-- HEADER UNICO E RESPONSIVO (MOBILE-FIRST + MEGA MENU) --}}
 
