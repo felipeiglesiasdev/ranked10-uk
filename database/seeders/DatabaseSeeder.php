@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\SolarPoolIonizerSeeder::class, // LISTA DE IONIZADORES SOLARES PARA PISCINA (GARDEN)
             \Database\Seeders\Lists\Smart4kProjectorSeeder::class, // LISTA DE PROJETORES SMART 4K (TECH)
             \Database\Seeders\Lists\GamingMonitors27Seeder::class, // LISTA DE MONITORES GAMER DE 27 POLEGADAS (TECH)
+            \Database\Seeders\Lists\GamingKeyboardsSeeder::class, // LISTA DE TECLADOS GAMER (TECH)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }
