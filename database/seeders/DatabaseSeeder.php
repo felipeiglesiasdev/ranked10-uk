@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\Smart4kProjectorSeeder::class, // LISTA DE PROJETORES SMART 4K (TECH)
             \Database\Seeders\Lists\GamingMonitors27Seeder::class, // LISTA DE MONITORES GAMER DE 27 POLEGADAS (TECH)
             \Database\Seeders\Lists\GamingKeyboardsSeeder::class, // LISTA DE TECLADOS GAMER (TECH)
+            \Database\Seeders\Lists\MicroSD128Seeder::class, // LISTA DE CARTOES MICROSD 128GB (TECH)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }
