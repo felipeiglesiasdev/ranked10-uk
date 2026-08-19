@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\GamingKeyboardsSeeder::class, // LISTA DE TECLADOS GAMER (TECH)
             \Database\Seeders\Lists\MicroSD128Seeder::class, // LISTA DE CARTOES MICROSD 128GB (TECH)
             \Database\Seeders\Lists\MicroSD64Seeder::class, // LISTA DE CARTOES MICROSD 64GB (TECH)
+            \Database\Seeders\Lists\PS5SsdSeeder::class, // LISTA DE SSDs NVMe 2TB PARA PS5 (TECH)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }
