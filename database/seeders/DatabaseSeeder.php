@@ -34,6 +34,10 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\PS5SsdSeeder::class, // LISTA DE SSDs NVMe 2TB PARA PS5 (TECH)
             \Database\Seeders\Lists\DehumidifiersSeeder::class, // LISTA DE DESUMIDIFICADORES (HOME)
             \Database\Seeders\Lists\HeatedClothesAirersSeeder::class, // LISTA DE VARAIS AQUECIDOS (HOME)
+            \Database\Seeders\Lists\CordlessLeafBlowersSeeder::class, // LISTA DE SOPRADORES DE FOLHAS A BATERIA (GARDEN)
+            \Database\Seeders\Lists\SelfCleaningLitterBoxesSeeder::class, // LISTA DE CAIXAS DE AREIA AUTOLIMPANTES (PET SUPPLIES)
+            \Database\Seeders\Lists\StandingDesksSeeder::class, // LISTA DE MESAS DE ALTURA REGULAVEL (HOME & OFFICE)
+            \Database\Seeders\Lists\GamingMiceSeeder::class, // LISTA DE MOUSES GAMER (TECH)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }
