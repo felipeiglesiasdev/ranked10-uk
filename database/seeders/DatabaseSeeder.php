@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\MicroSD128Seeder::class, // LISTA DE CARTOES MICROSD 128GB (TECH)
             \Database\Seeders\Lists\MicroSD64Seeder::class, // LISTA DE CARTOES MICROSD 64GB (TECH)
             \Database\Seeders\Lists\PS5SsdSeeder::class, // LISTA DE SSDs NVMe 2TB PARA PS5 (TECH)
+            \Database\Seeders\Lists\DehumidifiersSeeder::class, // LISTA DE DESUMIDIFICADORES (HOME)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }
