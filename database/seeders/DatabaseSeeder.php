@@ -38,6 +38,7 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\SelfCleaningLitterBoxesSeeder::class, // LISTA DE CAIXAS DE AREIA AUTOLIMPANTES (PET SUPPLIES)
             \Database\Seeders\Lists\StandingDesksSeeder::class, // LISTA DE MESAS DE ALTURA REGULAVEL (HOME & OFFICE)
             \Database\Seeders\Lists\GamingMiceSeeder::class, // LISTA DE MOUSES GAMER (TECH)
+            \Database\Seeders\Lists\ElectricBlanketsSeeder::class, // LISTA DE COBERTORES ELETRICOS (HOME)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }
