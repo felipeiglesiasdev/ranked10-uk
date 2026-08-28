@@ -56,6 +56,7 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\PressureWashersSeeder::class, // LISTA DE LAVADORAS DE ALTA PRESSAO (GARDEN)
             \Database\Seeders\Lists\SmartScalesSeeder::class, // LISTA DE BALANCAS INTELIGENTES (FITNESS)
             \Database\Seeders\Lists\SteamMopsSeeder::class, // LISTA DE MOPS A VAPOR (HOME)
+            \Database\Seeders\Lists\CoffeeGrindersSeeder::class, // LISTA DE MOEDORES DE CAFE (KITCHEN)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }
