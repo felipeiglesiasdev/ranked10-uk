@@ -54,6 +54,7 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\SousVideCookersSeeder::class, // LISTA DE CIRCULADORES SOUS VIDE (KITCHEN)
             \Database\Seeders\Lists\CatWaterFountainsSeeder::class, // LISTA DE FONTES DE AGUA PARA GATO (PET SUPPLIES)
             \Database\Seeders\Lists\PressureWashersSeeder::class, // LISTA DE LAVADORAS DE ALTA PRESSAO (GARDEN)
+            \Database\Seeders\Lists\SmartScalesSeeder::class, // LISTA DE BALANCAS INTELIGENTES (FITNESS)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }
