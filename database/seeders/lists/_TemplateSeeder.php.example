@@ -47,7 +47,7 @@ class _TemplateSeeder extends Seeder // RENOMEIE PARA NomeDaListaSeeder (PASSO 2
             'intro' => '',                      // PREENCHA AQUI: INTRODUCAO — REPITA A PALAVRA-CHAVE NATURALMENTE
             'conclusion' => '',                 // PREENCHA AQUI: CONCLUSAO — REPITA A PALAVRA-CHAVE NATURALMENTE
             'author' => 'Felipe Iglesias',      // AUTOR DO ARTIGO (DEVE BATER COM UM 'name' EM config/authors.php)
-            'published_at' => now(),            // DATA DE PUBLICACAO (now() = PUBLICA IMEDIATAMENTE)
+            'published_at' => '2026-01-01 10:00:00', // PREENCHA AQUI: DATA FIXA EM STRING — NUNCA now(): RE-RODAR O SEEDER RESETARIA A DATA E REEMBARALHARIA "LATEST GUIDES"
         ];
 
         $products = [

@@ -34,7 +34,7 @@ class PortableFansSeeder extends Seeder
             'intro' => 'When a British summer finally turns hot, the best handheld fans are the fastest way to cool down wherever you happen to be. They now pack turbo motors, 5000mAh batteries and LED displays into something that fits in a pocket, and most work three ways at once: as a handheld fan, as a small desk fan, and as a neck fan when you need your hands free. We compared the top 10 best handheld fans available on Amazon on airflow, battery life, noise and price, from a budget pick under £12 to a 15000mAh turbo model that also charges your phone.', // INTRO OTIMIZADA - FOCUS KEYWORD 2X
             'conclusion' => 'The best handheld fans all come down to where you will use them. For everyday carry, a 5000mAh foldable fan gives you a full day of cooling for well under £20. If you want raw power, a handheld turbo fan with 100-level speed control and a storm setting will cut through a heatwave. And if you would rather not hold anything at all, a personal fan neck design worn on a lanyard keeps you cool hands-free on the commute. Whichever of the best handheld fans you pick, look for a clear battery display, USB-C charging and enough speed settings to drop the airflow right down when you want to sleep.', // CONCLUSAO OTIMIZADA - FOCUS KEYWORD 2X
             'author' => 'Felipe Iglesias',                                       // AUTOR (DEVE BATER COM config/authors.php)
-            'published_at' => now(),                                             // DATA DE PUBLICACAO
+            'published_at' => '2026-07-11 06:14:01', // DATA DE PUBLICACAO FIXA — NAO USAR now(): RE-RODAR O SEEDER RESETARIA A DATA
         ];
 
         $products = [

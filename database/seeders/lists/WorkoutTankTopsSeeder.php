@@ -31,8 +31,9 @@ class WorkoutTankTopsSeeder extends Seeder
             'meta_description' => 'We ranked the 10 best workout tank tops for women in the UK: cropped, racerback and mesh-back gym vests compared on fabric, fit, breathability and price.', // META DESCRIPTION (~152 CHARS)
             'intro' => 'The right tank top can quietly transform a session. Get it wrong and you spend the whole class tugging at a strap or peeling damp cotton off your back; get it right and you forget you are wearing it. The best workout tank tops for women balance four things: a fabric that moves sweat away instead of soaking it up, an armhole cut that lets your shoulders travel, a hem that stays put when you bend, and a price that does not sting when you need three of them in the wash. We compared ten of the most popular workout tanks for women on Amazon UK, from a £5 athletic vest to a racerback three-pack with more than fifty thousand ratings, covering cropped workout tops, mesh-back sleeveless gym shirts and everyday tanks that double as gym layers.', // INTRO OTIMIZADA
             'conclusion' => 'There is no single winner among the best athletic tank tops, because a top for heavy lifting is not the same as one for a summer run. If you train hard and want proven kit, a racerback in technical stretch fabric with flatlock seams is the safest buy. If you run outdoors in summer, prioritise quick-dry polyester and, ideally, UPF sun protection. If you want a cropped workout top, expect to show some midriff and choose a sports bra you are happy to have on display. And if you simply want a womens white workout tank that also works under a blazer, a multipack of soft, breathable everyday tanks will stretch further than one technical top. Buy for the session you actually do most often, and check the size chart before you order: several of these run UK-specific.', // CONCLUSAO OTIMIZADA
+            'focus_keyword' => 'best workout tank tops', // PALAVRA-CHAVE PRINCIPAL - VIRA O ALT DO HERO/OG:IMAGE
             'author' => 'Felipe Iglesias',                                       // AUTOR (DEVE BATER COM config/authors.php)
-            'published_at' => now(),                                             // DATA DE PUBLICACAO
+            'published_at' => '2026-07-10 06:57:27', // DATA DE PUBLICACAO FIXA — NAO USAR now(): RE-RODAR O SEEDER RESETARIA A DATA
         ];
 
         $products = [
@@ -43,7 +44,7 @@ class WorkoutTankTopsSeeder extends Seeder
                 'rating' => 4.0,                                                                     // NOTA (DA PLANILHA)
                 'reviews_count' => 4704,                                                             // Nº REVIEWS (DA PLANILHA)
                 'image' => 'https://m.media-amazon.com/images/I/71yVgLvXT6L._AC_SX342_.jpg',         // IMAGEM (DA PLANILHA)
-                'alt_text' => 'BQTQ five pack of square neck sleeveless tank tops in five colours',  // ALT DESCRITIVO DA IMAGEM
+                'alt_text' => 'best workout tank tops', // ALT = FOCUS KEYWORD (PRODUTO #1 E O QUE APARECE NO HERO/OG:IMAGE)
                 'affiliate_link' => 'https://amzn.to/3SWtQJU',                                       // LINK AFILIADO
                 'summary' => 'Five square-neck tanks for roughly £6 each, in black, white, grey, coffee and army green — the easiest way to fill a drawer with tops that work in the gym and out of it.', // TEXTO CURTO (CARD)
                 'body' => 'This BQTQ multipack is the practical choice rather than the technical one. You get five square-neck sleeveless tops in black, white, grey, coffee and army green, which works out at around six pounds per top and means you always have a clean one ready. If you have been hunting for a womens white workout tank that does not cost fifteen pounds on its own, this is the cheapest sensible route to it.

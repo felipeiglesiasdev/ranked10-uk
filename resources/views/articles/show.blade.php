@@ -53,6 +53,35 @@
     if ($socialImage) { $jsonLd['image'] = $socialImage; } // ADICIONA A IMAGEM AO SCHEMA ITEMLIST (HERO OU PRODUTO #1)
 @endphp
 
+@php
+    // MONTA O JSON-LD DE BLOGPOSTING (AUTORIA, PUBLISHER E DATAS) — COMPLEMENTA O ITEMLIST ACIMA
+    $autorPerfil = collect(config('authors', []))->firstWhere('name', $article->author); // PERFIL DO AUTOR EM config/authors.php (NULL SE NAO CADASTRADO)
+    $autorLd = array_filter([ // ENTIDADE PERSON DO AUTOR (ARRAY_FILTER REMOVE OS CAMPOS VAZIOS)
+        '@type' => 'Person', // O AUTOR E UMA PESSOA, NAO A ORGANIZACAO
+        'name' => $article->author, // NOME EXIBIDO DO AUTOR
+        'jobTitle' => $autorPerfil['role'] ?? null, // CARGO/FUNCAO (SE CADASTRADO)
+        'description' => $autorPerfil['bio'] ?? null, // BIO DO AUTOR (SE CADASTRADA)
+        'image' => isset($autorPerfil['photo']) && $autorPerfil['photo'] ? asset($autorPerfil['photo']) : null, // FOTO DO AUTOR (SE CADASTRADA)
+        'url' => $autorPerfil['socials']['website'] ?? null, // SITE PESSOAL (SE CADASTRADO)
+    ]);
+    $blogPostingLd = array_filter([
+        '@context' => 'https://schema.org', // CONTEXTO PADRAO DO SCHEMA.ORG
+        '@type' => 'BlogPosting', // O ARTIGO E UM POST EDITORIAL
+        '@id' => $articleUrl.'#article', // ID UNICO DA ENTIDADE ARTIGO
+        'mainEntityOfPage' => ['@type' => 'WebPage', '@id' => $articleUrl], // PAGINA PRINCIPAL QUE CONTEM O ARTIGO
+        'headline' => Str::limit($article->title, 110, ''), // HEADLINE (O GOOGLE CORTA ACIMA DE 110 CHARS)
+        'description' => $metaDescription, // DESCRICAO = META DESCRIPTION JA RESOLVIDA ACIMA
+        'image' => $socialImage ?: null, // IMAGEM DO ARTIGO (HERO OU FOTO DO PRODUTO #1)
+        'inLanguage' => 'en-GB', // IDIOMA DO CONTEUDO (MESMO VALOR DO WEBSITE NO LAYOUT)
+        'datePublished' => $article->published_at->toAtomString(), // DATA DE PUBLICACAO
+        'dateModified' => $article->updated_at->toAtomString(), // DATA DA ULTIMA ATUALIZACAO
+        'author' => $autorLd, // AUTOR DO ARTIGO
+        'publisher' => ['@id' => url('/#organization')], // PUBLISHER APONTA PARA A ORGANIZATION DECLARADA NO LAYOUT
+        'isPartOf' => ['@id' => url('/#website')], // LIGA O ARTIGO AO WEBSITE DECLARADO NO LAYOUT
+        'articleSection' => $category->name, // SECAO/CATEGORIA DO ARTIGO
+    ]);
+@endphp
+
 @push('seo'){{-- INJETA AS META TAGS DE SEO NO HEAD DO LAYOUT --}}
     <title>{{ $metaTitle }} | ranked10</title>{{-- TITULO DA ABA/GOOGLE (meta_title COM FALLBACK PARA O TITULO) --}}
     <meta name="description" content="{{ $metaDescription }}">{{-- META DESCRIPTION (meta_description COM FALLBACK PARA A INTRO) --}}
@@ -71,7 +100,8 @@
     @endif{{-- (SEM og:image:width/height PORQUE A FOTO DO PRODUTO TEM DIMENSOES VARIAVEIS) --}}
     <meta property="article:published_time" content="{{ $article->published_at->toAtomString() }}">{{-- DATA DE PUBLICACAO OPEN GRAPH --}}
     <meta property="article:modified_time" content="{{ $article->updated_at->toAtomString() }}">{{-- DATA DE ATUALIZACAO OPEN GRAPH --}}
-    <script type="application/ld+json">{!! json_encode($jsonLd, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>{{-- DADOS ESTRUTURADOS JSON-LD --}}
+    <script type="application/ld+json">{!! json_encode($jsonLd, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>{{-- DADOS ESTRUTURADOS JSON-LD (ITEMLIST + PRODUCT + REVIEW) --}}
+    <script type="application/ld+json">{!! json_encode($blogPostingLd, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>{{-- DADOS ESTRUTURADOS JSON-LD (BLOGPOSTING: AUTOR, PUBLISHER E DATAS) --}}
 @endpush
 
 @section('content'){{-- INICIO DO CONTEUDO DO ARTIGO --}}
