@@ -12,7 +12,13 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        // MARCA AS PAGINAS PUBLICAS COMO CACHEAVEIS NA BORDA DA CLOUDFLARE.
+        // TEM QUE SER prepend, NAO append: NA VOLTA DA PILHA O MIDDLEWARE MAIS EXTERNO E O ULTIMO A
+        // TOCAR NA RESPOSTA. COM append ELE RODAVA ANTES DO AddQueuedCookiesToResponse, QUE ENTAO
+        // RECOLOCAVA laravel-session E XSRF-TOKEN E A CLOUDFLARE VOLTAVA A RECUSAR O CACHE.
+        $middleware->web(prepend: [
+            \App\Http\Middleware\CachePublicPages::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(
