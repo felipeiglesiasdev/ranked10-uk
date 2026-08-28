@@ -39,6 +39,7 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\StandingDesksSeeder::class, // LISTA DE MESAS DE ALTURA REGULAVEL (HOME & OFFICE)
             \Database\Seeders\Lists\GamingMiceSeeder::class, // LISTA DE MOUSES GAMER (TECH)
             \Database\Seeders\Lists\ElectricBlanketsSeeder::class, // LISTA DE COBERTORES ELETRICOS (HOME)
+            \Database\Seeders\Lists\AdjustableDumbbellsSeeder::class, // LISTA DE HALTERES AJUSTAVEIS (FITNESS)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }
