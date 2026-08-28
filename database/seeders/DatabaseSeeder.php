@@ -41,6 +41,10 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\ElectricBlanketsSeeder::class, // LISTA DE COBERTORES ELETRICOS (HOME)
             \Database\Seeders\Lists\AdjustableDumbbellsSeeder::class, // LISTA DE HALTERES AJUSTAVEIS (FITNESS)
             \Database\Seeders\Lists\AutomaticCatFeedersSeeder::class, // LISTA DE ALIMENTADORES AUTOMATICOS (PET SUPPLIES)
+            \Database\Seeders\Lists\PaperShreddersSeeder::class, // LISTA DE FRAGMENTADORAS DE PAPEL (HOME & OFFICE)
+            \Database\Seeders\Lists\WaterFilterJugsSeeder::class, // LISTA DE JARRAS COM FILTRO (KITCHEN)
+            \Database\Seeders\Lists\MassageGunsSeeder::class, // LISTA DE PISTOLAS DE MASSAGEM (FITNESS)
+            \Database\Seeders\Lists\OilFilledRadiatorsSeeder::class, // LISTA DE RADIADORES A OLEO (HOME)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }
