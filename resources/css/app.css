@@ -13,6 +13,7 @@
     --color-brand: #be1627;        /* VERMELHO PRINCIPAL (ACENTO, CTA, LINKS) */
     --color-brand-light: #cd2137;  /* VERMELHO CLARO (HOVER E GRADIENTES) */
     --color-ink: #171717;          /* PRETO PRINCIPAL (SUPERFICIES ESCURAS) */
+    --color-brand-on-dark: #e8556a; /* VERMELHO CLARO PARA USO SOBRE --color-ink: O VERMELHO DA MARCA DA 2.85:1 NO PRETO E REPROVA NO WCAG AA; ESTE DA 5.07:1 */
 }
 
 /* ESCONDE ELEMENTOS COM x-cloak ATE O ALPINE INICIAR (EVITA "FLASH" DO MENU) */

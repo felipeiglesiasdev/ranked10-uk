@@ -26,7 +26,7 @@
                             <p class="mt-1 text-sm text-slate-500 line-clamp-2">{{ $categoria->description }}</p>{{-- DESCRICAO TRUNCADA EM 2 LINHAS --}}
                         @endif
                         @isset($categoria->articles_count){{-- CONTADOR SO APARECE SE A CONSULTA USOU withCount --}}
-                            <p class="mt-2 text-xs font-semibold uppercase tracking-wide text-slate-400">{{ $categoria->articles_count }} {{ Str::plural('guide', $categoria->articles_count) }}</p>{{-- QUANTIDADE DE GUIAS NA CATEGORIA --}}
+                            <p class="mt-2 text-xs font-semibold uppercase tracking-wide text-slate-500">{{ $categoria->articles_count }} {{ Str::plural('guide', $categoria->articles_count) }}</p>{{-- QUANTIDADE DE GUIAS NA CATEGORIA --}}
                         @endisset
                     </div>
                     {{-- ICONE DE SETA (BOOTSTRAP ICONS: ARROW-RIGHT) EM SVG INLINE --}}

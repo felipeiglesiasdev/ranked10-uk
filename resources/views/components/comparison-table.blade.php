@@ -70,7 +70,7 @@
                                 {{ number_format($product->rating, 1) }}{{-- NOTA COM UMA CASA DECIMAL --}}
                             </span>
                         @else{{-- CASO O PRODUTO NAO TENHA NOTA --}}
-                            <span class="text-slate-400">—</span>{{-- TRAVESSAO PARA NOTA AUSENTE --}}
+                            <span class="text-slate-500">—</span>{{-- TRAVESSAO PARA NOTA AUSENTE --}}
                         @endif
                     </td>
                     <td class="px-4 py-3 text-right">
