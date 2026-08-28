@@ -49,6 +49,9 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\PowerBanksSeeder::class, // LISTA DE POWER BANKS (TECH)
             \Database\Seeders\Lists\HumidifiersSeeder::class, // LISTA DE UMIDIFICADORES (HOME)
             \Database\Seeders\Lists\FoodDehydratorsSeeder::class, // LISTA DE DESIDRATADORES DE ALIMENTOS (KITCHEN)
+            \Database\Seeders\Lists\MonitorArmsSeeder::class, // LISTA DE BRACOS DE MONITOR (HOME & OFFICE)
+            \Database\Seeders\Lists\DashCamsSeeder::class, // LISTA DE DASH CAMS (TECH)
+            \Database\Seeders\Lists\SousVideCookersSeeder::class, // LISTA DE CIRCULADORES SOUS VIDE (KITCHEN)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }
