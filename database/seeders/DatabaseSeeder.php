@@ -48,6 +48,7 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\VacuumSealersSeeder::class, // LISTA DE SELADORAS A VACUO (KITCHEN)
             \Database\Seeders\Lists\PowerBanksSeeder::class, // LISTA DE POWER BANKS (TECH)
             \Database\Seeders\Lists\HumidifiersSeeder::class, // LISTA DE UMIDIFICADORES (HOME)
+            \Database\Seeders\Lists\FoodDehydratorsSeeder::class, // LISTA DE DESIDRATADORES DE ALIMENTOS (KITCHEN)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }
