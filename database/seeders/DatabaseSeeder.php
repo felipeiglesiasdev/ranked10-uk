@@ -58,6 +58,7 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\SteamMopsSeeder::class, // LISTA DE MOPS A VAPOR (HOME)
             \Database\Seeders\Lists\CoffeeGrindersSeeder::class, // LISTA DE MOEDORES DE CAFE (KITCHEN)
             \Database\Seeders\Lists\DeskLampsSeeder::class, // LISTA DE LUMINARIAS DE MESA (HOME & OFFICE)
+            \Database\Seeders\Lists\WindowVacuumsSeeder::class, // LISTA DE ASPIRADORES DE JANELA (HOME)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }
