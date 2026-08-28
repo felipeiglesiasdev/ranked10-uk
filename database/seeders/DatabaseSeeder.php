@@ -47,6 +47,7 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\OilFilledRadiatorsSeeder::class, // LISTA DE RADIADORES A OLEO (HOME)
             \Database\Seeders\Lists\VacuumSealersSeeder::class, // LISTA DE SELADORAS A VACUO (KITCHEN)
             \Database\Seeders\Lists\PowerBanksSeeder::class, // LISTA DE POWER BANKS (TECH)
+            \Database\Seeders\Lists\HumidifiersSeeder::class, // LISTA DE UMIDIFICADORES (HOME)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }
