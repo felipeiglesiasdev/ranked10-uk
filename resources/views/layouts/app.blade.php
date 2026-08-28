@@ -12,10 +12,29 @@
          SERVIDOR NAO DEFINIR APP_ENV O CONTAINER CARREGA IGUAL. --}}
     @unless (app()->environment('local'))
         <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>{{-- PRECONNECT COM O HOST DO GTM PARA REDUZIR A LATENCIA --}}
-        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        {{-- SNIPPET DO GTM COM CARREGAMENTO ADIADO EM 2 SEGUNDOS.
+             O dataLayer NASCE AQUI, NA HORA: QUALQUER PUSH FEITO ANTES DO CONTAINER CHEGAR FICA NA FILA
+             E E PROCESSADO QUANDO ELE SOBE. SO O DOWNLOAD DO gtm.js E ADIADO, PARA OS 294 KiB NAO
+             DISPUTAREM BANDA E CPU COM O LCP.
+             A INTERACAO ANTECIPA O CARREGAMENTO, NUNCA ATRASA: SE O VISITANTE ROLA A PAGINA EM 0,4s O
+             CONTAINER SOBE ALI, E O TETO DE 2s VALE PARA QUEM NAO TOCA EM NADA. ISSO IMPORTA PORQUE O
+             GATILHO affiliate_click E UM CLICK TRIGGER NATIVO DO GTM: O OUVINTE DE CLIQUES SO EXISTE
+             DEPOIS QUE O gtm.js RODA, ENTAO CLIQUE ANTES DISSO NAO E CONTADO.
+             ⚠️ TRADE-OFF ACEITO CONSCIENTEMENTE: PERDE-SE A FRACAO DE VISITANTES QUE CLICA NUM LINK DE
+             AFILIADO ANTES DE INTERAGIR E ANTES DOS 2s. SE O affiliate_click CAIR NO GA4, E AQUI. --}}
+        <script>(function(w,d,s,l,i){
+        w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'}); // MARCA O INICIO NA FILA
+        var pedido=false; // TRAVA PARA O CONTAINER NAO SER INSERIDO DUAS VEZES
+        var eventos=['scroll','mousemove','touchstart','keydown','pointerdown']; // SINAIS DE INTERACAO
+        function carrega(){
+            if(pedido){return;} pedido=true; // SO PASSA UMA VEZ
+            eventos.forEach(function(e){w.removeEventListener(e,carrega);}); // SOLTA OS OUVINTES
+            var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+            j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+            f.parentNode.insertBefore(j,f); // INSERE O CONTAINER
+        }
+        eventos.forEach(function(e){w.addEventListener(e,carrega,{passive:true,once:true});}); // ANTECIPA NA INTERACAO
+        w.setTimeout(carrega,2000); // TETO: 2 SEGUNDOS PARA QUEM NAO INTERAGE
         })(window,document,'script','dataLayer','GTM-W6JNCFFC');</script>{{-- SNIPPET DO CONTAINER GTM --}}
     @endunless
 
