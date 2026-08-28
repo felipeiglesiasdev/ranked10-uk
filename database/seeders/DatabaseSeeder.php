@@ -45,6 +45,7 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\WaterFilterJugsSeeder::class, // LISTA DE JARRAS COM FILTRO (KITCHEN)
             \Database\Seeders\Lists\MassageGunsSeeder::class, // LISTA DE PISTOLAS DE MASSAGEM (FITNESS)
             \Database\Seeders\Lists\OilFilledRadiatorsSeeder::class, // LISTA DE RADIADORES A OLEO (HOME)
+            \Database\Seeders\Lists\VacuumSealersSeeder::class, // LISTA DE SELADORAS A VACUO (KITCHEN)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }
