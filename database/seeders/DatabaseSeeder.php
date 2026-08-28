@@ -57,6 +57,7 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\SmartScalesSeeder::class, // LISTA DE BALANCAS INTELIGENTES (FITNESS)
             \Database\Seeders\Lists\SteamMopsSeeder::class, // LISTA DE MOPS A VAPOR (HOME)
             \Database\Seeders\Lists\CoffeeGrindersSeeder::class, // LISTA DE MOEDORES DE CAFE (KITCHEN)
+            \Database\Seeders\Lists\DeskLampsSeeder::class, // LISTA DE LUMINARIAS DE MESA (HOME & OFFICE)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }
