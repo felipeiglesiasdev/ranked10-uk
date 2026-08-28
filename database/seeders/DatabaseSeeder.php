@@ -40,6 +40,7 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\GamingMiceSeeder::class, // LISTA DE MOUSES GAMER (TECH)
             \Database\Seeders\Lists\ElectricBlanketsSeeder::class, // LISTA DE COBERTORES ELETRICOS (HOME)
             \Database\Seeders\Lists\AdjustableDumbbellsSeeder::class, // LISTA DE HALTERES AJUSTAVEIS (FITNESS)
+            \Database\Seeders\Lists\AutomaticCatFeedersSeeder::class, // LISTA DE ALIMENTADORES AUTOMATICOS (PET SUPPLIES)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }
