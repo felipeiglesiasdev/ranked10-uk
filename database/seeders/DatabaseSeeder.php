@@ -74,6 +74,7 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\DogClippersSeeder::class, // LISTA DE MAQUINAS DE TOSA (PET SUPPLIES)
             \Database\Seeders\Lists\WebcamsSeeder::class, // LISTA DE WEBCAMS (HOME & OFFICE)
             \Database\Seeders\Lists\ResistanceBandsSeeder::class, // LISTA DE FAIXAS ELASTICAS (FITNESS)
+            \Database\Seeders\Lists\PetHairVacuumsSeeder::class, // LISTA DE ASPIRADORES PARA PELO DE PET (PET SUPPLIES)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }
