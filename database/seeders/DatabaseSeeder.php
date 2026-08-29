@@ -75,6 +75,7 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\WebcamsSeeder::class, // LISTA DE WEBCAMS (HOME & OFFICE)
             \Database\Seeders\Lists\ResistanceBandsSeeder::class, // LISTA DE FAIXAS ELASTICAS (FITNESS)
             \Database\Seeders\Lists\PetHairVacuumsSeeder::class, // LISTA DE ASPIRADORES PARA PELO DE PET (PET SUPPLIES)
+            \Database\Seeders\Lists\PortableSsdsSeeder::class, // LISTA DE SSDs PORTATEIS (TECH)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }
