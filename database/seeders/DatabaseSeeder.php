@@ -70,6 +70,7 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\FanHeatersSeeder::class, // LISTA DE AQUECEDORES A VENTILACAO (HOME)
             \Database\Seeders\Lists\IndoorSecurityCamerasSeeder::class, // LISTA DE CAMERAS DE SEGURANCA INTERNAS (TECH)
             \Database\Seeders\Lists\PortableMonitorsSeeder::class, // LISTA DE MONITORES PORTATEIS (HOME & OFFICE)
+            \Database\Seeders\Lists\ExerciseBikesSeeder::class, // LISTA DE BIKES ERGOMETRICAS (FITNESS)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }
