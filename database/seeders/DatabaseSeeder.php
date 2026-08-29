@@ -66,6 +66,7 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\WalkingPadsSeeder::class, // LISTA DE WALKING PADS / ESTEIRAS DE MESA (FITNESS)
             \Database\Seeders\Lists\LaptopStandsSeeder::class, // LISTA DE SUPORTES DE NOTEBOOK (HOME & OFFICE)
             \Database\Seeders\Lists\SteamGeneratorIronsSeeder::class, // LISTA DE CENTRAIS DE VAPOR (HOME)
+            \Database\Seeders\Lists\RiceCookersSeeder::class, // LISTA DE PANELAS DE ARROZ (KITCHEN)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }
