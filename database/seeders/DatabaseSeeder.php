@@ -76,6 +76,8 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\ResistanceBandsSeeder::class, // LISTA DE FAIXAS ELASTICAS (FITNESS)
             \Database\Seeders\Lists\PetHairVacuumsSeeder::class, // LISTA DE ASPIRADORES PARA PELO DE PET (PET SUPPLIES)
             \Database\Seeders\Lists\PortableSsdsSeeder::class, // LISTA DE SSDs PORTATEIS (TECH)
+            \Database\Seeders\Lists\SolarSecurityLightsSeeder::class, // LISTA DE LUZES DE SEGURANCA SOLARES (GARDEN)
+            \Database\Seeders\Lists\GardenStorageBoxesSeeder::class, // LISTA DE BAUS DE JARDIM (GARDEN)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }
