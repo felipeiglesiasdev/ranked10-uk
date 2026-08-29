@@ -62,6 +62,7 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\SlowCookersSeeder::class, // LISTA DE SLOW COOKERS (KITCHEN)
             \Database\Seeders\Lists\SoupMakersSeeder::class, // LISTA DE SOUP MAKERS (KITCHEN)
             \Database\Seeders\Lists\BreadMakersSeeder::class, // LISTA DE MAQUINAS DE PAO (KITCHEN)
+            \Database\Seeders\Lists\AirPurifiersSeeder::class, // LISTA DE PURIFICADORES DE AR (HOME)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }
