@@ -61,6 +61,7 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\WindowVacuumsSeeder::class, // LISTA DE ASPIRADORES DE JANELA (HOME)
             \Database\Seeders\Lists\SlowCookersSeeder::class, // LISTA DE SLOW COOKERS (KITCHEN)
             \Database\Seeders\Lists\SoupMakersSeeder::class, // LISTA DE SOUP MAKERS (KITCHEN)
+            \Database\Seeders\Lists\BreadMakersSeeder::class, // LISTA DE MAQUINAS DE PAO (KITCHEN)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }
