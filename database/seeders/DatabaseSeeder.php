@@ -68,6 +68,7 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\SteamGeneratorIronsSeeder::class, // LISTA DE CENTRAIS DE VAPOR (HOME)
             \Database\Seeders\Lists\RiceCookersSeeder::class, // LISTA DE PANELAS DE ARROZ (KITCHEN)
             \Database\Seeders\Lists\FanHeatersSeeder::class, // LISTA DE AQUECEDORES A VENTILACAO (HOME)
+            \Database\Seeders\Lists\IndoorSecurityCamerasSeeder::class, // LISTA DE CAMERAS DE SEGURANCA INTERNAS (TECH)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }
