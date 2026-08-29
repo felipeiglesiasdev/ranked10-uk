@@ -69,6 +69,7 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\RiceCookersSeeder::class, // LISTA DE PANELAS DE ARROZ (KITCHEN)
             \Database\Seeders\Lists\FanHeatersSeeder::class, // LISTA DE AQUECEDORES A VENTILACAO (HOME)
             \Database\Seeders\Lists\IndoorSecurityCamerasSeeder::class, // LISTA DE CAMERAS DE SEGURANCA INTERNAS (TECH)
+            \Database\Seeders\Lists\PortableMonitorsSeeder::class, // LISTA DE MONITORES PORTATEIS (HOME & OFFICE)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }
