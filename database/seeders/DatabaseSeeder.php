@@ -72,6 +72,7 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\PortableMonitorsSeeder::class, // LISTA DE MONITORES PORTATEIS (HOME & OFFICE)
             \Database\Seeders\Lists\ExerciseBikesSeeder::class, // LISTA DE BIKES ERGOMETRICAS (FITNESS)
             \Database\Seeders\Lists\DogClippersSeeder::class, // LISTA DE MAQUINAS DE TOSA (PET SUPPLIES)
+            \Database\Seeders\Lists\WebcamsSeeder::class, // LISTA DE WEBCAMS (HOME & OFFICE)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }
