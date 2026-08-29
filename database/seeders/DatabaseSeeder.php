@@ -64,6 +64,7 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\BreadMakersSeeder::class, // LISTA DE MAQUINAS DE PAO (KITCHEN)
             \Database\Seeders\Lists\AirPurifiersSeeder::class, // LISTA DE PURIFICADORES DE AR (HOME)
             \Database\Seeders\Lists\WalkingPadsSeeder::class, // LISTA DE WALKING PADS / ESTEIRAS DE MESA (FITNESS)
+            \Database\Seeders\Lists\LaptopStandsSeeder::class, // LISTA DE SUPORTES DE NOTEBOOK (HOME & OFFICE)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }
