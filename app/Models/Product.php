@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo; // IMPORTA O TIPO DE RETOR
 
 class Product extends Model
 {
-    protected $fillable = ['article_id', 'position', 'name', 'price', 'rating', 'reviews_count', 'pros', 'contras', 'affiliate_link', 'image', 'alt_text', 'summary', 'body']; // CAMPOS PERMITIDOS NO PREENCHIMENTO EM MASSA (BODY = TEXTO SEO LONGO; ALT_TEXT = ALT DA IMAGEM)
+    protected $fillable = ['article_id', 'position', 'name', 'price', 'rating', 'reviews_count', 'pros', 'contras', 'affiliate_link', 'image', 'alt_text', 'summary', 'body', 'specs', 'review_quotes']; // CAMPOS PERMITIDOS (BODY = TEXTO SEO LONGO; SPECS = FICHA TECNICA; REVIEW_QUOTES = CITACOES REAIS DE CLIENTES)
 
-    protected $casts = ['pros' => 'array', 'contras' => 'array']; // CONVERTE AS COLUNAS JSON PARA ARRAYS PHP AUTOMATICAMENTE
+    protected $casts = ['pros' => 'array', 'contras' => 'array', 'specs' => 'array', 'review_quotes' => 'array']; // CONVERTE AS COLUNAS JSON PARA ARRAYS PHP AUTOMATICAMENTE
 
     public function article(): BelongsTo // RELACIONAMENTO: O PRODUTO PERTENCE A UM ARTIGO
     {

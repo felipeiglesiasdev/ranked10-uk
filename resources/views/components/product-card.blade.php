@@ -66,6 +66,10 @@
                 </div>
             </div>
 
+            <x-product-specs :specs="$product->specs" :position="$product->position" />{{-- FICHA TECNICA: OS NUMEROS QUE COLOCARAM O PRODUTO NESTA POSICAO (SO RENDERIZA SE PREENCHIDA) --}}
+
+            <x-product-reviews :quotes="$product->review_quotes" :product-name="$product->name" />{{-- TRECHOS LITERAIS DE AVALIACOES REAIS DE CLIENTES (SO RENDERIZA SE PREENCHIDOS) --}}
+
             <a href="{{ $product->affiliate_link }}" rel="sponsored nofollow" target="_blank" class="mt-6 inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-brand-light">{{-- BOTAO CTA COM REL OBRIGATORIO DE AFILIADO --}}
                 Check Price on Amazon
                 {{-- ICONE DE LINK EXTERNO (BOOTSTRAP ICONS: BOX-ARROW-UP-RIGHT) EM SVG INLINE --}}

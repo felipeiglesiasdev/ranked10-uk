@@ -153,7 +153,9 @@
 
         <p class="mt-6 text-lg leading-relaxed text-slate-600">{{ $article->intro }}</p>{{-- TEXTO DE INTRODUCAO --}}
 
-        <x-utils.toc :products="$article->products" :has-verdict="filled($article->conclusion)" />{{-- INDICE COM ANCORAS PARA CADA PRODUTO (LINKS INTERNOS + SITELINKS DE SALTO NO GOOGLE) --}}
+        <x-utils.toc :products="$article->products" :has-verdict="filled($article->conclusion)" :has-method="filled($article->how_we_rank)" />{{-- INDICE COM ANCORAS PARA CADA PRODUTO (LINKS INTERNOS + SITELINKS DE SALTO NO GOOGLE) --}}
+
+        <x-utils.how-we-rank :data="$article->how_we_rank" />{{-- METODOLOGIA DESTE ARTIGO: VEM ANTES DA LISTA PORQUE ENSINA O LEITOR A LER O RANKING (SO RENDERIZA SE PREENCHIDA) --}}
 
         <div id="at-a-glance" class="mt-10 scroll-mt-24">{{-- ANCORA DA TABELA COMPARATIVA (scroll-mt COMPENSA O HEADER STICKY) --}}
             <h2 class="text-xl font-bold text-slate-900">At a glance</h2>{{-- TITULO DA TABELA COMPARATIVA --}}

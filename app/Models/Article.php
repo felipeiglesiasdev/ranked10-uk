@@ -9,9 +9,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany; // IMPORTA O TIPO DE RETORNO
 
 class Article extends Model
 {
-    protected $fillable = ['category_id', 'slug', 'title', 'meta_title', 'meta_description', 'focus_keyword', 'hero_image', 'intro', 'conclusion', 'author', 'published_at']; // CAMPOS PERMITIDOS NO PREENCHIMENTO EM MASSA (META_*, FOCUS_KEYWORD E HERO_IMAGE SAO OS CAMPOS DE SEO)
+    protected $fillable = ['category_id', 'slug', 'title', 'meta_title', 'meta_description', 'focus_keyword', 'hero_image', 'intro', 'conclusion', 'how_we_rank', 'author', 'published_at']; // CAMPOS PERMITIDOS NO PREENCHIMENTO EM MASSA (META_*, FOCUS_KEYWORD E HERO_IMAGE SAO OS CAMPOS DE SEO)
 
-    protected $casts = ['published_at' => 'datetime']; // CONVERTE PUBLISHED_AT PARA OBJETO CARBON
+    protected $casts = ['published_at' => 'datetime', 'how_we_rank' => 'array']; // PUBLISHED_AT VIRA CARBON; HOW_WE_RANK VIRA ARRAY PHP AUTOMATICAMENTE
 
     public function getRouteKeyName(): string // DEFINE O CAMPO USADO NO ROUTE MODEL BINDING
     {

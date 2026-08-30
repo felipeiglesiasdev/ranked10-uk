@@ -1,4 +1,4 @@
-@props(['products', 'hasVerdict' => true]){{-- PROPS: PRODUTOS DO ARTIGO E SE EXISTE BLOCO DE CONCLUSAO --}}
+@props(['products', 'hasVerdict' => true, 'hasMethod' => false]){{-- PROPS: PRODUTOS, SE EXISTE CONCLUSAO E SE EXISTE O BLOCO "HOW WE RANK" --}}
 
 @if ($products->isNotEmpty()){{-- SO RENDERIZA O INDICE SE O ARTIGO TIVER PRODUTOS --}}
     {{-- INDICE DO ARTIGO: GERA ANCORAS INTERNAS (BOM PARA UX E PARA OS SITELINKS DE SALTO DO GOOGLE).
@@ -22,6 +22,15 @@
         {{-- LISTA: ESCONDIDA NO MOBILE ATE O CLIQUE (!block SOBRESCREVE O hidden), SEMPRE VISIVEL A PARTIR DE md --}}
         <div id="toc-lista" class="hidden md:block" :class="aberto && '!block'">
             <ol class="mt-4 space-y-1 border-t border-slate-100 pt-4">{{-- LISTA ORDENADA DAS ANCORAS --}}
+                @if ($hasMethod){{-- SO OS ARTIGOS COM METODOLOGIA PROPRIA GANHAM ESTA ENTRADA --}}
+                    <li>
+                        <a href="#how-we-rank" class="flex items-center gap-3 rounded-lg px-2 py-1.5 text-sm text-slate-600 transition hover:bg-slate-50 hover:text-brand">{{-- ANCORA DO BLOCO DE METODOLOGIA --}}
+                            <span class="w-6 shrink-0 text-center text-xs font-bold text-slate-400">—</span>{{-- MARCADOR NEUTRO (NAO E UM PRODUTO) --}}
+                            <span class="font-medium">How we ranked this list</span>{{-- ROTULO DA METODOLOGIA --}}
+                        </a>
+                    </li>
+                @endif
+
                 <li>
                     <a href="#at-a-glance" class="flex items-center gap-3 rounded-lg px-2 py-1.5 text-sm text-slate-600 transition hover:bg-slate-50 hover:text-brand">{{-- ANCORA DA TABELA COMPARATIVA --}}
                         <span class="w-6 shrink-0 text-center text-xs font-bold text-slate-400">—</span>{{-- MARCADOR NEUTRO (NAO E UM PRODUTO) --}}
