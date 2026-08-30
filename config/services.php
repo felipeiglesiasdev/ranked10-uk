@@ -35,4 +35,12 @@ return [
         ],
     ],
 
+    'turnstile' => [ // CLOUDFLARE TURNSTILE — CAPTCHA INVISIVEL DO FORMULARIO DE COMENTARIOS
+        // ⚠ ENQUANTO AS DUAS CHAVES ESTIVEREM VAZIAS O CAPTCHA FICA DESLIGADO E O FORMULARIO
+        // CONTINUA FUNCIONANDO COM AS DEMAIS DEFESAS. AS CHAVES SAO CRIADAS EM
+        // dash.cloudflare.com > Turnstile > Add site (dominio: www.ranked10.co.uk).
+        'site_key' => env('TURNSTILE_SITE_KEY'), // CHAVE PUBLICA: VAI PARA O HTML E RENDERIZA O WIDGET
+        'secret_key' => env('TURNSTILE_SECRET_KEY'), // CHAVE SECRETA: SO NO SERVIDOR, VALIDA O TOKEN
+    ],
+
 ];

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Article; // IMPORTA O MODEL DE ARTIGOS
 use App\Models\Category; // IMPORTA O MODEL DE CATEGORIAS
 use App\Models\Product; // IMPORTA O MODEL DE PRODUTOS (BLOCO DE MELHOR AVALIADOS DE OUTROS GUIAS)
+use App\Services\Turnstile; // IMPORTA O SERVICO DO CAPTCHA (SO PARA LER A CHAVE PUBLICA)
 use Illuminate\View\View; // IMPORTA O TIPO DE RETORNO DAS VIEWS
 
 class ArticleController extends Controller
@@ -27,7 +28,19 @@ class ArticleController extends Controller
             ->take(4) // LIMITA AOS 4 MELHORES DE OUTROS GUIAS
             ->get(); // EXECUTA A CONSULTA
 
-        return view('articles.show', compact('category', 'article', 'author', 'related', 'topProducts')); // RETORNA A VIEW DO ARTIGO COM OS DADOS
+        $comentarios = collect(); // COLECAO VAZIA POR PADRAO (COMENTARIOS PODEM ESTAR DESLIGADOS)
+        $turnstileSiteKey = null; // CHAVE PUBLICA DO CAPTCHA (NULA = CAPTCHA DESLIGADO NO .env)
+
+        if (config('comments.enabled', true)) { // SO CONSULTA COMENTARIOS SE A SECAO ESTIVER LIGADA
+            $comentarios = $article->comentariosPublicados() // COMENTARIOS RAIZ APROVADOS, MAIS NOVOS PRIMEIRO
+                ->with('replies') // CARREGA AS RESPOSTAS DE UMA VEZ (SEM ISSO SERIA 1 CONSULTA POR COMENTARIO)
+                ->take((int) config('comments.per_page', 20)) // TETO DE COMENTARIOS RENDERIZADOS NA PAGINA
+                ->get(); // EXECUTA A CONSULTA
+
+            $turnstileSiteKey = app(Turnstile::class)->siteKey(); // SO DEVOLVE ALGO SE O PAR DE CHAVES ESTIVER COMPLETO
+        }
+
+        return view('articles.show', compact('category', 'article', 'author', 'related', 'topProducts', 'comentarios', 'turnstileSiteKey')); // RETORNA A VIEW DO ARTIGO COM OS DADOS
     }
 
     private function relacionados(Category $category, Article $article) // MONTA ATE 3 ARTIGOS RELACIONADOS

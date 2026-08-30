@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArticleController; // IMPORTA O CONTROLLER DE ARTIGOS
 use App\Http\Controllers\CategoryController; // IMPORTA O CONTROLLER DE CATEGORIAS
+use App\Http\Controllers\CommentController; // IMPORTA O CONTROLLER DE COMENTARIOS
 use App\Http\Controllers\HomeController; // IMPORTA O CONTROLLER DA HOME
 use App\Http\Controllers\SearchController; // IMPORTA O CONTROLLER DE BUSCA
 use App\Http\Controllers\SitemapController; // IMPORTA O CONTROLLER DO SITEMAP
@@ -11,6 +12,12 @@ Route::get('/', [HomeController::class, 'index'])->name('home'); // ROTA DA PAGI
 Route::get('/sitemap.xml', [SitemapController::class, 'index']); // ROTA DO SITEMAP XML PARA OS BUSCADORES
 Route::get('/search', [SearchController::class, 'index'])->name('search'); // ROTA DA BUSCA POR TITULO
 Route::view('/privacy-policy', 'pages.privacy')->name('privacy'); // ROTA DA POLITICA DE PRIVACIDADE (FIXA, ANTES DO CATCH-ALL DE CATEGORIA)
+
+// ─── COMENTARIOS (UGC SEM LOGIN) ───
+// ⚠ ESTAS SAO AS PRIMEIRAS ROTAS DO SITE QUE NAO SAO GET SIMPLES. O RESTO DO ranked10 CONTINUA
+// 100% ESTATICO E SEM SESSAO; SO O FORMULARIO DE COMENTARIO USA CSRF.
+Route::get('/comments/token', [CommentController::class, 'token'])->name('comments.token'); // TOKEN CSRF FRESCO PARA O FORMULARIO (FICA ANTES DO CATCH-ALL DE CATEGORIA)
+Route::post('/{category:slug}/{article:slug}/comments', [CommentController::class, 'store'])->name('comments.store'); // ENVIO DE UM COMENTARIO NOVO
 
 // REDIRECTS 301 DE SLUGS ANTIGOS (SEMPRE ANTES DO CATCH-ALL, PARA NAO PERDER SEO DE URLS JA INDEXADAS)
 Route::redirect('/home/best-portable-fans-uk', '/home/best-handheld-fans', 301); // SLUG ANTIGO DO ARTIGO DE VENTILADORES PORTATEIS

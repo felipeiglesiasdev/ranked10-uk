@@ -19,7 +19,7 @@
             <x-utils.breadcrumbs :items="[['label' => 'Privacy Policy']]" />{{-- TRILHA: HOME (ICONE+TEXTO) > PRIVACY POLICY --}}
 
             <h1 class="mt-4 text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900">Privacy Policy &amp; Disclosures</h1>{{-- H1 DA PAGINA --}}
-            <p class="mt-2 text-sm text-slate-500">Last updated: 25 June 2026</p>{{-- DATA DA ULTIMA ATUALIZACAO --}}
+            <p class="mt-2 text-sm text-slate-500">Last updated: 30 August 2026</p>{{-- DATA DA ULTIMA ATUALIZACAO --}}
 
             <div class="mt-8 space-y-10 leading-relaxed text-slate-600">{{-- CORPO DA POLITICA --}}
 
@@ -54,7 +54,16 @@
                 {{-- SECAO: DADOS QUE COLETAMOS --}}
                 <section id="data" class="scroll-mt-24">
                     <h2 class="text-xl font-bold text-slate-900">Information we collect</h2>{{-- TITULO DA SECAO --}}
-                    <p class="mt-3">ranked10 is a content site and does not require you to create an account or submit personal details to read our guides. Any data collected is limited to standard, aggregated analytics (such as pages viewed and general location) and is used only to improve the site.</p>{{-- DADOS --}}
+                    <p class="mt-3">ranked10 is a content site and does not require you to create an account to read our guides. Data collected while you browse is limited to standard, aggregated analytics (such as pages viewed and general location) and is used only to improve the site. The one place where you can choose to give us personal data is the comment form, described below.</p>{{-- DADOS --}}
+                </section>
+
+                {{-- SECAO: COMENTARIOS (UGC). OBRIGATORIA SOB O UK GDPR A PARTIR DO MOMENTO EM QUE O
+                     SITE PASSOU A ACEITAR NOME, EMAIL E ENDERECO DE IP DO LEITOR. --}}
+                <section id="comments" class="scroll-mt-24">
+                    <h2 class="text-xl font-bold text-slate-900">Reader comments</h2>{{-- TITULO DA SECAO --}}
+                    <p class="mt-3">You can comment on any guide without creating an account. When you post a comment we store the display name you type, the text of your comment, and the date. An email address is optional: if you give one it is never published on the site, never shown to other readers and never sold or shared &mdash; we keep it only so we can contact you about your own comment.</p>{{-- O QUE E GUARDADO --}}
+                    <p class="mt-3">We do not store your IP address. We store a one-way cryptographic hash of it, which lets us spot repeat abuse without keeping the address itself, along with your browser's user-agent string. Comments are checked automatically before publication, and anything containing a link is held for manual review. Links posted inside comments always carry <code class="rounded bg-slate-100 px-1 py-0.5 text-sm">rel="ugc nofollow"</code> so they pass no ranking credit.</p>{{-- IP HASHEADO E MODERACAO --}}
+                    <p class="mt-3">The comment form is protected by Cloudflare Turnstile, which checks that you are not a bot. Cloudflare processes limited technical data to perform that check; it does not track you across websites for advertising. To have your comment edited or deleted, contact us with the name you used and the guide you commented on.</p>{{-- TURNSTILE E DIREITO DE EXCLUSAO --}}
                 </section>
 
                 {{-- SECAO: ALTERACOES --}}

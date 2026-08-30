@@ -82,6 +82,24 @@
     ]);
 @endphp
 
+@php
+    // ACRESCENTA OS COMENTARIOS AO SCHEMA DO BLOGPOSTING.
+    // POR QUE ISSO IMPORTA: commentCount E comment SAO SINAIS DE PAGINA VIVA E DE DISCUSSAO REAL.
+    // O TEXTO VAI TRUNCADO EM 500 CARACTERES — O SCHEMA E UM RESUMO PARA O BUSCADOR, NAO UMA
+    // SEGUNDA COPIA DO CONTEUDO (DUPLICAR A PAGINA INTEIRA DENTRO DO JSON-LD NAO AJUDA NADA).
+    $comentariosPlanos = $comentarios->flatMap(fn ($c) => collect([$c])->concat($c->replies)); // JUNTA RAIZES E RESPOSTAS NUMA LISTA UNICA
+
+    if ($comentariosPlanos->isNotEmpty()) { // SO ADICIONA O BLOCO SE HOUVER COMENTARIO PUBLICADO
+        $blogPostingLd['commentCount'] = $comentariosPlanos->count(); // QUANTIDADE TOTAL DE COMENTARIOS APROVADOS
+        $blogPostingLd['comment'] = $comentariosPlanos->take(20)->map(fn ($c) => [ // ATE 20 COMENTARIOS NO SCHEMA
+            '@type' => 'Comment', // TIPO COMMENT DO SCHEMA.ORG
+            'author' => ['@type' => 'Person', 'name' => $c->author_name], // AUTOR DO COMENTARIO
+            'datePublished' => $c->created_at->toAtomString(), // QUANDO FOI PUBLICADO
+            'text' => Str::limit($c->body, 500), // TEXTO TRUNCADO
+        ])->values()->all(); // INDICES SEQUENCIAIS NO JSON FINAL
+    }
+@endphp
+
 @push('seo'){{-- INJETA AS META TAGS DE SEO NO HEAD DO LAYOUT --}}
     <title>{{ $metaTitle }} | ranked10</title>{{-- TITULO DA ABA/GOOGLE (meta_title COM FALLBACK PARA O TITULO) --}}
     <meta name="description" content="{{ $metaDescription }}">{{-- META DESCRIPTION (meta_description COM FALLBACK PARA A INTRO) --}}
@@ -159,6 +177,12 @@
         <x-utils.share-buttons :url="route('article', [$category, $article])" :title="$article->title" />{{-- BOTOES DE COMPARTILHAR (WHATSAPP, X, FACEBOOK, EMAIL, COPIAR) --}}
 
         <x-utils.author-bio :author="$author" />{{-- FOTO E BIO DO AUTOR DO ARTIGO --}}
+
+        @if (config('comments.enabled', true)){{-- SECAO DE COMENTARIOS (UGC SEM LOGIN) --}}
+            {{-- FICA DEPOIS DA BIO E ANTES DOS RELACIONADOS DE PROPOSITO: A CONVERSA PERTENCE AO
+                 ARTIGO, E OS BLOCOS DE LINKS INTERNOS SAO A SAIDA DA PAGINA. --}}
+            <x-comments.section :article="$article" :category="$category" :comments="$comentarios" :turnstile-site-key="$turnstileSiteKey" />{{-- LISTA INDEXAVEL + FORMULARIO COM JS PREGUICOSO --}}
+        @endif
 
         <x-utils.related-articles :articles="$related" :category="$category" />{{-- ARTIGOS RELACIONADOS + LINK PARA A CATEGORIA (ANCORAGEM DE LINKS) --}}
 

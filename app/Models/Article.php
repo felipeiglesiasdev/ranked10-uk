@@ -28,6 +28,18 @@ class Article extends Model
         return $this->hasMany(Product::class)->orderBy('position'); // RETORNA OS PRODUTOS SEMPRE ORDENADOS PELA POSICAO NO RANKING
     }
 
+    public function comments(): HasMany // RELACIONAMENTO: UM ARTIGO TEM MUITOS COMENTARIOS (EM QUALQUER STATUS)
+    {
+        return $this->hasMany(Comment::class); // RETORNA TODOS OS COMENTARIOS, INCLUSIVE OS PENDENTES E OS MARCADOS COMO SPAM
+    }
+
+    public function comentariosPublicados(): HasMany // RELACIONAMENTO: SO O QUE APARECE NA PAGINA
+    {
+        // SO COMENTARIOS APROVADOS E DE PRIMEIRO NIVEL. AS RESPOSTAS VEM PELO RELACIONAMENTO replies()
+        // DE CADA UM, ENTAO A VIEW NUNCA PRECISA MONTAR A ARVORE NA MAO.
+        return $this->hasMany(Comment::class)->where('status', Comment::APROVADO)->whereNull('parent_id')->latest(); // MAIS NOVOS PRIMEIRO
+    }
+
     public function scopePublicados(Builder $query): Builder // SCOPE QUE FILTRA APENAS ARTIGOS JA PUBLICADOS
     {
         return $query->whereNotNull('published_at')->where('published_at', '<=', now()); // EXIGE DATA DE PUBLICACAO PREENCHIDA E NO PASSADO
