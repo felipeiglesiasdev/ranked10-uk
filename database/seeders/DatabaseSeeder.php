@@ -78,6 +78,13 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\PortableSsdsSeeder::class, // LISTA DE SSDs PORTATEIS (TECH)
             \Database\Seeders\Lists\SolarSecurityLightsSeeder::class, // LISTA DE LUZES DE SEGURANCA SOLARES (GARDEN)
             \Database\Seeders\Lists\GardenStorageBoxesSeeder::class, // LISTA DE BAUS DE JARDIM (GARDEN)
+            \Database\Seeders\Lists\SadLampsSeeder::class, // LISTA DE LUMINARIAS DE FOTOTERAPIA SAD (HOME)
+            \Database\Seeders\Lists\EspressoMachinesSeeder::class, // LISTA DE MAQUINAS DE ESPRESSO (KITCHEN)
+            \Database\Seeders\Lists\CarpetCleanersSeeder::class, // LISTA DE LAVADORAS DE CARPETE (HOME)
+            \Database\Seeders\Lists\TemperatureControlKettlesSeeder::class, // LISTA DE CHALEIRAS COM CONTROLE DE TEMPERATURA (KITCHEN)
+            \Database\Seeders\Lists\UsbCDockingStationsSeeder::class, // LISTA DE DOCKING STATIONS USB-C (HOME & OFFICE)
+            \Database\Seeders\Lists\SmartPlugsSeeder::class, // LISTA DE TOMADAS INTELIGENTES (TECH)
+            \Database\Seeders\Lists\StandMixersSeeder::class, // LISTA DE BATEDEIRAS PLANETARIAS (KITCHEN)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }
