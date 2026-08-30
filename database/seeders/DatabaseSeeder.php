@@ -90,6 +90,8 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\MultiPortChargersSeeder::class, // LISTA DE CARREGADORES USB-C MULTI-PORTA (TECH)
             \Database\Seeders\Lists\GpsPetTrackersSeeder::class, // LISTA DE RASTREADORES GPS PARA PETS (PET SUPPLIES)
             \Database\Seeders\Lists\SmartRadiatorValvesSeeder::class, // LISTA DE VALVULAS TERMOSTATICAS INTELIGENTES (HOME)
+            \Database\Seeders\Lists\CordlessVacuumsSeeder::class, // LISTA DE ASPIRADORES VERTICAIS SEM FIO (HOME)
+            \Database\Seeders\Lists\MiniChainsawsSeeder::class, // LISTA DE MINI MOTOSSERRAS SEM FIO (GARDEN)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }
