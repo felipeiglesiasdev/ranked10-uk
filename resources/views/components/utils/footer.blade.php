@@ -67,16 +67,6 @@
                         </a>{{-- LINK PARA A PAGINA SOBRE --}}
                     </li>
                     <li>
-                        {{-- METODOLOGIA: E O LINK DE AUTORIDADE MAIS IMPORTANTE DO RODAPE. APARECER EM
-                             TODAS AS PAGINAS DO SITE E O QUE GARANTE QUE ELE SEJA RASTREADO E ASSOCIADO
-                             AO DOMINIO INTEIRO, E NAO A UM ARTIGO SO. --}}
-                        <a href="{{ route('how-we-rank') }}" class="inline-flex items-center gap-2 text-slate-400 hover:text-white">
-                            {{-- ICONE DE REGUA (BOOTSTRAP ICONS: RULERS) EM SVG INLINE --}}
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" class="text-slate-400" aria-hidden="true"><path d="M1 0a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1h-2V3a1 1 0 0 0-1-1h-2V1a1 1 0 0 0-1-1zm1 13.5v-11h1v1a.5.5 0 0 0 1 0v-1h1v1a.5.5 0 0 0 1 0v-1h1v1a.5.5 0 0 0 1 0v-1h1v11H8v-1a.5.5 0 0 0-1 0v1H6v-1a.5.5 0 0 0-1 0v1H4v-1a.5.5 0 0 0-1 0v1zm7.5-9h1v1a.5.5 0 0 0 1 0v-1h1v9h-1v-1a.5.5 0 0 0-1 0v1h-1zm3.5 2h1v1a.5.5 0 0 0 1 0v-1h1v7h-1v-1a.5.5 0 0 0-1 0v1h-1z"/></svg>
-                            How we rank
-                        </a>{{-- LINK DA METODOLOGIA --}}
-                    </li>
-                    <li>
                         <a href="{{ route('privacy') }}" class="inline-flex items-center gap-2 text-slate-400 hover:text-white">{{-- POLITICA DE PRIVACIDADE --}}
                             {{-- ICONE ESCUDO (BOOTSTRAP ICONS: SHIELD-LOCK) EM SVG INLINE --}}
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" class="text-slate-400" aria-hidden="true"><path d="M5.338 1.59a61 61 0 0 0-2.837.856.48.48 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.7 10.7 0 0 0 2.287 2.233c.346.244.652.42.893.533q.18.085.293.118a1 1 0 0 0 .101.025 1 1 0 0 0 .1-.025q.114-.034.294-.118c.24-.113.547-.29.893-.533a10.7 10.7 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.8 11.8 0 0 1-2.517 2.453 7 7 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7 7 0 0 1-1.048-.625 11.8 11.8 0 0 1-2.517-2.453C1.262 10.36-.12 7.042.476 2.562A1.54 1.54 0 0 1 1.52 1.300C2.18 1.085 3.298.728 4.408.428z"/><path d="M9.5 6.5a1.5 1.5 0 0 1-1 1.415l.385 1.99a.5.5 0 0 1-.491.595h-.788a.5.5 0 0 1-.49-.595l.384-1.99a1.5 1.5 0 1 1 2-1.415z"/></svg>

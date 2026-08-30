@@ -36,7 +36,7 @@ return [
         'bio' => 'Felipe is a computational engineering student who has been working in SEO since he was sixteen. He founded ranked10 and researches every guide on the site.',
 
         // BIO LONGA: A PAGINA /author/felipe-iglesias. CURTA DE PROPOSITO.
-        // ⚠ NAO DESCREVER O METODO AQUI — ELE JA TEM /how-we-rank E /about. PAGINA DE AUTOR QUE
+        // ⚠ NAO DESCREVER O METODO AQUI — /about JA FAZ ISSO. PAGINA DE AUTOR QUE
         // EXPLICA METODOLOGIA AFOGA A UNICA COISA QUE SO ELA PODE DIZER: QUEM E A PESSOA.
         'bio_long' => [
             'Felipe Iglesias is 25, from São Paulo, and the person behind every guide on ranked10. He holds a BSc in Exact Sciences from the Federal University of Juiz de Fora (UFJF) and is currently studying Computational Engineering at the same university.',

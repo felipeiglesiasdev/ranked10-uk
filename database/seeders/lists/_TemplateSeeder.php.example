@@ -66,20 +66,6 @@ class _TemplateSeeder extends Seeder // RENOMEIE PARA NomeDaListaSeeder (PASSO 2
             'hero_image' => '',                 // PREENCHA AQUI: URL DA IMAGEM PRINCIPAL NO CDN (EX: 'https://cdn.ranked10.co.uk/articles/best-air-fryers-uk.webp')
             'intro' => '',                      // PREENCHA AQUI: INTRODUCAO — REPITA A PALAVRA-CHAVE NATURALMENTE
             'conclusion' => '',                 // PREENCHA AQUI: CONCLUSAO — REPITA A PALAVRA-CHAVE NATURALMENTE
-            // ─── BLOCO "HOW WE RANK" (OBRIGATORIO EM ARTIGO NOVO) ───
-            // NAO REPITA A PAGINA /how-we-rank, QUE DESCREVE O METODO DO SITE INTEIRO. AQUI VAI O
-            // RECIBO **DESTA** LISTA: QUANTOS ANUNCIOS FORAM ABERTOS E QUAIS NUMEROS FORAM
-            // CONFERIDOS NESTA CATEGORIA. TODO ITEM PRECISA DE UM NUMERO — AFIRMACAO SEM NUMERO E
-            // EXATAMENTE O QUE ESTAMOS CRITICANDO NOS ANUNCIOS.
-            // DEIXE COMO null NUM ARTIGO ANTIGO: A SECAO SIMPLESMENTE NAO RENDERIZA.
-            'how_we_rank' => [
-                'sample' => '',                 // PREENCHA AQUI: EX '20 listings examined, 10 published. 58 to 8,877 ratings.'
-                'summary' => '',                // PREENCHA AQUI: UM PARAGRAFO — O QUE DECIDIU ESTE RANQUEAMENTO
-                'checked' => [                  // PREENCHA AQUI: 4 A 6 ITENS, CADA UM COM O NUMERO QUE O SUSTENTA
-                    // ['label' => 'Whether the battery can supply the advertised motor', 'text' => 'Watt-hours divided by stated run time gives real draw...'],
-                ],
-                'excluded' => '',               // PREENCHA AQUI: O QUE FICOU DE FORA E POR QUE (MOSTRA QUE HOUVE CRITERIO)
-            ],
             'author' => 'Felipe Iglesias',      // AUTOR DO ARTIGO (DEVE BATER COM UM 'name' EM config/authors.php)
             'published_at' => '2026-01-01 10:00:00', // PREENCHA AQUI: DATA FIXA EM STRING — NUNCA now(): RE-RODAR O SEEDER RESETARIA A DATA E REEMBARALHARIA "LATEST GUIDES"
         ];

@@ -23,7 +23,6 @@ Route::get('/nav/menu', [NavigationController::class, 'menu'])->name('nav.menu')
 // ─── PAGINAS DE AUTORIDADE (E-E-A-T) ───
 // ⚠ TODAS FICAM ANTES DO CATCH-ALL /{category:slug}, SENAO SERIAM ENGOLIDAS POR ELE E DARIAM 404.
 Route::get('/about', [PageController::class, 'about'])->name('about'); // SOBRE O ranked10 (QUEM SOMOS, COMO NOS SUSTENTAMOS)
-Route::get('/how-we-rank', [PageController::class, 'howWeRank'])->name('how-we-rank'); // METODOLOGIA: COMO CADA LISTA E MONTADA
 Route::get('/author/{slug}', [PageController::class, 'author'])->name('author'); // PAGINA PESSOAL DO AUTOR (SINAL DE AUTORIA REAL)
 
 // ─── COMENTARIOS (UGC SEM LOGIN) ───

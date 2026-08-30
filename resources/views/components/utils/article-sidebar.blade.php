@@ -104,15 +104,12 @@
         @endif
 
         {{-- ─── 4. CAIXA DE CONFIANCA ───
-             Dois links institucionais em toda pagina de artigo. Sao as paginas que sustentam o
-             E-E-A-T e ate agora so recebiam link do rodape. --}}
+             Link institucional em toda pagina de artigo. /about sustenta o E-E-A-T e, sem esta
+             caixa, so receberia link do rodape. --}}
         <div class="rounded-2xl bg-slate-100 p-4">{{-- CAIXA CLARA --}}
             <p class="text-sm font-bold text-slate-900">Why trust this ranking?</p>{{-- TITULO --}}
-            <p class="mt-1.5 text-xs leading-relaxed text-slate-600">We compare what every manufacturer publishes about its own product, then rank on price, customer ratings and the specifications that decide the job.</p>{{-- RESUMO --}}
-            <div class="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-xs font-semibold">{{-- LINKS --}}
-                <a href="{{ route('how-we-rank') }}" class="text-brand hover:text-brand-light">How we rank</a>{{-- METODOLOGIA --}}
-                <a href="{{ route('about') }}" class="text-brand hover:text-brand-light">About ranked10</a>{{-- SOBRE --}}
-            </div>
+            <p class="mt-1.5 text-xs leading-relaxed text-slate-600">We rank on price, customer ratings and the specifications that decide the job, and we say when a product is the wrong one for you.</p>{{-- RESUMO --}}
+            <a href="{{ route('about') }}" class="mt-3 inline-block text-xs font-semibold text-brand hover:text-brand-light">About ranked10</a>{{-- SOBRE --}}
         </div>
     </div>
 </aside>

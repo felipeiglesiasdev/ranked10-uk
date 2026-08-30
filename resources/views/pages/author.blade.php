@@ -178,17 +178,6 @@
                 </div>
             @endif
 
-            {{-- ─── PONTE PARA A METODOLOGIA ─── --}}
-            <div class="mt-12 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm md:p-8">{{-- CAIXA DE CHAMADA PARA /how-we-rank --}}
-                <h2 class="text-xl font-bold text-slate-900">How these rankings are built</h2>{{-- H2 DA CHAMADA --}}
-                <p class="mt-3 leading-relaxed text-slate-600">Every list on ranked10 follows the same documented process: products collected from the UK Amazon storefront with delivery set to a real British postcode, each listing read twice — specification table and product bullets — and every claim checked with arithmetic before a ranking is written.</p>{{-- RESUMO DO METODO --}}
-                <a href="{{ route('how-we-rank') }}" class="mt-4 inline-flex items-center gap-1.5 font-semibold text-brand hover:text-brand-light">{{-- LINK INTERNO PARA A METODOLOGIA --}}
-                    Read the full ranking method
-                    {{-- ICONE SETA (BOOTSTRAP ICONS: ARROW-RIGHT) EM SVG INLINE --}}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/></svg>
-                </a>
-            </div>
-
             {{-- ─── GUIAS RECENTES DO AUTOR ─── --}}
             @if ($artigos->isNotEmpty())
                 <div class="mt-12">

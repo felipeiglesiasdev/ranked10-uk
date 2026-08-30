@@ -18,7 +18,6 @@ class SitemapController extends Controller
         // PAGINAS INSTITUCIONAIS DE AUTORIDADE. ENTRAM NO SITEMAP DE PROPOSITO: SAO AS PAGINAS QUE
         // O GOOGLE USA PARA AVALIAR E-E-A-T, E ELAS NAO RECEBEM LINK DE ARTIGO NENHUM ALEM DO FOOTER.
         $urls[] = ['loc' => route('about'), 'lastmod' => null]; // SOBRE O SITE
-        $urls[] = ['loc' => route('how-we-rank'), 'lastmod' => null]; // METODOLOGIA DE RANQUEAMENTO
         $urls[] = ['loc' => route('privacy'), 'lastmod' => null]; // POLITICA DE PRIVACIDADE E DISCLOSURE
 
         foreach (Autores::todos() as $autor) { // PERCORRE OS PERFIS DE AUTOR CADASTRADOS

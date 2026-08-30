@@ -81,21 +81,6 @@ A mini chainsaw is for the jobs a full-size saw is too heavy for: pruning, cutti
 
 Two saws are worth the extra money for specific jobs. Choose the NovorikX 10-inch if you are cutting logs rather than pruning — the longer bar takes thicker wood in one pass, and it is the only saw here with a chain brake. Choose the WORX pole saw if the branches you need are above head height, because reaching them from the ground beats working off a ladder. For everything else, the cheaper saws in this list do the same job for less.",
 
-            // ─── BLOCO "HOW WE RANK" DESTE ARTIGO ───
-            // CURTO DE PROPOSITO. O LEITOR PODE PULAR SEM PERDER NADA — E A CAIXA QUE RESPONDE
-            // "por que devo acreditar nessa ordem?" PARA QUEM PERGUNTA, E SO PARA ESSE.
-            'how_we_rank' => [
-                'sample' => '20 saws compared, 10 ranked. GBP 32 to GBP 170.', // AMOSTRA, NA FAIXA DE TITULO
-                'summary' => 'We compared every cordless mini chainsaw on Amazon UK above GBP 30, then ranked the ten best on the things that decide the purchase: how many people have rated it and how well, what it costs, how thick a branch it cuts, how long the batteries last and how much it weighs in your hand.', // O QUE DECIDIU A ORDEM
-                'checked' => [
-                    ['label' => 'Customer ratings, read from the product page', 'text' => 'The search results page often does not show the rating count for the best sellers, so we opened each listing. The ten here range from 58 to 8,877 ratings.'],
-                    ['label' => 'Bar length against the job', 'text' => 'A 15cm bar handles pruning and branches up to about 10cm. A 25cm bar takes logs. We say which each saw is for rather than treating them as the same tool.'],
-                    ['label' => 'What is actually in the box', 'text' => 'Two batteries or one, spare chains, a charger with a UK plug, gloves and goggles. At this price the kit is a large part of the value.'],
-                    ['label' => 'Weight and how you hold it', 'text' => 'Most of these are sold for one-handed use. We flag the ones with a second handle, and the ones heavy enough that you will notice after a few minutes.'],
-                ],
-                'excluded' => 'We left out saws with fewer than 55 customer ratings, and a second SEESII model at 8 inches that duplicates the 6-inch already in the list.', // CRITERIO DE EXCLUSAO
-            ],
-
             'author' => 'Felipe Iglesias',                                       // AUTOR (DEVE BATER COM config/authors.php)
             'published_at' => '2026-08-29 23:40:00', // DATA DE PUBLICACAO FIXA — NAO USAR now(): RE-RODAR O SEEDER RESETARIA A DATA
         ];

@@ -8,7 +8,7 @@ use App\Models\Product; // IMPORTA O MODEL DE PRODUTOS
 use App\Support\Autores; // IMPORTA O ACESSO AOS PERFIS DE AUTOR
 use Illuminate\View\View; // IMPORTA O TIPO DE RETORNO DAS VIEWS
 
-// PAGINAS INSTITUCIONAIS DE AUTORIDADE (E-E-A-T): /about, /how-we-rank E /author/<slug>.
+// PAGINAS INSTITUCIONAIS DE AUTORIDADE (E-E-A-T): /about E /author/<slug>.
 // SAO AS TRES PAGINAS QUE O GOOGLE USA PARA DECIDIR SE UM SITE DE AFILIADO E UMA FONTE OU
 // APENAS MAIS UM AGREGADOR. TODAS AS ESTATISTICAS SAO LIDAS DO BANCO EM VEZ DE ESCRITAS NO
 // TEXTO — NUMERO CRAVADO NA MAO ENVELHECE E VIRA MENTIRA SEM QUE NINGUEM PERCEBA.
@@ -20,14 +20,6 @@ class PageController extends Controller
             'stats' => $this->numeros(), // NUMEROS DO SITE INTEIRO
             'categorias' => Category::withCount(['articles' => fn ($q) => $q->publicados()])->orderBy('name')->get(), // CATEGORIAS COM A CONTAGEM DE GUIAS
             'autor' => Autores::porSlug('felipe-iglesias'), // PERFIL DO FUNDADOR PARA O BLOCO DE ASSINATURA
-        ]);
-    }
-
-    public function howWeRank(): View // PAGINA DA METODOLOGIA DE RANQUEAMENTO
-    {
-        return view('pages.how-we-rank', [
-            'stats' => $this->numeros(), // NUMEROS DO SITE INTEIRO
-            'autor' => Autores::porSlug('felipe-iglesias'), // PERFIL DE QUEM APLICA O METODO
         ]);
     }
 

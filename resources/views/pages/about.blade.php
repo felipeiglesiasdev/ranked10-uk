@@ -55,7 +55,6 @@
                     'image' => $foto, // FOTO
                     'sameAs' => array_values(array_filter($autor['socials'] ?? [])) ?: null, // PERFIS EXTERNOS VERIFICAVEIS
                 ]) : null, // SEM AUTOR CADASTRADO O CAMPO SOME
-                'publishingPrinciples' => route('how-we-rank'), // ⚠ CAMPO OFICIAL DO SCHEMA PARA A PAGINA DE METODOLOGIA EDITORIAL
             ]),
         ],
     ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
@@ -143,11 +142,11 @@
             @endif
 
             {{-- ─── PONTE PARA A METODOLOGIA E O DISCLOSURE ─── --}}
-            <div class="mt-12 grid gap-4 sm:grid-cols-2">{{-- DOIS CARTOES DE NAVEGACAO --}}
-                <a href="{{ route('how-we-rank') }}" class="min-w-0 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:border-brand">{{-- CARTAO DA METODOLOGIA --}}
-                    <h2 class="font-bold text-slate-900">How we rank</h2>{{-- TITULO DO CARTAO --}}
-                    <p class="mt-2 text-sm leading-relaxed text-slate-600">The full method: how products are collected, how claims are checked with arithmetic, and what gets a product excluded from a list.</p>{{-- RESUMO --}}
-                    <span class="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-brand">Read the method</span>{{-- CHAMADA --}}
+            <div class="mt-12 grid gap-4 sm:grid-cols-2">{{-- CARTOES DE NAVEGACAO --}}
+                <a href="{{ route('author', 'felipe-iglesias') }}" class="min-w-0 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:border-brand">{{-- CARTAO DO AUTOR --}}
+                    <h2 class="font-bold text-slate-900">Who writes these guides</h2>{{-- TITULO DO CARTAO --}}
+                    <p class="mt-2 text-sm leading-relaxed text-slate-600">Every guide on ranked10 is researched and written by one person. Credentials, background and the full list of guides.</p>{{-- RESUMO --}}
+                    <span class="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-brand">Read the profile</span>{{-- CHAMADA --}}
                 </a>
                 <a href="{{ route('privacy') }}#affiliate" class="min-w-0 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:border-brand">{{-- CARTAO DO DISCLOSURE --}}
                     <h2 class="font-bold text-slate-900">How we are funded</h2>{{-- TITULO DO CARTAO --}}
