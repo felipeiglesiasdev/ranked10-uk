@@ -134,6 +134,14 @@
 @section('content'){{-- INICIO DO CONTEUDO DO ARTIGO --}}
 
     <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8 py-12">{{-- CONTAINER DO ARTIGO (DIV) COM O MESMO GUTTER LATERAL DO HEADER/FOOTER --}}
+      {{-- GRADE DE DUAS COLUNAS A PARTIR DE lg: LEITURA + BARRA LATERAL DE 19rem.
+           ABAIXO DE lg A GRADE NAO EXISTE E A BARRA EMPILHA ABAIXO DO CONTEUDO, QUE E ONDE OS
+           BLOCOS DE LINK JA FICAVAM NO MOBILE. UM RENDER SO PARA OS DOIS TAMANHOS. --}}
+      {{-- ⚠ SEM lg:items-start AQUI, DE PROPOSITO. COM ELE, A COLUNA LATERAL ENCOLHE ATE A ALTURA DO
+           PROPRIO CONTEUDO E O position:sticky LA DENTRO NAO TEM POR ONDE VIAJAR — ELE SAI DA TELA
+           JUNTO COM A COLUNA. O stretch PADRAO DA GRADE ESTICA A COLUNA ATE A ALTURA DO ARTIGO, QUE
+           E EXATAMENTE O TRILHO QUE O sticky PRECISA. --}}
+      <div class="lg:grid lg:grid-cols-[minmax(0,1fr)_19rem] lg:gap-10">
         <div class="max-w-4xl min-w-0">{{-- COLUNA DE LEITURA ALINHADA A ESQUERDA; min-w-0 IMPEDE QUE UM FILHO LARGO A ESTIQUE --}}
 
         <x-utils.breadcrumbs :items="[
@@ -205,16 +213,16 @@
 
         <x-utils.related-articles :articles="$related" :category="$category" />{{-- ARTIGOS RELACIONADOS + LINK PARA A CATEGORIA (ANCORAGEM DE LINKS) --}}
 
-        @if ($topProducts->isNotEmpty()){{-- MELHOR AVALIADOS DE OUTROS GUIAS: LEVA O LEITOR PARA DENTRO DE OUTROS ARTIGOS --}}
-            <div class="mt-14 border-t border-slate-200 pt-10">{{-- SEPARADOR ANTES DO BLOCO --}}
-                <x-utils.top-products
-                    :products="$topProducts"
-                    title="Highest rated in our other guides"
-                    subtitle="Weighted by how many people rated each product, not just the score." />{{-- LINKS INTERNOS PROFUNDOS PARA PRODUTOS DE OUTROS ARTIGOS --}}
-            </div>
-        @endif
-
         </div>{{-- FIM DA COLUNA DE LEITURA --}}
+
+        <x-utils.article-sidebar
+            :article="$article"
+            :category="$category"
+            :articles="$sidebarArticles"
+            :top-products="$topProducts"
+            :top-pick="$article->products->first()" />{{-- COLUNA DA DIREITA: ESCOLHA DO EDITOR, MAIS GUIAS, MELHOR AVALIADOS E LINKS INSTITUCIONAIS --}}
+
+      </div>{{-- FIM DA GRADE DE DUAS COLUNAS --}}
     </div>{{-- FIM DO CONTAINER DO ARTIGO --}}
 
 @endsection{{-- FIM DO CONTEUDO DO ARTIGO --}}

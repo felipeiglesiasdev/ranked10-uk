@@ -22,6 +22,8 @@ class ArticleController extends Controller
 
         $related = $this->relacionados($category, $article); // BUSCA OS ARTIGOS RELACIONADOS PARA ANCORAGEM DE LINKS
 
+        $sidebarArticles = $this->paraBarraLateral($category, $article, $related); // GUIAS EXTRAS PARA A COLUNA DA DIREITA
+
         $topProducts = Product::melhorAvaliados() // ORDENA PELA NOTA PONDERADA PELO VOLUME DE AVALIACOES
             ->where('article_id', '!=', $article->id) // EXCLUI OS PRODUTOS DO PROPRIO ARTIGO (JA ESTAO NA PAGINA)
             ->with('article.category') // CARREGA ARTIGO E CATEGORIA PARA MONTAR O LINK INTERNO SEM N+1
@@ -40,7 +42,50 @@ class ArticleController extends Controller
             $turnstileSiteKey = app(Turnstile::class)->siteKey(); // SO DEVOLVE ALGO SE O PAR DE CHAVES ESTIVER COMPLETO
         }
 
-        return view('articles.show', compact('category', 'article', 'author', 'related', 'topProducts', 'comentarios', 'turnstileSiteKey')); // RETORNA A VIEW DO ARTIGO COM OS DADOS
+        return view('articles.show', compact('category', 'article', 'author', 'related', 'sidebarArticles', 'topProducts', 'comentarios', 'turnstileSiteKey')); // RETORNA A VIEW DO ARTIGO COM OS DADOS
+    }
+
+    private function paraBarraLateral(Category $category, Article $article, $jaExibidos) // MONTA A LISTA DE GUIAS DA COLUNA LATERAL
+    {
+        // POR QUE ESTA CONSULTA EXISTE: A COLUNA DA DIREITA ERA ESPACO MORTO NO DESKTOP, E O SITE
+        // ACABOU DE PERDER ~28 LINKS DE ARTIGO POR PAGINA QUANDO O MEGA MENU VIROU ASSINCRONO.
+        // LINK CONTEXTUAL DENTRO DO ARTIGO VALE MAIS QUE LINK DE MENU, ENTAO A TROCA E BOA — MAS
+        // SO SE ELE EXISTIR. AQUI ELE PASSA A EXISTIR.
+        //
+        // ⚠ EXCLUI OS ARTIGOS QUE JA APARECEM NO BLOCO "RELATED" DO RODAPE. REPETIR O MESMO LINK
+        // DUAS VEZES NA MESMA PAGINA NAO ACRESCENTA NADA AO GRAFO INTERNO E SO GASTA ESPACO.
+        $excluir = collect($jaExibidos)->pluck('id')->push($article->id)->all(); // IDS QUE NAO PODEM SE REPETIR
+
+        $daCategoria = Article::publicados() // PRIMEIRO OS DA MESMA CATEGORIA: SAO OS MAIS RELEVANTES PARA QUEM ESTA LENDO
+            ->with('category') // CARREGA A CATEGORIA PARA MONTAR O LINK SEM N+1
+            ->where('category_id', $category->id) // MESMA CATEGORIA
+            ->whereNotIn('id', $excluir) // SEM REPETIR O QUE JA ESTA NA PAGINA
+            ->latest('published_at') // MAIS RECENTES PRIMEIRO
+            ->take(8) // TETO DA COLUNA
+            ->get(); // EXECUTA
+
+        if ($daCategoria->count() >= 8) { // A CATEGORIA SOZINHA JA PREENCHEU A COLUNA
+            return $daCategoria; // NAO PRECISA COMPLEMENTAR
+        }
+
+        // CATEGORIA PEQUENA (GARDEN E PET SUPPLIES TEM 7 ARTIGOS): COMPLEMENTA COM ARTIGOS DE FORA
+        // PARA A COLUNA NAO FICAR PELA METADE.
+        //
+        // ⚠ O skip(6) NAO E ARBITRARIO. O RODAPE DE **TODA** PAGINA DO SITE JA LISTA OS 6 GUIAS
+        // MAIS RECENTES (VER AppServiceProvider). SEM PULAR ESSES SEIS, A COLUNA LATERAL ESCOLHIA
+        // EXATAMENTE OS MESMOS E A PAGINA APONTAVA DOIS LINKS PARA CADA UM — MEDIDO: 5 ARTIGOS
+        // DUPLICADOS. O GOOGLE SO CONSIDERA A ANCORA DO PRIMEIRO LINK, ENTAO O SEGUNDO NAO
+        // ACRESCENTA NADA AO GRAFO E AINDA GASTA UMA VAGA QUE PODIA LEVAR A OUTRO ARTIGO.
+        $complemento = Article::publicados() // BUSCA FORA DA CATEGORIA
+            ->with('category') // CARREGA A CATEGORIA
+            ->where('category_id', '!=', $category->id) // DE OUTRAS CATEGORIAS
+            ->whereNotIn('id', $excluir) // SEM REPETIR O QUE JA ESTA NA PAGINA
+            ->latest('published_at') // MAIS RECENTES PRIMEIRO
+            ->skip(6) // PULA OS 6 QUE O RODAPE JA LINKA
+            ->take(8 - $daCategoria->count()) // SO O QUE FALTA PARA FECHAR A COLUNA
+            ->get(); // EXECUTA
+
+        return $daCategoria->concat($complemento); // JUNTA OS DOIS CONJUNTOS
     }
 
     private function relacionados(Category $category, Article $article) // MONTA ATE 3 ARTIGOS RELACIONADOS
