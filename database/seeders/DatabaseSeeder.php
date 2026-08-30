@@ -85,6 +85,11 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\UsbCDockingStationsSeeder::class, // LISTA DE DOCKING STATIONS USB-C (HOME & OFFICE)
             \Database\Seeders\Lists\SmartPlugsSeeder::class, // LISTA DE TOMADAS INTELIGENTES (TECH)
             \Database\Seeders\Lists\StandMixersSeeder::class, // LISTA DE BATEDEIRAS PLANETARIAS (KITCHEN)
+            \Database\Seeders\Lists\VibrationPlatesSeeder::class, // LISTA DE PLATAFORMAS VIBRATORIAS (FITNESS)
+            \Database\Seeders\Lists\MonitorLightBarsSeeder::class, // LISTA DE BARRAS DE LUZ DE MONITOR (HOME & OFFICE)
+            \Database\Seeders\Lists\MultiPortChargersSeeder::class, // LISTA DE CARREGADORES USB-C MULTI-PORTA (TECH)
+            \Database\Seeders\Lists\GpsPetTrackersSeeder::class, // LISTA DE RASTREADORES GPS PARA PETS (PET SUPPLIES)
+            \Database\Seeders\Lists\SmartRadiatorValvesSeeder::class, // LISTA DE VALVULAS TERMOSTATICAS INTELIGENTES (HOME)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }
