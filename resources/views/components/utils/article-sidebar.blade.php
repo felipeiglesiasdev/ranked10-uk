@@ -12,12 +12,14 @@
      NO MOBILE A GRADE COLAPSA PARA UMA COLUNA E TUDO ISTO EMPILHA ABAIXO DO CONTEUDO, QUE E
      EXATAMENTE ONDE ESSES BLOCOS JA FICAVAM. UM RENDER SO, CERTO NOS DOIS TAMANHOS — NADA DE
      DUPLICAR O HTML COM hidden/lg:block.
+
+     ⚠ A COLUNA NAO E MAIS sticky (DECISAO DO FELIPE, 30/08/2026). ELA ROLA JUNTO COM O ARTIGO.
+     SE UM DIA VOLTAR A SER, A GRADE DO PAI **NAO** PODE TER items-start: ISSO ENCOLHE A COLUNA
+     ATE A ALTURA DO PROPRIO CONTEUDO E O sticky FICA SEM TRILHO PARA VIAJAR.
      ═══════════════════════════════════════════════════════════════════════════ --}}
 <aside class="mt-12 lg:mt-0" aria-label="More from ranked10">{{-- COLUNA LATERAL --}}
 
-    {{-- O sticky ACOMPANHA O LEITOR PELO ARTIGO INTEIRO. FUNCIONA PORQUE ESTA COLUNA E MUITO MAIS
-         CURTA QUE O CONTEUDO — NUM ARTIGO DE 20.000px ELA FICARIA VISIVEL SO NO TOPO SEM ISSO. --}}
-    <div class="space-y-6 lg:sticky lg:top-24">{{-- WRAPPER GRUDENTO --}}
+    <div class="space-y-6">{{-- PILHA DOS BLOCOS DA COLUNA (SEM sticky, POR DECISAO DO FELIPE) --}}
 
         {{-- ─── 1. ESCOLHA DO EDITOR ───
              O leitor rola dez produtos; este cartao mantem a recomendacao sempre a vista.
@@ -46,7 +48,13 @@
             </div>
         @endif
 
-        {{-- ─── 2. MAIS GUIAS ───
+        {{-- ─── 2. GRUPO DE OFERTAS NO WHATSAPP ───
+             Fica logo abaixo do produto vencedor de proposito: e o ponto da coluna com mais
+             atencao do leitor, porque ele acabou de olhar a recomendacao. Nao renderiza nada
+             enquanto config/promo.php nao tiver a URL do grupo. --}}
+        <x-utils.whatsapp-cta />{{-- CHAMADA DO GRUPO DE OFERTAS --}}
+
+        {{-- ─── 3. MAIS GUIAS ───
              O bloco de link interno que o artigo nao tinha. Prioriza a mesma categoria (mais
              relevante para quem esta lendo) e completa com os mais recentes do site quando a
              categoria e pequena. --}}
@@ -72,7 +80,7 @@
             </nav>
         @endif
 
-        {{-- ─── 3. MELHOR AVALIADOS DE OUTROS GUIAS ───
+        {{-- ─── 4. MELHOR AVALIADOS DE OUTROS GUIAS ───
              Links profundos direto na ancora do produto dentro de outro artigo. Vieram do rodape
              da pagina para ca: no rodape competiam com os relacionados, aqui ocupam espaco que
              estava vazio. --}}
@@ -103,7 +111,7 @@
             </div>
         @endif
 
-        {{-- ─── 4. CAIXA DE CONFIANCA ───
+        {{-- ─── 5. CAIXA DE CONFIANCA ───
              Link institucional em toda pagina de artigo. /about sustenta o E-E-A-T e, sem esta
              caixa, so receberia link do rodape. --}}
         <div class="rounded-2xl bg-slate-100 p-4">{{-- CAIXA CLARA --}}
