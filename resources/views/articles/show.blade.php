@@ -151,7 +151,15 @@
             <img src="{{ $heroImage }}" alt="{{ $heroAlt }}" width="1200" height="630" fetchpriority="high" class="mt-6 aspect-[1200/630] w-full rounded-2xl border border-slate-200 object-cover bg-slate-100">{{-- HERO 1200x630 WEBP; fetchpriority=high POIS E O ELEMENTO LCP; width/height RESERVAM O ESPACO (EVITA CLS) --}}
         @endif
 
-        <p class="mt-6 text-lg leading-relaxed text-slate-600">{{ $article->intro }}</p>{{-- TEXTO DE INTRODUCAO --}}
+        <div class="mt-6 space-y-4 text-lg leading-relaxed text-slate-600">{{-- TEXTO DE INTRODUCAO --}}
+            {{-- QUEBRA A INTRO EM PARAGRAFOS PELA LINHA EM BRANCO, IGUAL AO body DO PRODUTO.
+                 ANTES ERA UM <p> UNICO: UMA INTRO DE DOIS PARAGRAFOS VIRAVA UM BLOCO DE TEXTO SO,
+                 E NO MOBILE ISSO E UMA PAREDE QUE O LEITOR PULA. --}}
+            @foreach (preg_split('/
+{2,}/', trim($article->intro)) as $paragrafoDaIntro)
+                <p>{{ $paragrafoDaIntro }}</p>{{-- UM PARAGRAFO DA INTRODUCAO --}}
+            @endforeach
+        </div>
 
         <x-utils.toc :products="$article->products" :has-verdict="filled($article->conclusion)" :has-method="filled($article->how_we_rank)" />{{-- INDICE COM ANCORAS PARA CADA PRODUTO (LINKS INTERNOS + SITELINKS DE SALTO NO GOOGLE) --}}
 
