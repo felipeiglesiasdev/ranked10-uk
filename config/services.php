@@ -41,6 +41,9 @@ return [
         // dash.cloudflare.com > Turnstile > Add site (dominio: www.ranked10.co.uk).
         'site_key' => env('TURNSTILE_SITE_KEY'), // CHAVE PUBLICA: VAI PARA O HTML E RENDERIZA O WIDGET
         'secret_key' => env('TURNSTILE_SECRET_KEY'), // CHAVE SECRETA: SO NO SERVIDOR, VALIDA O TOKEN
+        // O WIDGET E TRAVADO POR DOMINIO E DEVOLVE O ERRO 110200 EM QUALQUER HOST QUE NAO ESTEJA
+        // NA LISTA DO PAINEL. POR ISSO ELE FICA DESLIGADO EM local POR PADRAO — VER App\Services\Turnstile.
+        'force_local' => env('TURNSTILE_FORCE_LOCAL', false), // true LIGA O CAPTCHA TAMBEM EM DESENVOLVIMENTO
     ],
 
 ];

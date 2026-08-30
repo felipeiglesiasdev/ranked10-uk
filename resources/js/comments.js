@@ -39,7 +39,18 @@ function carregaTurnstile(form) { // INJETA O SCRIPT DA CLOUDFLARE E DESENHA O W
             action: 'comment', // ROTULO QUE APARECE NAS METRICAS DO PAINEL DA CLOUDFLARE
             callback: (token) => { tokenCaptcha = token; }, // GUARDA O TOKEN QUANDO O DESAFIO PASSA
             'expired-callback': () => { tokenCaptcha = null; }, // TOKEN VENCE EM ~5 MIN: LIMPA PARA FORCAR NOVO
-            'error-callback': () => { tokenCaptcha = null; }, // ERRO NO DESAFIO: LIMPA O TOKEN
+            'error-callback': (codigo) => { // ERRO NO DESAFIO
+                tokenCaptcha = null; // LIMPA O TOKEN
+                // O CODIGO E IMPRESSO PORQUE A FALHA MAIS PROVAVEL AQUI E DE CONFIGURACAO, NAO DE
+                // CODIGO, E SEM ELE O SINTOMA E APENAS "o formulario nao envia":
+                //   110200 = DOMINIO DESCONHECIDO — O HOST NAO ESTA NA LISTA DO WIDGET NA CLOUDFLARE
+                //   110100 = SITEKEY INVALIDA
+                //   300xxx = FALHA INTERNA DO DESAFIO, GERALMENTE PASSAGEIRA
+                console.warn('[ranked10] Turnstile error ' + codigo + ' on ' + location.hostname); // PISTA PARA DIAGNOSTICO
+                if (String(codigo).startsWith('1102')) { // DOMINIO NAO AUTORIZADO: NENHUMA TENTATIVA VAI PASSAR
+                    avisa(form, 'The security check is not available on this domain. Please let us know if you see this.'); // AVISA EM VEZ DE DEIXAR O LEITOR TENTANDO
+                }
+            },
         });
     };
 

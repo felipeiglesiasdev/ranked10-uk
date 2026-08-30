@@ -25,22 +25,22 @@ return [
         'slug' => 'felipe-iglesias',        // SLUG DA PAGINA DO AUTOR → /author/felipe-iglesias
         'role' => 'Founder & Lead Reviewer', // CARGO EXIBIDO ABAIXO DO NOME
 
-        // ⚠ COLE AQUI O LINK DA FOTO NO CDN QUANDO SUBIR (ex.: https://cdn.ranked10.co.uk/authors/felipe-iglesias.jpg)
-        'photo' => '',                      // VAZIO = AVATAR COM AS INICIAIS (NAO QUEBRA NADA)
+        // FOTO NO CDN. TROCAR ESTA LINHA TROCA A IMAGEM NA PAGINA DO AUTOR, NA CAIXA DE BIO DOS
+        // 76 ARTIGOS E NO SCHEMA Person DE UMA VEZ SO — NAO HA COPIA DELA EM LUGAR NENHUM.
+        'photo' => 'https://cdn.ranked10.co.uk/images/felipe-iglesias.webp', // FOTO SERVIDA PELO CDN (CLOUDFLARE R2)
 
         'location' => 'São Paulo, Brazil',  // DE ONDE ESCREVE — DECLARAR ISSO E MAIS HONESTO QUE OMITIR NUM SITE .co.uk
         'headline' => 'Computational engineering student who has been doing SEO since he was 16, and who reads product spec sheets for fun.', // FRASE DE ABERTURA DA PAGINA DO AUTOR
 
         // BIO CURTA: APARECE NA CAIXA DO AUTOR AO FIM DE CADA ARTIGO. UM PARAGRAFO, SEM ENROLACAO.
-        'bio' => 'Felipe founded ranked10 and researches every guide on the site. He compares manufacturer spec sheets against the claims in the same listing, and publishes the contradictions he finds — the wattage that the battery cannot supply, the weight printed twice at different values, the lux figure with no distance attached.',
+        'bio' => 'Felipe is a computational engineering student who has been working in SEO since he was sixteen. He founded ranked10 and researches every guide on the site.',
 
-        // BIO LONGA: UM PARAGRAFO POR ITEM, RENDERIZADO NA PAGINA /author/felipe-iglesias.
+        // BIO LONGA: A PAGINA /author/felipe-iglesias. CURTA DE PROPOSITO.
+        // ⚠ NAO DESCREVER O METODO AQUI — ELE JA TEM /how-we-rank E /about. PAGINA DE AUTOR QUE
+        // EXPLICA METODOLOGIA AFOGA A UNICA COISA QUE SO ELA PODE DIZER: QUEM E A PESSOA.
         'bio_long' => [
-            'Felipe Iglesias is the founder of ranked10 and the person behind all 76 buying guides on the site. He holds a BSc in Exact Sciences from the Federal University of Juiz de Fora (UFJF), one of Brazil\'s federal public universities, and is currently reading for a degree in Computational Engineering at the same institution.',
-            'He has worked on search engine optimisation since he was sixteen — nine years of watching what actually ranks and what quietly does not. ranked10 came out of a specific observation from that work: the buying guides that rank and hold their position are the ones that answer a factual question with a checkable number, not the ones that describe how a product feels to use.',
-            'That is why every guide here is built the same way. Products are collected from the UK Amazon storefront with delivery set to a real British postcode, so prices and availability match what a UK reader sees. Each listing is read twice — once in the specification table, once in the "About this item" bullets — because the contradictions almost always sit between the two. A mini chainsaw advertising 1000 watts on a battery that holds 84 watt-hours; a vibration plate whose "maximum speed in RPM" is really the number of levels on its remote control; a garden storage box whose published internal dimensions work out at 305 litres under an 870-litre label. Those findings are the point of the site.',
-            'The engineering background is the reason the method is arithmetic rather than opinion. Watt-hours divided by run time gives real draw. Lux falls with the square of distance. A 13-amp UK plug caps at about 3,000 watts no matter what the box says. None of that requires owning the product — it requires reading what the seller published and doing the multiplication.',
-            'Outside of ranked10 he lifts weights and watches Formula 1, which is its own exercise in reading numbers that manufacturers would rather present differently.',
+            'Felipe Iglesias is 25, from São Paulo, and the person behind every guide on ranked10. He holds a BSc in Exact Sciences from the Federal University of Juiz de Fora (UFJF) and is currently studying Computational Engineering at the same university.',
+            'He has been working in SEO since he was sixteen. ranked10 is his own project, built to see how far a buying guide gets when it answers questions with numbers instead of adjectives.',
         ],
 
         // FORMACAO: ALIMENTA O CAMPO alumniOf DO SCHEMA Person E O BLOCO DE CREDENCIAIS DA PAGINA.

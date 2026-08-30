@@ -15,8 +15,19 @@ class Turnstile
 {
     private const ENDPOINT = 'https://challenges.cloudflare.com/turnstile/v0/siteverify'; // ENDPOINT OFICIAL DE VALIDACAO
 
-    public function configurado(): bool // DIZ SE AS DUAS CHAVES ESTAO PREENCHIDAS
+    public function configurado(): bool // DIZ SE O CAPTCHA DEVE OPERAR NESTA REQUISICAO
     {
+        // ⚠ DESLIGADO EM AMBIENTE local, PELA MESMA RAZAO QUE O GTM E: A CHAVE E EMITIDA PARA UM
+        // DOMINIO ESPECIFICO. O WIDGET RECUSA QUALQUER OUTRO COM O ERRO **110200 (unknown domain)**,
+        // ENTAO EM ranked10-app.test ELE NUNCA RESOLVERIA — E, COMO O SERVIDOR REJEITA ENVIO SEM
+        // TOKEN, NINGUEM CONSEGUIRIA COMENTAR EM DESENVOLVIMENTO. AS OUTRAS QUATRO DEFESAS
+        // (HONEYPOT, ARMADILHA DE TEMPO, RATE LIMIT E FILTRO DE CONTEUDO) CONTINUAM VALENDO AQUI.
+        // PARA TESTAR O CAPTCHA LOCALMENTE: ADICIONE ranked10-app.test AOS HOSTNAMES DO WIDGET NO
+        // PAINEL DA CLOUDFLARE **E** PONHA TURNSTILE_FORCE_LOCAL=true NO .env.
+        if (app()->environment('local') && ! config('services.turnstile.force_local')) { // DESENVOLVIMENTO SEM FORCAR
+            return false; // CAPTCHA DESLIGADO
+        }
+
         return filled(config('services.turnstile.site_key')) && filled(config('services.turnstile.secret_key')); // PRECISA DAS DUAS: A PUBLICA RENDERIZA, A SECRETA VALIDA
     }
 
