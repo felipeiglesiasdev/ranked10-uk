@@ -109,7 +109,7 @@
         @yield('content'){{-- PONTO ONDE CADA VIEW INJETA SEU CONTEUDO --}}
     </main>
 
-    <x-utils.footer :nav-categories="$navCategories" />{{-- FOOTER UNICO E RESPONSIVO (RECEBE CATEGORIAS+ARTIGOS PARA O GRAFO DE LINKS) --}}
+    <x-utils.footer :nav-categories="$navCategories" :popular-articles="$navPopularArticles" />{{-- FOOTER UNICO E RESPONSIVO (RECEBE CATEGORIAS E GUIAS RECENTES JA CONSULTADOS) --}}
 
 </body>
 </html>

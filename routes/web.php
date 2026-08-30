@@ -4,6 +4,7 @@ use App\Http\Controllers\ArticleController; // IMPORTA O CONTROLLER DE ARTIGOS
 use App\Http\Controllers\CategoryController; // IMPORTA O CONTROLLER DE CATEGORIAS
 use App\Http\Controllers\CommentController; // IMPORTA O CONTROLLER DE COMENTARIOS
 use App\Http\Controllers\HomeController; // IMPORTA O CONTROLLER DA HOME
+use App\Http\Controllers\NavigationController; // IMPORTA O CONTROLLER DO MEGA MENU (JSON)
 use App\Http\Controllers\PageController; // IMPORTA O CONTROLLER DAS PAGINAS INSTITUCIONAIS (E-E-A-T)
 use App\Http\Controllers\SearchController; // IMPORTA O CONTROLLER DE BUSCA
 use App\Http\Controllers\SitemapController; // IMPORTA O CONTROLLER DO SITEMAP
@@ -13,6 +14,11 @@ Route::get('/', [HomeController::class, 'index'])->name('home'); // ROTA DA PAGI
 Route::get('/sitemap.xml', [SitemapController::class, 'index']); // ROTA DO SITEMAP XML PARA OS BUSCADORES
 Route::get('/search', [SearchController::class, 'index'])->name('search'); // ROTA DA BUSCA POR TITULO
 Route::view('/privacy-policy', 'pages.privacy')->name('privacy'); // ROTA DA POLITICA DE PRIVACIDADE (FIXA, ANTES DO CATCH-ALL DE CATEGORIA)
+
+// ─── MEGA MENU ASSINCRONO ───
+// O CONTEUDO DOS PAINEIS NAO VAI MAIS NO HTML DE TODA PAGINA (ERAM 91 KB, 81% DA PAGINA DE
+// PRIVACIDADE). ELE VEM DAQUI, NUMA UNICA REQUISICAO, NA PRIMEIRA INTENCAO DE ABRIR O MENU.
+Route::get('/nav/menu', [NavigationController::class, 'menu'])->name('nav.menu'); // JSON COM OS PAINEIS DE TODAS AS CATEGORIAS
 
 // ─── PAGINAS DE AUTORIDADE (E-E-A-T) ───
 // ⚠ TODAS FICAM ANTES DO CATCH-ALL /{category:slug}, SENAO SERIAM ENGOLIDAS POR ELE E DARIAM 404.
