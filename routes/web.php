@@ -4,6 +4,7 @@ use App\Http\Controllers\ArticleController; // IMPORTA O CONTROLLER DE ARTIGOS
 use App\Http\Controllers\CategoryController; // IMPORTA O CONTROLLER DE CATEGORIAS
 use App\Http\Controllers\CommentController; // IMPORTA O CONTROLLER DE COMENTARIOS
 use App\Http\Controllers\HomeController; // IMPORTA O CONTROLLER DA HOME
+use App\Http\Controllers\PageController; // IMPORTA O CONTROLLER DAS PAGINAS INSTITUCIONAIS (E-E-A-T)
 use App\Http\Controllers\SearchController; // IMPORTA O CONTROLLER DE BUSCA
 use App\Http\Controllers\SitemapController; // IMPORTA O CONTROLLER DO SITEMAP
 use Illuminate\Support\Facades\Route; // IMPORTA A FACADE DE ROTAS
@@ -12,6 +13,12 @@ Route::get('/', [HomeController::class, 'index'])->name('home'); // ROTA DA PAGI
 Route::get('/sitemap.xml', [SitemapController::class, 'index']); // ROTA DO SITEMAP XML PARA OS BUSCADORES
 Route::get('/search', [SearchController::class, 'index'])->name('search'); // ROTA DA BUSCA POR TITULO
 Route::view('/privacy-policy', 'pages.privacy')->name('privacy'); // ROTA DA POLITICA DE PRIVACIDADE (FIXA, ANTES DO CATCH-ALL DE CATEGORIA)
+
+// ─── PAGINAS DE AUTORIDADE (E-E-A-T) ───
+// ⚠ TODAS FICAM ANTES DO CATCH-ALL /{category:slug}, SENAO SERIAM ENGOLIDAS POR ELE E DARIAM 404.
+Route::get('/about', [PageController::class, 'about'])->name('about'); // SOBRE O ranked10 (QUEM SOMOS, COMO NOS SUSTENTAMOS)
+Route::get('/how-we-rank', [PageController::class, 'howWeRank'])->name('how-we-rank'); // METODOLOGIA: COMO CADA LISTA E MONTADA
+Route::get('/author/{slug}', [PageController::class, 'author'])->name('author'); // PAGINA PESSOAL DO AUTOR (SINAL DE AUTORIA REAL)
 
 // ─── COMENTARIOS (UGC SEM LOGIN) ───
 // ⚠ ESTAS SAO AS PRIMEIRAS ROTAS DO SITE QUE NAO SAO GET SIMPLES. O RESTO DO ranked10 CONTINUA

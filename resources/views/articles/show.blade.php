@@ -55,14 +55,23 @@
 
 @php
     // MONTA O JSON-LD DE BLOGPOSTING (AUTORIA, PUBLISHER E DATAS) — COMPLEMENTA O ITEMLIST ACIMA
-    $autorPerfil = collect(config('authors', []))->firstWhere('name', $article->author); // PERFIL DO AUTOR EM config/authors.php (NULL SE NAO CADASTRADO)
-    $autorLd = array_filter([ // ENTIDADE PERSON DO AUTOR (ARRAY_FILTER REMOVE OS CAMPOS VAZIOS)
+    $autorPerfil = App\Support\Autores::porNome($article->author); // PERFIL DO AUTOR EM config/authors.php (NULL SE NAO CADASTRADO)
+
+    // ENTIDADE PERSON DO AUTOR.
+    // O @id E O url APONTAM PARA /author/<slug> USANDO O MESMO IDENTIFICADOR DECLARADO NAQUELA
+    // PAGINA. E ISSO QUE FAZ O GOOGLE ENTENDER QUE O AUTOR DOS 76 ARTIGOS, O FUNDADOR CITADO EM
+    // /about E A PESSOA DESCRITA EM /author/felipe-iglesias SAO A MESMA ENTIDADE — E NAO TRES
+    // MENCOES SOLTAS DO MESMO NOME. O sameAs FECHA A CONTA LIGANDO-A A UM PERFIL EXTERNO REAL.
+    $autorLd = array_filter([ // ARRAY_FILTER REMOVE OS CAMPOS VAZIOS
         '@type' => 'Person', // O AUTOR E UMA PESSOA, NAO A ORGANIZACAO
+        '@id' => isset($autorPerfil['slug']) ? route('author', $autorPerfil['slug']).'#person' : null, // IDENTIFICADOR COMPARTILHADO COM A PAGINA DO AUTOR
         'name' => $article->author, // NOME EXIBIDO DO AUTOR
+        'url' => isset($autorPerfil['slug']) ? route('author', $autorPerfil['slug']) : null, // PAGINA CANONICA DO AUTOR NO PROPRIO SITE
         'jobTitle' => $autorPerfil['role'] ?? null, // CARGO/FUNCAO (SE CADASTRADO)
         'description' => $autorPerfil['bio'] ?? null, // BIO DO AUTOR (SE CADASTRADA)
-        'image' => isset($autorPerfil['photo']) && $autorPerfil['photo'] ? asset($autorPerfil['photo']) : null, // FOTO DO AUTOR (SE CADASTRADA)
-        'url' => $autorPerfil['socials']['website'] ?? null, // SITE PESSOAL (SE CADASTRADO)
+        'image' => App\Support\Autores::foto($autorPerfil), // FOTO DO AUTOR (ACEITA CDN OU ARQUIVO LOCAL)
+        'sameAs' => array_values(array_filter($autorPerfil['socials'] ?? [])) ?: null, // PERFIS EXTERNOS QUE COMPROVAM A IDENTIDADE
+        'knowsAbout' => $autorPerfil['knows_about'] ?? null, // AREAS DE CONHECIMENTO DO AUTOR
     ]);
     $blogPostingLd = array_filter([
         '@context' => 'https://schema.org', // CONTEXTO PADRAO DO SCHEMA.ORG

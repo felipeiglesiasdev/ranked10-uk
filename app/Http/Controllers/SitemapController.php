@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article; // IMPORTA O MODEL DE ARTIGOS
 use App\Models\Category; // IMPORTA O MODEL DE CATEGORIAS
+use App\Support\Autores; // IMPORTA O ACESSO AOS PERFIS DE AUTOR (PAGINAS /author/<slug>)
 use Illuminate\Http\Response; // IMPORTA O TIPO DE RETORNO DA RESPOSTA XML
 
 class SitemapController extends Controller
@@ -13,6 +14,18 @@ class SitemapController extends Controller
         $urls = []; // INICIALIZA A LISTA DE URLS DO SITEMAP
 
         $urls[] = ['loc' => route('home'), 'lastmod' => now()->toAtomString()]; // ADICIONA A HOME COMO PRIMEIRA URL
+
+        // PAGINAS INSTITUCIONAIS DE AUTORIDADE. ENTRAM NO SITEMAP DE PROPOSITO: SAO AS PAGINAS QUE
+        // O GOOGLE USA PARA AVALIAR E-E-A-T, E ELAS NAO RECEBEM LINK DE ARTIGO NENHUM ALEM DO FOOTER.
+        $urls[] = ['loc' => route('about'), 'lastmod' => null]; // SOBRE O SITE
+        $urls[] = ['loc' => route('how-we-rank'), 'lastmod' => null]; // METODOLOGIA DE RANQUEAMENTO
+        $urls[] = ['loc' => route('privacy'), 'lastmod' => null]; // POLITICA DE PRIVACIDADE E DISCLOSURE
+
+        foreach (Autores::todos() as $autor) { // PERCORRE OS PERFIS DE AUTOR CADASTRADOS
+            if (! empty($autor['slug'])) { // SO OS QUE TEM SLUG TEM PAGINA
+                $urls[] = ['loc' => route('author', $autor['slug']), 'lastmod' => null]; // PAGINA DO AUTOR
+            }
+        }
 
         foreach (Category::all() as $category) { // PERCORRE TODAS AS CATEGORIAS
             $urls[] = [ // ADICIONA A URL DA CATEGORIA NO SITEMAP

@@ -64,6 +64,9 @@
                 'name' => 'ranked10',
                 'url' => url('/'),
                 'description' => 'Independent top 10 buying guides for UK shoppers.',
+                // CAMPO OFICIAL DO SCHEMA PARA A PAGINA QUE DESCREVE O PROCESSO EDITORIAL. DECLARADO
+                // AQUI, NO LAYOUT, PARA VALER EM TODAS AS PAGINAS DO SITE E NAO SO EM /about.
+                'publishingPrinciples' => route('how-we-rank'), // METODOLOGIA DE RANQUEAMENTO
             ],
             [
                 '@type' => 'WebSite', // ENTIDADE DO SITE

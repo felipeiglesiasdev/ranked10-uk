@@ -28,7 +28,7 @@ $article = [
     'intro' => 'Finding the best portable blender doesn\'t have to mean endless scrolling. Whether you want a pocket-sized cup for the gym, the best portable blender for travel, or the most powerful portable blender for icy smoothies at home, the right model makes fresh drinks effortless wherever you are. We\'ve tested and ranked the top-rated portable blenders available in the UK for 2026, comparing blending power, battery life, capacity and value — including popular options from Ninja — so you can choose with confidence.', // INTRO OTIMIZADA
     'conclusion' => 'The best portable blender for you comes down to how and where you\'ll use it. For travel and the gym, a compact USB-rechargeable cup wins on portability; for frozen fruit and ice, a more powerful portable blender earns its place; and if you want a trusted name, a Ninja portable blender is hard to fault. Whichever of these top-rated portable blenders you choose, look for BPA-free cups, a leak-proof sip lid and dishwasher-safe parts for easy everyday use.', // CONCLUSAO OTIMIZADA
     'focus_keyword' => 'best portable blender', // PALAVRA-CHAVE PRINCIPAL - VIRA O ALT DO HERO/OG:IMAGE
-    'author' => 'Editorial Team',
+    'author' => 'Felipe Iglesias',
     'published_at' => '2026-06-29 14:34:32', // DATA DE PUBLICACAO FIXA — NAO USAR now(): RE-RODAR O SEEDER RESETARIA A DATA
 ];
 

@@ -2,18 +2,21 @@
 
 @if ($author){{-- SO RENDERIZA O BLOCO SE O ARTIGO TIVER UM PERFIL DE AUTOR CONHECIDO --}}
     @php
-        // VERIFICA SE O ARQUIVO DE FOTO REALMENTE EXISTE EM public/ PARA DECIDIR FOTO x INICIAIS
-        $temFoto = ! empty($author['photo']) && file_exists(public_path($author['photo'])); // TRUE SE A FOTO EXISTE
-        $iniciais = collect(explode(' ', $author['name']))->take(2)->map(fn ($p) => mb_substr($p, 0, 1))->implode(''); // GERA AS INICIAIS DO NOME
+        // A RESOLUCAO DA FOTO VIVE EM App\Support\Autores PORQUE PRECISA ACEITAR AS DUAS FORMAS:
+        // URL DE CDN (USADA EM PRODUCAO) E CAMINHO DE ARQUIVO DENTRO DE public/. ANTES A REGRA
+        // ESTAVA DUPLICADA AQUI E NO SCHEMA, E SO UMA DAS DUAS SABIA LIDAR COM URL.
+        $fotoDoAutor = App\Support\Autores::foto($author); // URL DA FOTO OU NULO
+        $iniciais = App\Support\Autores::iniciais($author); // INICIAIS PARA O AVATAR DE FALLBACK
         $sociais = array_filter($author['socials'] ?? []); // REMOVE OS LINKS SOCIAIS VAZIOS
+        $temPaginaPropria = ! empty($author['slug']); // SE TEM SLUG, TEM PAGINA EM /author/<slug>
     @endphp
 
     <div class="mt-12 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm md:p-8">{{-- BLOCO DA BIO DO AUTOR (DIV) --}}
         <div class="flex flex-col gap-5 sm:flex-row sm:items-start">{{-- LAYOUT: FOTO + TEXTO (EMPILHA NO MOBILE) --}}
 
             <div class="shrink-0">{{-- COLUNA DA FOTO/AVATAR --}}
-                @if ($temFoto){{-- MOSTRA A FOTO REAL SE O ARQUIVO EXISTIR --}}
-                    <img src="{{ asset($author['photo']) }}" alt="Photo of {{ $author['name'] }}" loading="lazy" class="h-24 w-24 rounded-full border-2 border-brand object-cover sm:h-28 sm:w-28">{{-- FOTO DO AUTOR --}}
+                @if ($fotoDoAutor){{-- MOSTRA A FOTO REAL SE HOUVER (CDN OU ARQUIVO LOCAL EXISTENTE) --}}
+                    <img src="{{ $fotoDoAutor }}" alt="Photo of {{ $author['name'] }}" width="112" height="112" loading="lazy" class="h-24 w-24 rounded-full border-2 border-brand object-cover sm:h-28 sm:w-28">{{-- FOTO DO AUTOR; width/height RESERVAM O ESPACO E EVITAM CLS --}}
                 @else{{-- CASO CONTRARIO, MOSTRA UM AVATAR COM AS INICIAIS --}}
                     <div class="flex h-24 w-24 items-center justify-center rounded-full bg-ink text-2xl font-extrabold text-white sm:h-28 sm:w-28" role="img" aria-label="Photo of {{ $author['name'] }}">{{ $iniciais }}</div>{{-- AVATAR COM INICIAIS --}}
                 @endif
@@ -21,7 +24,13 @@
 
             <div>{{-- COLUNA DO TEXTO --}}
                 <p class="text-xs font-semibold uppercase tracking-wide text-brand">Written by</p>{{-- ROTULO --}}
-                <h2 class="mt-1 text-xl font-bold text-slate-900">{{ $author['name'] }}</h2>{{-- NOME DO AUTOR --}}
+                <h2 class="mt-1 text-xl font-bold text-slate-900">
+                    @if ($temPaginaPropria)
+                        <a href="{{ route('author', $author['slug']) }}" class="hover:text-brand" rel="author">{{ $author['name'] }}</a>{{-- NOME LINKANDO PARA A PAGINA DO AUTOR --}}
+                    @else
+                        {{ $author['name'] }}{{-- NOME SEM LINK QUANDO NAO HA PAGINA --}}
+                    @endif
+                </h2>{{-- NOME DO AUTOR --}}
                 @if (! empty($author['role'])){{-- SO MOSTRA O CARGO SE EXISTIR --}}
                     <p class="text-sm font-medium text-slate-500">{{ $author['role'] }}</p>{{-- CARGO/FUNCAO --}}
                 @endif
