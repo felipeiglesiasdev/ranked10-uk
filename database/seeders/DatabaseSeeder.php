@@ -92,6 +92,8 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\SmartRadiatorValvesSeeder::class, // LISTA DE VALVULAS TERMOSTATICAS INTELIGENTES (HOME)
             \Database\Seeders\Lists\CordlessVacuumsSeeder::class, // LISTA DE ASPIRADORES VERTICAIS SEM FIO (HOME)
             \Database\Seeders\Lists\MiniChainsawsSeeder::class, // LISTA DE MINI MOTOSSERRAS SEM FIO (GARDEN)
+            \Database\Seeders\Lists\MicrowavesSeeder::class, // LISTA DE MICRO-ONDAS (KITCHEN)
+            \Database\Seeders\Lists\PetCamerasSeeder::class, // LISTA DE CAMERAS PARA PETS (PET SUPPLIES)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }
