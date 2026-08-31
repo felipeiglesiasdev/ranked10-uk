@@ -48,11 +48,17 @@
             </div>
         @endif
 
-        {{-- ─── 2. GRUPO DE OFERTAS NO WHATSAPP ───
+        {{-- ─── 2. GRUPO DE OFERTAS NO WHATSAPP (SO DESKTOP) ───
              Fica logo abaixo do produto vencedor de proposito: e o ponto da coluna com mais
-             atencao do leitor, porque ele acabou de olhar a recomendacao. Nao renderiza nada
-             enquanto config/promo.php nao tiver a URL do grupo. --}}
-        <x-utils.whatsapp-cta />{{-- CHAMADA DO GRUPO DE OFERTAS --}}
+             atencao do leitor, porque ele acabou de olhar a recomendacao.
+
+             ⚠ hidden lg:block PORQUE NO MOBILE ESTA COLUNA EMPILHA DEPOIS DOS COMENTARIOS, LA NO
+             FIM DE UM ARTIGO DE 20.000px. NO CELULAR — DE ONDE VEM A MAIOR PARTE DO TRAFEGO — O
+             CTA VIVE NO CORPO DO ARTIGO, LOGO ANTES DO PRODUTO #1 (VER articles/show.blade.php).
+             UM POR TELA: NUNCA OS DOIS AO MESMO TEMPO. --}}
+        <div class="hidden lg:block">{{-- SO A PARTIR DE lg --}}
+            <x-utils.whatsapp-cta />{{-- CHAMADA DO GRUPO DE OFERTAS --}}
+        </div>
 
         {{-- ─── 3. MAIS GUIAS ───
              O bloco de link interno que o artigo nao tinha. Prioriza a mesma categoria (mais

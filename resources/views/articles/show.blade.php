@@ -178,6 +178,17 @@
             </div>
         </div>
 
+        {{-- GRUPO DE OFERTAS NO WHATSAPP (SO MOBILE) ───
+             POSICAO ESCOLHIDA PELO FELIPE: DEPOIS DA LISTA DOS 10 E ANTES DO PRODUTO #1. O LEITOR
+             ACABOU DE VER QUEM SAO OS DEZ E ESTA PRESTES A LER O VENCEDOR — E O PONTO DE MAIOR
+             ATENCAO DA PAGINA NO CELULAR.
+
+             ⚠ lg:hidden PORQUE A PARTIR DE lg O MESMO CTA JA APARECE NA COLUNA LATERAL. UM POR
+             TELA, NUNCA OS DOIS. --}}
+        <div class="mt-10 lg:hidden">{{-- SO ABAIXO DE lg --}}
+            <x-utils.whatsapp-cta />{{-- CHAMADA DO GRUPO DE OFERTAS --}}
+        </div>
+
         <div class="mt-12 space-y-12">{{-- LISTA DE PRODUTOS: CADA ITEM = CARD + TEXTO SEO ABAIXO --}}
             @foreach ($article->products as $product){{-- PERCORRE OS PRODUTOS JA ORDENADOS POR POSICAO --}}
                 <div class="space-y-5 {{ ! $loop->last ? 'border-b border-slate-200 pb-12' : '' }}">{{-- AGRUPA CARD + BODY COM SEPARADOR ENTRE PRODUTOS --}}
