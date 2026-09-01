@@ -13,15 +13,28 @@ sua sessão da Amazon nem o endereço de entrega M4 6BD. Na prática:
 - Mesmo passando, os preços e a disponibilidade podem não ser os que um leitor britânico vê,
   porque o CEP de entrega não está setado.
 
-**Por isso a tarefa abaixo tem dois caminhos**, e o Cline escolhe sozinho:
+**Confirmado na prática: o Cline não consegue.** Então a coleta é sua e a escrita é dele.
+Isso não é um problema — é a divisão certa. A parte que precisa de sessão real leva 30
+segundos suas; a parte cara e demorada, que é escrever 10 fichas de produto, fica com a API.
 
-| Caminho | Quando | Qualidade |
-|---|---|---|
-| **A — Cline coleta** | o navegador dele consegue abrir as fichas | boa, mas confira 2 ou 3 preços à mão |
-| **B — você coleta** | a Amazon bloquear (o esperado) | melhor: sessão real, M4 6BD, preço certo |
+### Você coleta assim (uma vez, ~30 segundos)
 
-No caminho B você usa o Claude Code com a extensão Claude in Chrome (que tem a sessão),
-roda o extrator da seção 5 do `.clinerules`, e cola o JSON no Cline. Ele só escreve o seeder.
+1. Abra **o seu Chrome**, logado na Amazon, com a entrega em **M4 6BD**.
+2. Vá para a busca com filtro de preço:
+   `https://www.amazon.co.uk/s?k=TERMO&rh=p_36%3APENCE-`
+3. `F12` → Console → cole o conteúdo de **`docs/amazon-harvest.js`** → Enter.
+4. Ele abre as fichas uma a uma, mostra a tabela de profundidade, diz se a categoria
+   passa no critério, e **copia o JSON para a área de transferência**.
+5. Salve em `storage/harvest/{slug}.json`.
+
+O script roda dentro da sua sessão e busca as mesmas páginas que você abriria à mão — só
+que sem você clicar quinze vezes. **Não contorna nada:** não troca user-agent, não usa
+proxy, não resolve captcha, não roda headless. Se a Amazon pedir verificação, ele para e
+avisa. Teto de 15 fichas e pausa de 1,5s entre elas, de propósito.
+
+⚠ **Não peça ao Cline para contornar o bloqueio.** Raspar a Amazon fora dos termos fere as
+Condições de Uso e o contrato de Associados — e a conta de Associados é o que sustenta o
+site. Confirmar o prazo dela já é a pendência nº 1 do projeto.
 
 **Não deixe o Cline inventar dado.** ASIN, preço, nota e contagem de avaliação inventados
 geram link de afiliado quebrado e número falso na página. A tarefa manda ele parar e pedir.
@@ -44,27 +57,30 @@ editorial e estrutural. Você vai escrever um arquivo com exatamente essa forma.
 Leia também database/seeders/lists/_TemplateSeeder.php.example.
 NÃO comece a escrever antes de ler os dois.
 
-═══ PASSO 1 — COLETA ═══
-Tente abrir com o browser:
-  https://www.amazon.co.uk/s?k={{TERMO_BUSCA}}&rh=p_36%3A{PENCE_MINIMO}-
+═══ PASSO 1 — LEIA A COLETA ═══
+Os dados JÁ FORAM COLETADOS por mim, no meu Chrome logado, com entrega em M4 6BD.
+Leia: storage/harvest/{{SLUG}}.json
 
-SE A AMAZON MOSTRAR CAPTCHA OU BLOQUEAR:
-  PARE. Não tente contornar. Peça ao Felipe os dados no formato:
-  [{"asin":"","title":"","price":"£00.00","rating":0.0,"reviews":0,"image":"","specs":[],"bullets":[]}]
-  E espere. Não invente nada.
+NÃO tente acessar a Amazon com o seu navegador. Ela bloqueia navegador headless, e
+contornar isso fere o contrato de Associados do site. Se o arquivo não existir, PARE e
+me avise — não invente dado e não tente coletar por conta própria.
 
-SE ABRIR:
-  1. Extraia a grade de div[data-component-type="s-search-result"]
-  2. ⚠ ABRA CADA FICHA INDIVIDUALMENTE. A grade quase nunca renderiza a contagem de
-     avaliações dos mais vendidos — usar o número da grade já quase reprovou uma categoria
-     boa. Use o extrator da seção 5 do .clinerules.
-  3. Colete 12 a 15 produtos para poder descartar.
-  4. Descarte: qualquer coisa que não seja o produto buscado (a busca contamina), e
-     anúncios com menos de ~55 avaliações.
-  5. CRITÉRIO DE APROVAÇÃO DA CATEGORIA: precisa de 3 ou 4 produtos com várias centenas
-     de avaliações. Se não tiver, PARE e reporte "categoria reprovada por profundidade".
+Cada item do JSON tem: asin, url (já com a tag de afiliado), title, price, rating,
+reviews, image (já normalizada), specs, details, bullets, quotes.
 
-Reporte a coleta em tabela antes de escrever qualquer coisa, e espere meu ok.
+O que fazer com ele:
+  1. Descarte o que não for o produto buscado (a busca da Amazon contamina) e o que
+     tiver menos de ~55 avaliações.
+  2. CRITÉRIO DE APROVAÇÃO: precisa de 3 ou 4 produtos com várias centenas de avaliações.
+     Se não tiver, PARE e reporte "categoria reprovada por profundidade".
+  3. Escolha os 10 melhores.
+
+⚠ O campo `quotes` traz avaliações reais de clientes. Você PODE usá-las em review_quotes,
+mas SOMENTE copiadas literalmente, sem reescrever, resumir ou traduzir. Escolha 2 ou 3 por
+produto, de preferência as que confirmam ou contradizem um número da ficha. Se um produto
+não tiver quotes no JSON, deixe review_quotes = [] nele.
+
+Reporte a seleção em tabela antes de escrever qualquer coisa, e espere meu ok.
 
 ═══ PASSO 2 — ORDENE PARA O LEITOR COMPRAR ═══
 O #1 recebe o clique, então tem que ser a aposta mais segura: nota alta COM volume de
@@ -84,8 +100,9 @@ REGRAS DE CONTEÚDO (inglês britânico):
     verdict 'bad'  = pior da lista
     verdict 'neutral' = meio do pelotão
   Ficha só com verde não convence. Todo produto tem pelo menos um 'bad' ou 'neutral'.
-- review_quotes: SEMPRE []. Regra absoluta: só aceita citação literal coletada da ficha.
-  Nunca gere, resuma ou traduza uma avaliação. Citação inventada é depoimento falso.
+- review_quotes: use SOMENTE o que vier no campo `quotes` do JSON, copiado LITERALMENTE.
+  Nunca gere, resuma, traduza nem "melhore" uma avaliação. Citação inventada é depoimento
+  falso. Sem quotes no JSON para aquele produto, deixe [].
 - Um achado sobre o anúncio só entra na prosa se MUDAR A COMPRA (segurança, preço real,
   peso num produto vendido como leve). Curiosidade de ficha vai para o comentário do
   seeder, não para o texto.
