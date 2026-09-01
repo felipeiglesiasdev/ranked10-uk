@@ -17,15 +17,25 @@ sua sessão da Amazon nem o endereço de entrega M4 6BD. Na prática:
 Isso não é um problema — é a divisão certa. A parte que precisa de sessão real leva 30
 segundos suas; a parte cara e demorada, que é escrever 10 fichas de produto, fica com a API.
 
-### Você coleta assim (uma vez, ~30 segundos)
+### Você coleta assim (~30 segundos, um paste)
 
-1. Abra **o seu Chrome**, logado na Amazon, com a entrega em **M4 6BD**.
+1. Abra **o seu Chrome**, com a entrega em **M4 6BD**.
 2. Vá para a busca com filtro de preço:
    `https://www.amazon.co.uk/s?k=TERMO&rh=p_36%3APENCE-`
 3. `F12` → Console → cole o conteúdo de **`docs/amazon-harvest.js`** → Enter.
-4. Ele abre as fichas uma a uma, mostra a tabela de profundidade, diz se a categoria
-   passa no critério, e **copia o JSON para a área de transferência**.
-5. Salve em `storage/harvest/{slug}.json`.
+4. Ele pergunta o slug, abre as 15 fichas, mostra a tabela de profundidade, diz se a
+   categoria passa no critério, e **grava sozinho** em `storage/harvest/{slug}.json`.
+
+⚠ **A gravação automática depende de o Laragon servir HTTPS.** A Amazon é HTTPS; se o
+`ranked10-app.test` estiver em HTTP puro, o navegador bloqueia a chamada por *mixed
+content* e o script cai no clipboard — aí é um paste a mais e pronto. Para deixar
+automático de vez: Laragon → menu → Apache (ou Nginx) → SSL, e troque o `RECEPTOR` no
+topo do script para `https://`.
+
+⚠ A rota receptora (`POST /dev/harvest`) **só é registrada quando `APP_ENV=local`**, então
+não existe superfície nova no site em produção. Ela grava exclusivamente em
+`storage/harvest/` e higieniza o slug para `[a-z0-9-]`. **Ainda não foi testada rodando** —
+o Laragon estava parado quando ela foi escrita.
 
 O script roda dentro da sua sessão e busca as mesmas páginas que você abriria à mão — só
 que sem você clicar quinze vezes. **Não contorna nada:** não troca user-agent, não usa

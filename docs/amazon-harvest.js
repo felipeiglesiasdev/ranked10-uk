@@ -7,8 +7,10 @@
    2. Vá para a página de busca com o filtro de preço, por exemplo:
         https://www.amazon.co.uk/s?k=toaster+4+slice&rh=p_36%3A2500-
    3. F12 → Console → cole este arquivo inteiro → Enter.
-   4. Espere. Ele mostra o progresso e no fim copia o JSON para a área de transferência.
-   5. Salve em storage/harvest/{slug}.json e mande o Cline ler.
+   4. Ele pergunta o slug do artigo (ex: best-toaster).
+   5. Espere. No fim ele GRAVA SOZINHO em storage/harvest/{slug}.json.
+      Se o navegador bloquear (mixed content, ver secao 5 do codigo), cai no clipboard
+      e voce cola no arquivo. Um paste, nada mais.
 
    POR QUE ASSIM, E NAO UM SCRAPER
    Isto roda DENTRO da sua sessão, no seu navegador, buscando as mesmas paginas que
@@ -24,6 +26,11 @@
 (async () => {
   const LIMITE = 15;        // TETO DE FICHAS POR COLETA. NAO AUMENTAR.
   const DELAY_MS = 1500;    // PAUSA ENTRE FICHAS. NAO DIMINUIR.
+  const RECEPTOR = 'http://ranked10-app.test/dev/harvest'; // ROTA LOCAL QUE GRAVA O ARQUIVO
+
+  // SLUG DO ARTIGO. E o nome do arquivo que o Cline vai ler.
+  const slug = (prompt('Slug do artigo (ex: best-toaster):') || '').trim().toLowerCase().replace(/[^a-z0-9-]/g, '');
+  if (!slug) { console.error('[ranked10] Sem slug, cancelado.'); return; }
 
   const espera = (ms) => new Promise((r) => setTimeout(r, ms));
   const log = (...a) => console.log('%c[ranked10]', 'color:#be1627;font-weight:bold', ...a);
@@ -159,11 +166,39 @@
     produtos: ordenado,
   }, null, 2);
 
-  try {
-    await navigator.clipboard.writeText(saida);
-    log('📋 JSON copiado para a area de transferencia. Cole em storage/harvest/{slug}.json');
-  } catch {
-    log('Nao consegui copiar automaticamente. O JSON esta em window.__ranked10 — rode: copy(window.__ranked10)');
-  }
   window.__ranked10 = saida;
+
+  // ─── 5. ENTREGA ───
+  // TENTA GRAVAR DIRETO NO PROJETO. SE FALHAR, CAI NO CLIPBOARD.
+  //
+  // ⚠ POR QUE PODE FALHAR: a Amazon e HTTPS e o Laragon normalmente serve HTTP. O navegador
+  // bloqueia chamada de pagina segura para origem insegura (mixed content). Se acontecer,
+  // ligue o SSL no Laragon (menu > Apache/Nginx > SSL) e troque RECEPTOR para https://.
+  // Enquanto isso o clipboard resolve com um paste a mais.
+  let gravou = false;
+  try {
+    const r = await fetch(RECEPTOR, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ slug, dados: JSON.parse(saida) }),
+    });
+    if (r.ok) {
+      const j = await r.json();
+      log(`✅ Gravado em ${j.arquivo} (${j.produtos} produtos). Pode mandar o Cline escrever.`);
+      gravou = true;
+    } else {
+      console.warn('[ranked10] O receptor respondeu', r.status);
+    }
+  } catch (e) {
+    console.warn('[ranked10] Nao consegui gravar direto:', e.message);
+  }
+
+  if (!gravou) {
+    try {
+      await navigator.clipboard.writeText(saida);
+      log(`📋 JSON copiado. Cole em storage/harvest/${slug}.json`);
+    } catch {
+      log('Rode: copy(window.__ranked10)');
+    }
+  }
 })();

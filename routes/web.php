@@ -20,6 +20,42 @@ Route::view('/privacy-policy', 'pages.privacy')->name('privacy'); // ROTA DA POL
 // PRIVACIDADE). ELE VEM DAQUI, NUMA UNICA REQUISICAO, NA PRIMEIRA INTENCAO DE ABRIR O MENU.
 Route::get('/nav/menu', [NavigationController::class, 'menu'])->name('nav.menu'); // JSON COM OS PAINEIS DE TODAS AS CATEGORIAS
 
+// ─── RECEPTOR DE COLETA (SO EM DESENVOLVIMENTO) ───
+// O bookmarklet de docs/amazon-harvest.js faz POST do JSON coletado para ca, e o arquivo
+// cai direto em storage/harvest/{slug}.json. Sem copiar, sem colar, sem salvar a mao —
+// o Cline le o arquivo no passo seguinte.
+//
+// ⚠ SO EXISTE EM local. Em producao a rota nem e registrada, entao nao ha superficie nova
+// no site no ar. Grava exclusivamente em storage/harvest/ e o slug e higienizado para
+// [a-z0-9-], entao nao da para escapar do diretorio.
+if (app()->environment('local')) {
+    Route::options('/dev/harvest', fn () => response('', 204, [ // PREFLIGHT DO CORS (O BOOKMARKLET RODA EM amazon.co.uk)
+        'Access-Control-Allow-Origin' => '*',
+        'Access-Control-Allow-Headers' => 'Content-Type',
+        'Access-Control-Allow-Methods' => 'POST, OPTIONS',
+    ]));
+
+    Route::post('/dev/harvest', function (Illuminate\Http\Request $request) {
+        $slug = preg_replace('/[^a-z0-9-]/', '', strtolower((string) $request->input('slug'))); // SO LETRAS, NUMEROS E HIFEN
+        abort_if($slug === '', 422, 'slug invalido'); // SEM SLUG NAO GRAVA
+
+        $dados = $request->input('dados'); // O PAYLOAD COLETADO
+        abort_unless(is_array($dados) && ! empty($dados['produtos']), 422, 'payload vazio'); // PRECISA TER PRODUTOS
+
+        $destino = storage_path('harvest'); // UNICO DIRETORIO DE ESCRITA
+        if (! is_dir($destino)) { mkdir($destino, 0775, true); } // CRIA NA PRIMEIRA VEZ
+
+        $arquivo = $destino.DIRECTORY_SEPARATOR.$slug.'.json'; // CAMINHO FINAL
+        file_put_contents($arquivo, json_encode($dados, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE)); // GRAVA
+
+        return response()->json([
+            'ok' => true,
+            'arquivo' => 'storage/harvest/'.$slug.'.json',
+            'produtos' => count($dados['produtos']),
+        ])->header('Access-Control-Allow-Origin', '*'); // O BOOKMARKLET PRECISA LER A RESPOSTA
+    })->withoutMiddleware([Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class]); // SEM CSRF: A CHAMADA VEM DE OUTRA ORIGEM E A ROTA SO EXISTE EM local
+}
+
 // ─── PAGINAS DE AUTORIDADE (E-E-A-T) ───
 // ⚠ TODAS FICAM ANTES DO CATCH-ALL /{category:slug}, SENAO SERIAM ENGOLIDAS POR ELE E DARIAM 404.
 Route::get('/about', [PageController::class, 'about'])->name('about'); // SOBRE O ranked10 (QUEM SOMOS, COMO NOS SUSTENTAMOS)
