@@ -97,6 +97,7 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\SmartThermostatsSeeder::class, // LISTA DE TERMOSTATOS INTELIGENTES (HOME)
             \Database\Seeders\Lists\WeightedBlanketsSeeder::class, // LISTA DE COBERTORES PESADOS (HOME)
             \Database\Seeders\Lists\KitchenScalesSeeder::class, // LISTA DE BALANCAS DE COZINHA (KITCHEN)
+            \Database\Seeders\Lists\MultiCookersSeeder::class, // LISTA DE MULTICOOKERS / PANELAS DE PRESSAO (KITCHEN)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }
