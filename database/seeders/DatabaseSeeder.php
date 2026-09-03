@@ -101,6 +101,7 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\VideoDoorbellsSeeder::class, // LISTA DE VIDEO CAMPAINHAS (TECH)
             \Database\Seeders\Lists\PortablePowerStationsSeeder::class, // LISTA DE ESTACOES DE ENERGIA PORTATEIS (TECH)
             \Database\Seeders\Lists\FootSpasSeeder::class, // LISTA DE ESCALDA-PES / FOOT SPAS (HOME)
+            \Database\Seeders\Lists\WeatherStationsSeeder::class, // LISTA DE ESTACOES METEOROLOGICAS (GARDEN)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }
