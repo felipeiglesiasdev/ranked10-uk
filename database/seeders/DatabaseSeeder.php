@@ -94,6 +94,7 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\MiniChainsawsSeeder::class, // LISTA DE MINI MOTOSSERRAS SEM FIO (GARDEN)
             \Database\Seeders\Lists\MicrowavesSeeder::class, // LISTA DE MICRO-ONDAS (KITCHEN)
             \Database\Seeders\Lists\PetCamerasSeeder::class, // LISTA DE CAMERAS PARA PETS (PET SUPPLIES)
+            \Database\Seeders\Lists\SmartThermostatsSeeder::class, // LISTA DE TERMOSTATOS INTELIGENTES (HOME)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }
