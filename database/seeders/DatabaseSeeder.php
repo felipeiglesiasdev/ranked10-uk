@@ -104,6 +104,16 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\WeatherStationsSeeder::class, // LISTA DE ESTACOES METEOROLOGICAS (GARDEN)
             \Database\Seeders\Lists\HandWarmersSeeder::class, // LISTA DE AQUECEDORES DE MAO RECARREGAVEIS (HOME)
             \Database\Seeders\Lists\ToastersSeeder::class, // LISTA DE TORRADEIRAS (KITCHEN)
+            \Database\Seeders\Lists\WinterDuvetsSeeder::class, // LISTA DE EDREDONS DE INVERNO POR TOG (HOME)
+            \Database\Seeders\Lists\SoundbarsSeeder::class, // LISTA DE SOUNDBARS PARA TV (TECH)
+            \Database\Seeders\Lists\JumpStartersSeeder::class, // LISTA DE ARRANCADORES DE BATERIA (TECH)
+            \Database\Seeders\Lists\TyreInflatorsSeeder::class, // LISTA DE CALIBRADORES DE PNEU (TECH)
+            \Database\Seeders\Lists\HandMixersSeeder::class, // LISTA DE BATEDEIRAS DE MAO (KITCHEN)
+            \Database\Seeders\Lists\ToastieMakersSeeder::class, // LISTA DE SANDUICHEIRAS (KITCHEN)
+            \Database\Seeders\Lists\CatTreesSeeder::class, // LISTA DE ARRANHADORES/TORRES PARA GATOS (PET SUPPLIES)
+            \Database\Seeders\Lists\GarmentSteamersSeeder::class, // LISTA DE VAPORIZADORES DE ROUPA (HOME)
+            \Database\Seeders\Lists\SmokeCoAlarmsSeeder::class, // LISTA DE ALARMES DE FUMACA E MONOXIDO (HOME)
+            \Database\Seeders\Lists\YogaMatsSeeder::class, // LISTA DE TAPETES DE YOGA (FITNESS)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }
