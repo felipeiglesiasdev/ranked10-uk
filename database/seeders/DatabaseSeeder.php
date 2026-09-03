@@ -99,6 +99,7 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\KitchenScalesSeeder::class, // LISTA DE BALANCAS DE COZINHA (KITCHEN)
             \Database\Seeders\Lists\MultiCookersSeeder::class, // LISTA DE MULTICOOKERS / PANELAS DE PRESSAO (KITCHEN)
             \Database\Seeders\Lists\VideoDoorbellsSeeder::class, // LISTA DE VIDEO CAMPAINHAS (TECH)
+            \Database\Seeders\Lists\PortablePowerStationsSeeder::class, // LISTA DE ESTACOES DE ENERGIA PORTATEIS (TECH)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }
