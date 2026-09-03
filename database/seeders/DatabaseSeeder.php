@@ -116,6 +116,10 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\YogaMatsSeeder::class, // LISTA DE TAPETES DE YOGA (FITNESS)
             \Database\Seeders\Lists\GardenShreddersSeeder::class, // LISTA DE TRITURADORES DE JARDIM (GARDEN)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
+            //
+            // ⚠ ARTIGO NOVO NAO PRECISA MAIS DE LINHA AQUI: BASTA CRIAR O ARQUIVO EM
+            //   database/seeders/lists/data/<slug>.php QUE O ListSeeder ABAIXO ACHA SOZINHO.
+            \Database\Seeders\ListSeeder::class, // LE TODAS AS LISTAS EM lists/data/*.php (FORMATO NOVO)
         ]);
     }
 }
