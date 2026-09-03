@@ -114,6 +114,7 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\GarmentSteamersSeeder::class, // LISTA DE VAPORIZADORES DE ROUPA (HOME)
             \Database\Seeders\Lists\SmokeCoAlarmsSeeder::class, // LISTA DE ALARMES DE FUMACA E MONOXIDO (HOME)
             \Database\Seeders\Lists\YogaMatsSeeder::class, // LISTA DE TAPETES DE YOGA (FITNESS)
+            \Database\Seeders\Lists\GardenShreddersSeeder::class, // LISTA DE TRITURADORES DE JARDIM (GARDEN)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }
