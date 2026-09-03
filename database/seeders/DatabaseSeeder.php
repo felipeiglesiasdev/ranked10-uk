@@ -96,6 +96,7 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\PetCamerasSeeder::class, // LISTA DE CAMERAS PARA PETS (PET SUPPLIES)
             \Database\Seeders\Lists\SmartThermostatsSeeder::class, // LISTA DE TERMOSTATOS INTELIGENTES (HOME)
             \Database\Seeders\Lists\WeightedBlanketsSeeder::class, // LISTA DE COBERTORES PESADOS (HOME)
+            \Database\Seeders\Lists\KitchenScalesSeeder::class, // LISTA DE BALANCAS DE COZINHA (KITCHEN)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }
