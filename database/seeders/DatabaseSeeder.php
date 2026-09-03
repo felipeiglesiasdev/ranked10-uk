@@ -103,6 +103,7 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Lists\FootSpasSeeder::class, // LISTA DE ESCALDA-PES / FOOT SPAS (HOME)
             \Database\Seeders\Lists\WeatherStationsSeeder::class, // LISTA DE ESTACOES METEOROLOGICAS (GARDEN)
             \Database\Seeders\Lists\HandWarmersSeeder::class, // LISTA DE AQUECEDORES DE MAO RECARREGAVEIS (HOME)
+            \Database\Seeders\Lists\ToastersSeeder::class, // LISTA DE TORRADEIRAS (KITCHEN)
             // ADICIONE NOVAS LISTAS AQUI, UMA POR LINHA, CONFORME FOREM CRIADAS
         ]);
     }
