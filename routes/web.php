@@ -6,6 +6,7 @@ use App\Http\Controllers\CommentController; // IMPORTA O CONTROLLER DE COMENTARI
 use App\Http\Controllers\HomeController; // IMPORTA O CONTROLLER DA HOME
 use App\Http\Controllers\NavigationController; // IMPORTA O CONTROLLER DO MEGA MENU (JSON)
 use App\Http\Controllers\PageController; // IMPORTA O CONTROLLER DAS PAGINAS INSTITUCIONAIS (E-E-A-T)
+use App\Http\Controllers\ProductController; // IMPORTA O CONTROLLER DA PAGINA PROPRIA DE PRODUTO
 use App\Http\Controllers\SearchController; // IMPORTA O CONTROLLER DE BUSCA
 use App\Http\Controllers\SitemapController; // IMPORTA O CONTROLLER DO SITEMAP
 use Illuminate\Support\Facades\Route; // IMPORTA A FACADE DE ROTAS
@@ -65,10 +66,12 @@ Route::get('/author/{slug}', [PageController::class, 'author'])->name('author');
 // ⚠ ESTAS SAO AS PRIMEIRAS ROTAS DO SITE QUE NAO SAO GET SIMPLES. O RESTO DO ranked10 CONTINUA
 // 100% ESTATICO E SEM SESSAO; SO O FORMULARIO DE COMENTARIO USA CSRF.
 Route::get('/comments/token', [CommentController::class, 'token'])->name('comments.token'); // TOKEN CSRF FRESCO PARA O FORMULARIO (FICA ANTES DO CATCH-ALL DE CATEGORIA)
-Route::post('/{category:slug}/{article:slug}/comments', [CommentController::class, 'store'])->name('comments.store'); // ENVIO DE UM COMENTARIO NOVO
+Route::post('/{category:slug}/{article:slug}/comments', [CommentController::class, 'store'])->name('comments.store'); // ENVIO DE UM COMENTARIO NOVO NO ARTIGO
+Route::post('/{category:slug}/{article:slug}/{produto}/comments', [CommentController::class, 'store'])->name('comments.store.product'); // ENVIO DE UM COMENTARIO NOVO NA PAGINA DE UM PRODUTO (MESMO PIPELINE, MESMAS DEFESAS)
 
 // REDIRECTS 301 DE SLUGS ANTIGOS (SEMPRE ANTES DO CATCH-ALL, PARA NAO PERDER SEO DE URLS JA INDEXADAS)
 Route::redirect('/home/best-portable-fans-uk', '/home/best-handheld-fans', 301); // SLUG ANTIGO DO ARTIGO DE VENTILADORES PORTATEIS
 
 Route::get('/{category:slug}', [CategoryController::class, 'show'])->name('category'); // ROTA DA CATEGORIA (FICA POR ULTIMO PARA NAO CONFLITAR COM ROTAS FIXAS)
 Route::get('/{category:slug}/{article:slug}', [ArticleController::class, 'show'])->name('article'); // ROTA DO ARTIGO DENTRO DA CATEGORIA
+Route::get('/{category:slug}/{article:slug}/{produto}', [ProductController::class, 'show'])->name('product'); // ROTA DA PAGINA PROPRIA DO PRODUTO (SO EXISTE SE O PRODUTO TIVER slug)

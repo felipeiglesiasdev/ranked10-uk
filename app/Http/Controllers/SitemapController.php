@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article; // IMPORTA O MODEL DE ARTIGOS
 use App\Models\Category; // IMPORTA O MODEL DE CATEGORIAS
+use App\Models\Product; // IMPORTA O MODEL DE PRODUTOS (PAGINAS PROPRIAS DE PRODUTO)
 use App\Support\Autores; // IMPORTA O ACESSO AOS PERFIS DE AUTOR (PAGINAS /author/<slug>)
 use Illuminate\Http\Response; // IMPORTA O TIPO DE RETORNO DA RESPOSTA XML
 
@@ -37,6 +38,18 @@ class SitemapController extends Controller
             $urls[] = [ // ADICIONA A URL DO ARTIGO NO SITEMAP
                 'loc' => route('article', [$article->category, $article]), // MONTA A URL CATEGORIA/ARTIGO PELOS SLUGS
                 'lastmod' => $article->updated_at?->toAtomString(), // USA A DATA DE ATUALIZACAO COMO LASTMOD
+            ];
+        }
+
+        // PAGINAS PROPRIAS DE PRODUTO. SO ENTRAM AS QUE EXISTEM DE VERDADE: O SCOPE comPagina
+        // FILTRA PELO slug, ENTAO PRODUTO SEM PAGINA NAO VIRA URL FANTASMA NO SITEMAP.
+        foreach (Product::comPagina()->with('article.category')->get() as $product) { // PERCORRE OS PRODUTOS COM PAGINA
+            if (! $product->article || ! $product->article->published_at || ! $product->article->published_at->isPast()) { // ARTIGO DONO PRECISA ESTAR PUBLICADO
+                continue; // PULA PRODUTO DE ARTIGO NAO PUBLICADO
+            }
+            $urls[] = [ // ADICIONA A URL DA PAGINA DO PRODUTO
+                'loc' => route('product', [$product->article->category->slug, $product->article->slug, $product->slug]), // /{categoria}/{artigo}/{produto}
+                'lastmod' => $product->updated_at?->toAtomString(), // DATA DE ATUALIZACAO COMO LASTMOD
             ];
         }
 

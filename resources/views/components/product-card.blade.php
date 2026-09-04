@@ -75,6 +75,17 @@
                 {{-- ICONE DE LINK EXTERNO (BOOTSTRAP ICONS: BOX-ARROW-UP-RIGHT) EM SVG INLINE --}}
                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5"/><path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z"/></svg>
             </a>
+
+            {{-- ─── LINK PARA A PAGINA PROPRIA DO PRODUTO ───
+                 ⚠ OPT-IN: SO APARECE PARA PRODUTO COM slug PREENCHIDO. QUEM NAO TEM PAGINA
+                 SEGUE EXATAMENTE COMO ESTAVA, SEM LINK QUEBRADO E SEM 404. --}}
+            @if ($product->temPagina())
+                <a href="{{ $product->page_url }}" class="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-brand hover:underline">
+                    More about the {{ $product->name }}
+                    {{-- ICONE DE SETA (BOOTSTRAP ICONS: CHEVRON-RIGHT) EM SVG INLINE --}}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/></svg>
+                </a>
+            @endif
         </div>
     </div>
 </div>

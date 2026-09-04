@@ -31,13 +31,24 @@ class CommentController extends Controller
         return response()->json(['token' => csrf_token()])->header('Cache-Control', 'no-store, private'); // NUNCA CACHEAR ESTA RESPOSTA
     }
 
-    public function store(Request $request, Category $category, Article $article): RedirectResponse // RECEBE UM COMENTARIO NOVO
+    public function store(Request $request, Category $category, Article $article, ?string $produto = null): RedirectResponse // RECEBE UM COMENTARIO NOVO (DO ARTIGO OU DA PAGINA DE UM PRODUTO)
     {
         abort_unless(config('comments.enabled', true), 404); // COMENTARIOS DESLIGADOS NO SITE INTEIRO
         abort_unless($article->category_id === $category->id, 404); // O ARTIGO TEM QUE PERTENCER A CATEGORIA DA URL
         abort_unless($article->published_at && $article->published_at->isPast(), 404); // NAO SE COMENTA RASCUNHO
 
-        $destino = route('article', [$category, $article]); // URL DO ARTIGO, USADA EM TODOS OS REDIRECTS ABAIXO
+        // ─── DE ONDE VEIO O COMENTARIO ───
+        // MESMO PIPELINE, MESMAS CINCO DEFESAS. A UNICA DIFERENCA E O DESTINO DO REDIRECT E O
+        // product_id GRAVADO. COMENTARIO DE ARTIGO CONTINUA COM product_id NULO.
+        $product = null; // NULO = COMENTARIO DO ARTIGO
+        if ($produto !== null) { // VEIO DA PAGINA DE UM PRODUTO
+            $product = $article->products()->where('slug', $produto)->first(); // O PRODUTO TEM QUE SER DESTE ARTIGO
+            abort_unless($product && $product->temPagina(), 404); // SEM PAGINA LIBERADA NAO SE COMENTA
+        }
+
+        $destino = $product // URL DE VOLTA, USADA EM TODOS OS REDIRECTS ABAIXO
+            ? route('product', [$category, $article, $product->slug]) // PAGINA DO PRODUTO
+            : route('article', [$category, $article]); // ARTIGO
 
         $validador = Validator::make($request->all(), [ // VALIDACAO DOS CAMPOS DO FORMULARIO
             'author_name' => ['required', 'string', 'min:2', 'max:'.config('comments.name_max', 40)], // NOME EXIBIDO
@@ -94,9 +105,11 @@ class CommentController extends Controller
             $veredito = ['status' => Comment::PENDENTE, 'motivo' => 'turnstile indisponivel no momento do envio']; // NAO PUBLICA SEM CONFERIR, MAS TAMBEM NAO PERDE O COMENTARIO
         }
 
-        $pai = $this->paiValido($dados['parent_id'] ?? null, $article); // RESOLVE A RESPOSTA (SO 1 NIVEL DE PROFUNDIDADE)
+        $pai = $this->paiValido($dados['parent_id'] ?? null, $article, $product); // RESOLVE A RESPOSTA (SO 1 NIVEL DE PROFUNDIDADE)
 
-        $comentario = $article->comments()->create([ // GRAVA O COMENTARIO VINCULADO AO ARTIGO
+        $comentario = Comment::create([ // GRAVA O COMENTARIO NO ARTIGO E, SE FOR O CASO, TAMBEM NO PRODUTO
+            'article_id' => $article->id, // SEMPRE GRAVADO: A PAGINA DO PRODUTO PERTENCE A UM ARTIGO
+            'product_id' => $product?->id, // NULO NO ARTIGO, PREENCHIDO NA PAGINA DO PRODUTO
             'parent_id' => $pai?->id, // COMENTARIO PAI (NULO SE FOR RAIZ)
             'author_name' => trim($dados['author_name']), // NOME SEM ESPACOS NAS PONTAS
             'author_email' => $dados['author_email'] ?? null, // EMAIL OPCIONAL
@@ -160,13 +173,18 @@ class CommentController extends Controller
         ];
     }
 
-    private function paiValido(?int $parentId, Article $article): ?Comment // GARANTE QUE A RESPOSTA APONTA PARA UM COMENTARIO VALIDO DESTE ARTIGO
+    private function paiValido(?int $parentId, Article $article, ?\App\Models\Product $product = null): ?Comment // GARANTE QUE A RESPOSTA APONTA PARA UM COMENTARIO VALIDO DA MESMA PAGINA
     {
         if (! $parentId) { // COMENTARIO RAIZ
             return null; // SEM PAI
         }
 
-        $pai = Comment::aprovados()->where('article_id', $article->id)->find($parentId); // SO SE RESPONDE A COMENTARIO APROVADO DO MESMO ARTIGO
+        // ⚠ A RESPOSTA TEM QUE SER DA MESMA PAGINA, NAO SO DO MESMO ARTIGO: SEM O FILTRO DE
+        // product_id DAVA PARA PENDURAR UMA RESPOSTA DO ARTIGO NUM COMENTARIO DA PAGINA DO PRODUTO.
+        $pai = Comment::aprovados()
+            ->where('article_id', $article->id) // MESMO ARTIGO
+            ->where('product_id', $product?->id) // MESMA PAGINA (NULO CASA COM NULO NO ARTIGO)
+            ->find($parentId); // SO SE RESPONDE A COMENTARIO APROVADO
 
         // ACHATA A ARVORE EM UM NIVEL: RESPONDER A UMA RESPOSTA PENDURA NO COMENTARIO RAIZ DELA.
         // CONVERSA ANINHADA SEM FIM FICA ILEGIVEL NO MOBILE, QUE E DE ONDE VEM A MAIOR PARTE DO TRAFEGO.

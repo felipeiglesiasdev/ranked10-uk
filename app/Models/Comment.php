@@ -15,13 +15,18 @@ class Comment extends Model
     public const PENDENTE = 'pending';  // COMENTARIO NA FILA DE MODERACAO
     public const SPAM = 'spam';         // COMENTARIO DESCARTADO PELO FILTRO
 
-    protected $fillable = ['article_id', 'parent_id', 'author_name', 'author_email', 'body', 'status', 'held_reason', 'ip_hash', 'user_agent']; // CAMPOS PERMITIDOS NO PREENCHIMENTO EM MASSA
+    protected $fillable = ['article_id', 'product_id', 'parent_id', 'author_name', 'author_email', 'body', 'status', 'held_reason', 'ip_hash', 'user_agent']; // CAMPOS PERMITIDOS NO PREENCHIMENTO EM MASSA
 
     protected $hidden = ['author_email', 'ip_hash', 'user_agent']; // NUNCA SEREM SERIALIZADOS: SAO DADOS PESSOAIS QUE NAO VAO PARA A PAGINA
 
     public function article(): BelongsTo // RELACIONAMENTO: O COMENTARIO PERTENCE A UM ARTIGO
     {
         return $this->belongsTo(Article::class); // RETORNA O ARTIGO COMENTADO
+    }
+
+    public function product(): BelongsTo // RELACIONAMENTO: O COMENTARIO PODE PERTENCER A UMA PAGINA DE PRODUTO
+    {
+        return $this->belongsTo(Product::class); // NULO QUANDO O COMENTARIO E DO ARTIGO E NAO DE UM PRODUTO
     }
 
     public function parent(): BelongsTo // RELACIONAMENTO: O COMENTARIO PODE RESPONDER A OUTRO

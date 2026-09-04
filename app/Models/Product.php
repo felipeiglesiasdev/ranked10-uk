@@ -5,12 +5,42 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Builder; // IMPORTA O BUILDER PARA TIPAR OS SCOPES
 use Illuminate\Database\Eloquent\Model; // IMPORTA A CLASSE BASE DOS MODELS
 use Illuminate\Database\Eloquent\Relations\BelongsTo; // IMPORTA O TIPO DE RETORNO DO BELONGSTO
+use Illuminate\Database\Eloquent\Relations\HasMany; // IMPORTA O TIPO DE RETORNO DO HASMANY
 
 class Product extends Model
 {
-    protected $fillable = ['article_id', 'position', 'name', 'price', 'rating', 'reviews_count', 'pros', 'contras', 'affiliate_link', 'image', 'alt_text', 'summary', 'body', 'specs', 'review_quotes']; // CAMPOS PERMITIDOS (BODY = TEXTO SEO LONGO; SPECS = FICHA TECNICA; REVIEW_QUOTES = CITACOES REAIS DE CLIENTES)
+    protected $fillable = ['article_id', 'position', 'name', 'price', 'rating', 'reviews_count', 'pros', 'contras', 'affiliate_link', 'image', 'alt_text', 'summary', 'body', 'specs', 'review_quotes', 'slug', 'meta_title', 'meta_description', 'page_intro', 'rating_breakdown', 'tech_specs', 'faq', 'harvested_at']; // CAMPOS PERMITIDOS (BODY = TEXTO SEO LONGO; SPECS = FICHA TECNICA; REVIEW_QUOTES = CITACOES REAIS DE CLIENTES; SLUG EM DIANTE = PAGINA PROPRIA DO PRODUTO)
 
-    protected $casts = ['pros' => 'array', 'contras' => 'array', 'specs' => 'array', 'review_quotes' => 'array']; // CONVERTE AS COLUNAS JSON PARA ARRAYS PHP AUTOMATICAMENTE
+    protected $casts = ['pros' => 'array', 'contras' => 'array', 'specs' => 'array', 'review_quotes' => 'array', 'rating_breakdown' => 'array', 'tech_specs' => 'array', 'faq' => 'array', 'harvested_at' => 'datetime']; // CONVERTE AS COLUNAS JSON PARA ARRAYS PHP AUTOMATICAMENTE
+
+    public function comments(): HasMany // RELACIONAMENTO: A PAGINA DO PRODUTO TEM SEUS PROPRIOS COMENTARIOS
+    {
+        return $this->hasMany(Comment::class); // COMENTARIOS COM product_id APONTANDO PARA ESTE PRODUTO
+    }
+
+    public function temPagina(): bool // DIZ SE ESTE PRODUTO GANHOU PAGINA PROPRIA (E PORTANTO SE O RANKING MOSTRA O LINK)
+    {
+        return filled($this->slug); // SEM SLUG NAO HA PAGINA: O RANKING SIMPLESMENTE NAO LINKA
+    }
+
+    public function scopeComPagina(Builder $query): Builder // SCOPE: SO OS PRODUTOS QUE TEM PAGINA (USADO NO SITEMAP)
+    {
+        return $query->whereNotNull('slug'); // FILTRA PELOS QUE TEM SLUG PREENCHIDO
+    }
+
+    public function getPageUrlAttribute(): ?string // URL DA PAGINA PROPRIA DO PRODUTO (NULA SE NAO TIVER PAGINA)
+    {
+        if (! $this->temPagina()) { // SEM PAGINA NAO HA ROTA A MONTAR
+            return null; // A VIEW USA ISSO PARA DECIDIR SE MOSTRA O LINK
+        }
+
+        $article = $this->article; // ARTIGO DONO DO PRODUTO
+        if (! $article || ! $article->category) { // SEM ARTIGO OU CATEGORIA NAO HA COMO MONTAR A ROTA ANINHADA
+            return null; // A VIEW SIMPLESMENTE NAO LINKA
+        }
+
+        return route('product', [$article->category->slug, $article->slug, $this->slug]); // /{categoria}/{artigo}/{produto}
+    }
 
     public function article(): BelongsTo // RELACIONAMENTO: O PRODUTO PERTENCE A UM ARTIGO
     {

@@ -1,4 +1,4 @@
-@props(['article', 'category', 'comments', 'turnstileSiteKey' => null]){{-- PROPS: ARTIGO, CATEGORIA, COMENTARIOS RAIZ JA CARREGADOS E A CHAVE PUBLICA DO CAPTCHA --}}
+@props(['article', 'category', 'comments', 'product' => null, 'turnstileSiteKey' => null]){{-- PROPS: ARTIGO, CATEGORIA, COMENTARIOS RAIZ JA CARREGADOS, PRODUTO (NULO NO ARTIGO) E A CHAVE PUBLICA DO CAPTCHA --}}
 
 @php
     $maxTexto = (int) config('comments.max_length', 2000); // TETO DE CARACTERES, USADO NO CONTADOR DO ALPINE
@@ -81,5 +81,5 @@
         </div>
     @endif
 
-    <x-comments.form :article="$article" :category="$category" :turnstile-site-key="$turnstileSiteKey" />{{-- FORMULARIO DE ENVIO --}}
+    <x-comments.form :article="$article" :category="$category" :product="$product" :turnstile-site-key="$turnstileSiteKey" />{{-- FORMULARIO DE ENVIO --}}
 </section>

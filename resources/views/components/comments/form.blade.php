@@ -1,4 +1,4 @@
-@props(['article', 'category', 'turnstileSiteKey' => null]){{-- PROPS: ARTIGO, CATEGORIA E A CHAVE PUBLICA DO CAPTCHA (NULA = CAPTCHA DESLIGADO) --}}
+@props(['article', 'category', 'product' => null, 'turnstileSiteKey' => null]){{-- PROPS: ARTIGO, CATEGORIA, PRODUTO (NULO NO ARTIGO, PREENCHIDO NA PAGINA DE PRODUTO) E A CHAVE PUBLICA DO CAPTCHA --}}
 
 <div x-ref="form" class="mt-10 scroll-mt-28 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">{{-- CAIXA DO FORMULARIO --}}
 
@@ -14,7 +14,7 @@
 
     <form
         method="POST"
-        action="{{ route('comments.store', [$category, $article]) }}"
+        action="{{ $product ? route('comments.store.product', [$category, $article, $product->slug]) : route('comments.store', [$category, $article]) }}"{{-- MESMO PIPELINE NO SERVIDOR; SO MUDA A PAGINA DE DESTINO --}}
         class="mt-5 space-y-4"
         data-comment-form
         data-token-url="{{ route('comments.token') }}"
