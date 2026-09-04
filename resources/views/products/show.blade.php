@@ -226,19 +226,6 @@
         </section>
       @endif
 
-      {{-- ─── DE ONDE VEIO ESTA INFORMACAO ─── --}}
-      <aside class="mt-10 rounded-2xl border border-slate-200 bg-slate-50 p-5 text-sm text-slate-600">
-        <p class="font-semibold text-slate-900">Where this page comes from</p>
-        <p class="mt-1.5">
-          Every figure on this page — the price, the star rating, the number of ratings, how they break down, the specification table and the customer quotes — was taken from this product's Amazon listing{{ $product->harvested_at ? ' on '.$product->harvested_at->format('j F Y') : '' }}. We did not test the product ourselves, and this page carries no author for that reason. Our own judgement, and the reasoning that put it at number {{ $product->position }}, is in <a href="{{ route('article', [$category, $article]) }}" class="font-semibold text-brand hover:underline">{{ $article->title }}</a>.
-        </p>
-        <p class="mt-1.5">Listings change without notice, so check the figures on Amazon before you buy. As an Amazon Associate we earn from qualifying purchases.</p>
-      </aside>
-
-      <div class="mt-10">
-        <x-utils.whatsapp-cta />{{-- CHAMADA DO GRUPO DE OFERTAS --}}
-      </div>
-
       {{-- ─── COMENTARIOS: MESMO SISTEMA DO RANKING ─── --}}
       <x-comments.section :article="$article" :category="$category" :product="$product" :comments="$comentarios" :turnstile-site-key="$turnstileSiteKey" />
 

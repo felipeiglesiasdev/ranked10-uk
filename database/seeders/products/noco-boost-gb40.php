@@ -18,15 +18,18 @@
 //   Milliamp Hours". CELULAR MEDIO TEM BATERIA DE ~4.000 mAh, ENTAO O APARELHO NAO
 //   CARREGA UM TELEFONE INTEIRO — DA UM REFORCO. NAO E MENTIRA, MAS E EXPECTATIVA ERRADA.
 //
-// ─── ACHADO 3: "ATE 20 PARTIDAS POR CARGA" x A AVALIACAO DE 1 ESTRELA ───
+// ─── ACHADO 3: "ATE 20 PARTIDAS POR CARGA" x O QUE OS COMPRADORES RELATAM ───
 //   OS BULLETS PROMETEM "Up to 20 starts per charge on engines up to 6.0L petrol".
-//   A AVALIACAO DE 1 ESTRELA CITADA NA PAGINA (Dan, 24/01/2025, compra verificada)
-//   DESCREVE O APARELHO QUASE DESCARREGADO DEPOIS DE POUCAS TENTATIVAS NUM DIESEL 2.0.
-//   AS DUAS COISAS ESTAO NA PROPRIA FICHA. A PAGINA MOSTRA AS DUAS.
+//   HA AVALIACAO DE 1 ESTRELA NA FICHA (Dan, 24/01/2025, compra verificada) DESCREVENDO
+//   O APARELHO QUASE DESCARREGADO DEPOIS DE POUCAS TENTATIVAS NUM DIESEL 2.0.
+//   ⚠ ESSA CITACAO **NAO** ESTA NA PAGINA POR DECISAO COMERCIAL (VER NOTA DAS CITACOES).
+//   FICA REGISTRADA AQUI PORQUE E MATERIA-PRIMA DO ESTUDO DE FICHAS DA AMAZON.
 //
 // ⚠ CITACOES: COPIADAS **LITERALMENTE** DA FICHA, COM AUTOR, DATA, NOTA E SELO DE
-//   COMPRA VERIFICADA. UMA POSITIVA E UMA NEGATIVA, DE PROPOSITO — ESCONDER OS 7%
-//   SERIA EXATAMENTE O QUE OS CONCORRENTES FAZEM. NUNCA GERAR NEM RESUMIR CITACAO.
+//   COMPRA VERIFICADA. NUNCA GERAR, RESUMIR NEM TRADUZIR CITACAO.
+//   DECISAO DO FELIPE (03/09/2026): AS DUAS CITACOES SAO POSITIVAS — A PAGINA VENDE.
+//   O SINAL NEGATIVO NAO SUMIU DA PAGINA: A BARRA DE 1 ESTRELA CONTINUA MOSTRANDO OS 7%
+//   NA DISTRIBUICAO, ENTAO O LEITOR VE O NUMERO SEM QUE A CITACAO O EMPURRE PARA LA.
 //
 // ⚠ A FICHA DECLARA "Specification Met: CE". REPORTADO COMO O QUE O ANUNCIO PUBLICA,
 //   SEM AFIRMAR CONFORMIDADE DE NADA.
@@ -40,7 +43,7 @@ return [
     'meta_title' => 'NOCO Boost GB40 Review: Specs, Ratings and Price',
     'meta_description' => 'Everything the Amazon listing publishes about the NOCO Boost GB40: price, the full specification table, how its ratings break down, and what buyers say.',
 
-    'page_intro' => "The NOCO Boost GB40 is a 1000-amp lithium jump starter, and it takes first place in our jump starter ranking. Everything on this page comes from its Amazon listing rather than from our own testing: the price, the specification table, the spread of its customer ratings, and two review quotes copied word for word.\n\nTwo figures reward a closer look. The title sells the GB40 as a portable power bank, while the specification table puts its battery at 2,150mAh, which is a top-up rather than a full phone charge. And the listing promises up to 20 starts per charge, a claim the one-star review quoted below directly disputes. Both come from the same page, so you can check either one yourself.",
+    'page_intro' => "The NOCO Boost GB40 is a 1000-amp lithium jump starter, and it takes first place in our jump starter ranking. Everything on this page comes from its Amazon listing rather than from our own testing: the price, the specification table, the spread of its customer ratings, and two review quotes copied word for word.\n\nTwo figures reward a closer look. The title sells the GB40 as a portable power bank, while the specification table puts its battery at 2,150mAh, which is a top-up rather than a full phone charge. And NOCO states up to 20 starts per charge on engines up to 6.0 litres of petrol, a figure worth reading next to the ratings breakdown below rather than on its own. Both come from the listing itself, so you can check either one.",
 
     'harvested_at' => '2026-09-03 14:30:00',
 
@@ -75,7 +78,7 @@ return [
     // QUE E O UNICO RICH RESULT QUE O SITE AINDA NAO TINHA.
     'faq' => [
         'Will the NOCO Boost GB40 start a diesel?|The listing states it covers petrol engines up to 6.0 litres and diesel engines up to 3.0 litres, from 1000 peak amps. Above 3.0 litres of diesel NOCO points you at a bigger pack in the range, such as the GB70.',
-        'How many jump starts do you get per charge?|NOCO states up to 20 starts per charge on engines up to 6.0 litres of petrol. Worth reading alongside the one-star review quoted on this page, which describes the pack showing almost flat after a handful of attempts on a 2.0-litre diesel.',
+        'How many jump starts do you get per charge?|NOCO states up to 20 starts per charge on engines up to 6.0 litres of petrol. That is the figure on the listing rather than one we measured, and how close you get to it depends on the engine and how flat the battery is.',
         'Can it charge a phone?|The specification table gives the battery as 2,150mAh. A typical phone battery is around 4,000mAh, so treat the power bank function as an emergency top-up rather than a full charge.',
         'What happens if I connect the clamps the wrong way round?|NOCO states the GB40 has spark-proof technology and reverse polarity protection, so a wrong connection does not spark. That is the maker claim; we have not tested it.',
         'What comes in the box?|The listing names the GB40 pack itself, heavy duty jump leads, a microfibre storage bag and a USB-C charging cable.',
@@ -93,11 +96,11 @@ return [
             'verified' => true,
         ],
         [
-            'text' => 'When I disconnected the charger I noticed it was almost flat with the red light showing, which was quite surprising as it says up to 20 uses between charges.',
-            'author' => 'Dan',
-            'rating' => 1,
-            'date' => '24 January 2025',
-            'title' => 'Not great...',
+            'text' => 'I am always sceptical of these units and went for a brand that is well known and trusted, and I am glad I did. I have a 2.2l Diesel and it started it first time, so power wise, no issues.',
+            'author' => 'Murray Low',
+            'rating' => 5,
+            'date' => '2 September 2026',
+            'title' => 'Will charge a completely dead battery.',
             'verified' => true,
         ],
     ],
