@@ -221,19 +221,19 @@ At £11.00 per plug it is among the dearer options here, and the specification t
             [
                 'position' => 6,                                                                    // POSICAO NO RANKING
                 'name' => 'EIGHTREE Alexa Smart Plug with Energy Monitor, BS1363, 4-Pack',           // NOME (ENCURTADO)
-                'price' => '£24.99',                                                                // PRECO
+                'price' => '£27.99',                                                                // PRECO (ATUALIZADO 05/09/2026: SUBIU DE £24.99)
                 'rating' => 4.6,                                                                    // NOTA
-                'reviews_count' => 1567,                                                            // Nº REVIEWS
+                'reviews_count' => 1568,                                                            // Nº REVIEWS
                 'image' => 'https://m.media-amazon.com/images/I/61KugOhVppL._AC_SL1500_.jpg',       // IMAGEM
                 'alt_text' => 'EIGHTREE Alexa smart plug with energy monitor, four pack',           // ALT DESCRITIVO DA IMAGEM
                 'affiliate_link' => 'https://www.amazon.co.uk/dp/B0CJBGXPD8?tag=ranked10-21',       // LINK AFILIADO
-                'summary' => 'The cheapest four-pack here at £6.25 a plug, and the only listing in the category that names the British safety standard it is built to.', // TEXTO CURTO (CARD)
-                'body' => "Six pounds twenty-five per plug is the lowest price in this comparison, and 1,567 ratings at 4.6 stars means it is not cheap for the usual reason. The compact body is designed specifically not to block the second socket on a UK double plate, it runs on the Smart Life app which also controls thousands of other own-brand devices, and it does energy monitoring with cost estimation, timers, countdowns and cycle modes.
+                'summary' => 'The cheapest four-pack here at £7.00 a plug, and the only listing in the category that names the British safety standard it is built to.', // TEXTO CURTO (CARD)
+                'body' => "Seven pounds per plug is the lowest price in this comparison, and 1,568 ratings at 4.6 stars means it is not cheap for the usual reason. The compact body is designed specifically not to block the second socket on a UK double plate, it runs on the Smart Life app which also controls thousands of other own-brand devices, and it does energy monitoring with cost estimation, timers, countdowns and cycle modes.
 
 More interesting is a single line in the specification table: \"Specification Met: BS1363, UKCA\". BS 1363 is the British Standard for 13 amp plugs and sockets, and UKCA is the post-Brexit conformity marking. Not one other listing on this page names the standard it is built to. Given that everything here carries mains voltage into a device left plugged in unattended for years, an anonymous brand citing the correct standard by number is worth more than a familiar logo that does not.
 
 The same table then says Number Of Wires: 4. A British plug has three — live, neutral and earth — and a fourth would have nowhere to go. It also gives Plug Type as \"ELECTRICAL\" and Connector Type as \"Quick Connect\", neither of which describes anything. No voltage is published, so as with EIGHTREE's 5GHz model the 13 amp rating cannot be turned into watts. And like eight of the ten here, it needs 2.4GHz Wi-Fi, which is the thing its own 5GHz sibling at number four exists to avoid.", // TEXTO SEO LONGO
-                'pros' => ['£6.25 per plug, the cheapest in this comparison', 'The only listing that names its safety standard: BS1363 and UKCA', '1,567 ratings at 4.6 stars', 'Compact body that leaves the adjacent socket usable', 'Smart Life app also controls thousands of other devices'], // PONTOS POSITIVOS
+                'pros' => ['£7.00 per plug, the cheapest in this comparison', 'The only listing that names its safety standard: BS1363 and UKCA', '1,568 ratings at 4.6 stars', 'Compact body that leaves the adjacent socket usable', 'Smart Life app also controls thousands of other devices'], // PONTOS POSITIVOS
                 'contras' => ['Spec table says four wires, where a UK plug has three', 'Plug Type field reads "ELECTRICAL" and Connector Type "Quick Connect"', 'No voltage published, so 13A cannot be converted to watts', '2.4GHz Wi-Fi only, unlike EIGHTREE\'s own 5GHz model'], // PONTOS NEGATIVOS
             ],
             [
