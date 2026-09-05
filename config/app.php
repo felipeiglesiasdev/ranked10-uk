@@ -56,6 +56,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Canonical URL
+    |--------------------------------------------------------------------------
+    |
+    | O HOST CANONICO DO SITE E O **www**, NAO O APEX. TODA URL PUBLICA (canonical,
+    | og:url, JSON-LD, sitemap) TEM DE SAIR COM ELE, INDEPENDENTE DO HOST PELO QUAL
+    | A REQUISICAO CHEGOU — VER AppServiceProvider::boot().
+    |
+    */
+
+    'canonical_url' => env('APP_CANONICAL_URL', 'https://www.ranked10.co.uk'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Timezone
     |--------------------------------------------------------------------------
     |
