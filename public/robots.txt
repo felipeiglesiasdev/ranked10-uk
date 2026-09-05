@@ -1,4 +1,3 @@
 User-agent: *
 Disallow:
-
-Sitemap: https://ranked10.co.uk/sitemap.xml
+Sitemap: https://www.ranked10.co.uk/sitemap.xml
