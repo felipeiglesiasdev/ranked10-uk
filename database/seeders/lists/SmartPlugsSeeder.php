@@ -275,7 +275,7 @@ The specification table is where it slips furthest of any listing here. Mounting
             [
                 'position' => 9,                                                                    // POSICAO NO RANKING
                 'name' => 'Meross MSS425 Smart Extension Lead, 4 UK Sockets, 4 USB, Apple Home',     // NOME (ENCURTADO)
-                'price' => '£29.74',                                                                // PRECO
+                'price' => '£34.99',                                                                // PRECO (ATUALIZADO 05/09/2026: SUBIU DE £29.74)
                 'rating' => 4.2,                                                                    // NOTA
                 'reviews_count' => 1212,                                                            // Nº REVIEWS
                 'image' => 'https://m.media-amazon.com/images/I/61JAGT90GmL._AC_SL1500_.jpg',       // IMAGEM
