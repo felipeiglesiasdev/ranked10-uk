@@ -295,18 +295,18 @@ The second is the plug type, given twice and differently. Power Plug Type reads 
                 'name' => 'Tapo P110M Matter Smart Plug with Energy Monitoring, 4-Pack',             // NOME (ENCURTADO)
                 'price' => '£38.99',                                                                // PRECO
                 'rating' => 4.7,                                                                    // NOTA
-                'reviews_count' => 163,                                                             // Nº REVIEWS
+                'reviews_count' => 165,                                                             // Nº REVIEWS
                 'image' => 'https://m.media-amazon.com/images/I/714D4So474L._AC_SL1500_.jpg',       // IMAGEM
                 'alt_text' => 'Tapo P110M Matter smart plug four pack in white',                    // ALT DESCRITIVO DA IMAGEM
                 'affiliate_link' => 'https://www.amazon.co.uk/dp/B0DQL38QCY?tag=ranked10-21',       // LINK AFILIADO
                 'summary' => 'A Matter plug whose Matter energy monitoring works with SmartThings and Home Assistant only — not with Apple Home or Google, who help run Matter.', // TEXTO CURTO (CARD)
                 'body' => "The first bullet is unusually candid and it is the reason this finishes last. \"For Matter 1.3 Energy Monitoring Supportive, update both your Tapo P110M and Matter Hub to the latest firmware — currently works with SmartThings and Home Assistant only.\" Read that carefully: the energy monitoring, which is the entire premise of the product and the thing its price premium buys, does not function over Matter with Apple Home or Google Home. Those are two of the four platforms that jointly created and govern the Matter standard. Buy this expecting to see consumption data in Apple Home and you will not, and TP-Link deserves credit for saying so on the page rather than in a support article.
 
-Everything else about it is good. Four point seven stars is the joint-highest average in this comparison, though from only 163 ratings — the thinnest sample here by a factor of six. The flame-retardant polycarbonate housing and the automatic shut-off when consumption exceeds a threshold you set are real safety features that no other plug on this page offers, and the threshold cut-off in particular is a sensible protection for a heater left unattended.
+Everything else about it is good. Four point seven stars is the joint-highest average in this comparison, though from only 165 ratings — the thinnest sample here by a factor of six. The flame-retardant polycarbonate housing and the automatic shut-off when consumption exceeds a threshold you set are real safety features that no other plug on this page offers, and the threshold cut-off in particular is a sensible protection for a heater left unattended.
 
 At £9.75 per plug it costs more than the standard P110 and delivers less in the platforms most people use, which is an unusual place for a newer model to land. If you run Home Assistant or SmartThings, this is the best plug on this page and the ranking should be reversed for you. If you run Apple Home or Google Home, buy the P110 at number one for £8 a plug and use TP-Link's own app.", // TEXTO SEO LONGO
                 'pros' => ['4.7 stars, joint-highest average in this comparison', 'Automatic shut-off when consumption passes a threshold you set', 'Flame-retardant polycarbonate housing', 'The right choice if you run Home Assistant or SmartThings', 'States its Matter limitations openly on the listing'], // PONTOS POSITIVOS
-                'contras' => ['Matter energy monitoring works only with SmartThings and Home Assistant', 'No Matter energy data in Apple Home or Google Home', '163 ratings, the thinnest sample here by a factor of six', '£9.75 per plug against £7.99 for the far better proven P110'], // PONTOS NEGATIVOS
+                'contras' => ['Matter energy monitoring works only with SmartThings and Home Assistant', 'No Matter energy data in Apple Home or Google Home', '165 ratings, the thinnest sample here by a factor of six', '£9.75 per plug against £7.99 for the far better proven P110'], // PONTOS NEGATIVOS
             ],
         ];
 
