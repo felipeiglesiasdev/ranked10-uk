@@ -227,7 +227,7 @@ At £11.00 per plug it is among the dearer options here, and the specification t
                 'image' => 'https://m.media-amazon.com/images/I/61KugOhVppL._AC_SL1500_.jpg',       // IMAGEM
                 'alt_text' => 'EIGHTREE Alexa smart plug with energy monitor, four pack',           // ALT DESCRITIVO DA IMAGEM
                 'affiliate_link' => 'https://www.amazon.co.uk/dp/B0CJBGXPD8?tag=ranked10-21',       // LINK AFILIADO
-                'summary' => 'The cheapest four-pack here at £7.00 a plug, and the only listing in the category that names the British safety standard it is built to.', // TEXTO CURTO (CARD)
+                'summary' => 'Among the cheapest four-packs here at £7.00 a plug, and the only listing in the category that names the British safety standard it is built to.', // TEXTO CURTO (CARD)
                 'body' => "Seven pounds per plug is the lowest price in this comparison, and 1,568 ratings at 4.6 stars means it is not cheap for the usual reason. The compact body is designed specifically not to block the second socket on a UK double plate, it runs on the Smart Life app which also controls thousands of other own-brand devices, and it does energy monitoring with cost estimation, timers, countdowns and cycle modes.
 
 More interesting is a single line in the specification table: \"Specification Met: BS1363, UKCA\". BS 1363 is the British Standard for 13 amp plugs and sockets, and UKCA is the post-Brexit conformity marking. Not one other listing on this page names the standard it is built to. Given that everything here carries mains voltage into a device left plugged in unattended for years, an anonymous brand citing the correct standard by number is worth more than a familiar logo that does not.
@@ -257,19 +257,19 @@ The cost is the price: £12.50 per plug is the most expensive in this comparison
             [
                 'position' => 8,                                                                    // POSICAO NO RANKING
                 'name' => 'ANTELA Smart Plug with Energy Monitoring, 13A, 2.4GHz WiFi, 4-Pack',      // NOME (ENCURTADO)
-                'price' => '£29.99',                                                                // PRECO
+                'price' => '£25.49',                                                                // PRECO (ATUALIZADO 05/09/2026: CAIU DE £29.99)
                 'rating' => 4.4,                                                                    // NOTA
-                'reviews_count' => 2173,                                                            // Nº REVIEWS
+                'reviews_count' => 2176,                                                            // Nº REVIEWS
                 'image' => 'https://m.media-amazon.com/images/I/61cfI4FcU5L._AC_SL1500_.jpg',       // IMAGEM
                 'alt_text' => 'ANTELA smart plug four pack with energy monitoring',                 // ALT DESCRITIVO DA IMAGEM
                 'affiliate_link' => 'https://www.amazon.co.uk/dp/B09VP5KNWM?tag=ranked10-21',       // LINK AFILIADO
-                'summary' => 'Group control across multiple plugs and 2,173 ratings, on a spec sheet that describes a wall socket using circuit-board soldering terms.', // TEXTO CURTO (CARD)
-                'body' => "Group control is the feature that justifies buying four of these rather than four of something else. Rather than switching plugs one at a time, you assign them to a room and turn the lot off with one command — every lamp in the living room, or every device on standby before bed. On a four-pack that is the difference between a novelty and an actual system, and it works through the Smart Life app with no hub or subscription. Two thousand one hundred and seventy-three ratings at 4.4 stars is the third deepest sample in this comparison.
+                'summary' => 'Group control across multiple plugs and 2,176 ratings, on a spec sheet that describes a wall socket using circuit-board soldering terms.', // TEXTO CURTO (CARD)
+                'body' => "Group control is the feature that justifies buying four of these rather than four of something else. Rather than switching plugs one at a time, you assign them to a room and turn the lot off with one command — every lamp in the living room, or every device on standby before bed. On a four-pack that is the difference between a novelty and an actual system, and it works through the Smart Life app with no hub or subscription. Two thousand one hundred and seventy-six ratings at 4.4 stars is the third deepest sample in this comparison.
 
-The energy monitoring is presented better than most: consumption over time as a graph rather than a running total, which is what actually reveals that the dehumidifier is costing more than the fridge. At £7.50 per plug it is competitively priced, and it supports Alexa and Google Home.
+The energy monitoring is presented better than most: consumption over time as a graph rather than a running total, which is what actually reveals that the dehumidifier is costing more than the fridge. At £6.37 per plug it is competitively priced, and it supports Alexa and Google Home.
 
 The specification table is where it slips furthest of any listing here. Mounting Type reads \"Through Hole Mount\" and Terminal reads \"Through Hole\" — both are circuit-board soldering terms describing components with legs pushed through a printed board, applied to a device that pushes into a wall socket. Operation Mode reads \"ON-OFF-ON\", which describes a three-position toggle switch; a smart plug has two states. And Operating Voltage reads 220 volts, ten below the British nominal, which puts its true ceiling at 2,860 watts rather than the 2,990 the grid actually supports.", // TEXTO SEO LONGO
-                'pros' => ['Group control switches a whole room of plugs with one command', 'Energy use shown as a graph over time, not just a running total', '2,173 ratings at 4.4, the third deepest sample here', '£7.50 per plug with no hub or subscription needed'], // PONTOS POSITIVOS
+                'pros' => ['Group control switches a whole room of plugs with one command', 'Energy use shown as a graph over time, not just a running total', '2,176 ratings at 4.4, the third deepest sample here', '£6.37 per plug with no hub or subscription needed'], // PONTOS POSITIVOS
                 'contras' => ['Mounting Type and Terminal fields use circuit-board soldering terms', 'Operation Mode reads "ON-OFF-ON", a three-position switch', 'States 220V, giving a ceiling of 2,860W rather than 2,990W', '2.4GHz Wi-Fi only, and no accuracy figure for the meter'], // PONTOS NEGATIVOS
             ],
             [
