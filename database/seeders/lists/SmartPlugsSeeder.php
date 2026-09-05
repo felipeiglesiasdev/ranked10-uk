@@ -241,7 +241,7 @@ The same table then says Number Of Wires: 4. A British plug has three — live, 
                 'name' => 'Meross MSS315 Matter Smart Plug Mini with Energy Monitoring, 4-Pack',     // NOME (ENCURTADO)
                 'price' => '£49.99',                                                                // PRECO
                 'rating' => 4.3,                                                                    // NOTA
-                'reviews_count' => 1042,                                                            // Nº REVIEWS
+                'reviews_count' => 1048,                                                            // Nº REVIEWS
                 'image' => 'https://m.media-amazon.com/images/I/61HFtyyPWZL._AC_SL1500_.jpg',       // IMAGEM
                 'alt_text' => 'Meross MSS315 Matter smart plug mini four pack in white',            // ALT DESCRITIVO DA IMAGEM
                 'affiliate_link' => 'https://www.amazon.co.uk/dp/B0CNVHBCR3?tag=ranked10-21',       // LINK AFILIADO
@@ -251,7 +251,7 @@ The same table then says Number Of Wires: 4. A British plug has three — live, 
 Matter itself is the reason to pay the premium. A Matter plug talks to Apple Home, Google Home, Alexa and SmartThings through one standard rather than through a manufacturer's cloud, which means it keeps working if Meross changes its app or its business, and it works locally rather than routing commands through a server in another country. For a device you will leave in a wall for a decade, that is a real form of insurance. Offline control works too.
 
 The cost is the price: £12.50 per plug is the most expensive in this comparison, roughly half as much again as the EIGHTREE at £8.75, and 4.3 stars is the second-lowest average here — Matter setups are fiddlier and the reviews reflect it. It publishes 230 volts, the correct British nominal figure, which puts it in the minority on this page that gets the voltage right at all, though Plug Type reads \"wall plug\", which is not a plug type.", // TEXTO SEO LONGO
-                'pros' => ['Names the exact OS versions and hub models required, uniquely here', 'Matter keeps working independently of the manufacturer\'s cloud', 'Publishes 230V, the correct UK nominal voltage, unlike most here', 'Local and offline control, and works across all four platforms', '1,042 ratings behind it'], // PONTOS POSITIVOS
+                'pros' => ['Names the exact OS versions and hub models required, uniquely here', 'Matter keeps working independently of the manufacturer\'s cloud', 'Publishes 230V, the correct UK nominal voltage, unlike most here', 'Local and offline control, and works across all four platforms', '1,048 ratings behind it'], // PONTOS POSITIVOS
                 'contras' => ['£12.50 per plug, the most expensive in this comparison', '4.3 stars, the second-lowest average here', 'Needs a hub, which the cheaper Wi-Fi plugs do not', 'Plug Type field reads "wall plug", which is not a plug type'], // PONTOS NEGATIVOS
             ],
             [
